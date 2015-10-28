@@ -69,7 +69,12 @@
             overflow: auto;
         }
 
+        .picList{
+            position: relative;
+        }
+
         .picList li {
+            position: absolute;
             float: left;
             width: 1rem;
             height: 1rem;
@@ -77,6 +82,7 @@
             background-size: cover;
             border: #000 1px solid;
             box-sizing: border-box;
+            transition: .5s left,.5s top;
         }
 
         footer {
@@ -151,20 +157,40 @@
         var aBtns = oPage.getElementsByClassName('btn');
         var sHtml = ''
         var aRomove = [];
+        var off = true;
         for (var i = 0; i < data.length; i++) {
-            sHtml += '<li style="background-image:url('+data[i]+')"></li>'
+            sHtml += '<li style="background-image:url('+data[i]+')"></li>';
         }
 
         oPic.innerHTML = sHtml;
         aBtns[0].addEventListener('touchend',fnRemove,false);
         aBtns[1].addEventListener('touchend',fnEnd,false);
 
-        function fnEnd(){
-            this.innerHTML = '取消';
-            for (var i=0;i<aLi.length;i++){
-                aLi[i].index = i;
-                aLi[i].addEventListener('touchend',fnSel,false);
+        function toPosition(){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].style.left = i%3+'rem';
+                aLi[i].style.top = Math.floor(i/3)+'rem';
             }
+        }
+
+        toPosition();
+        function fnEnd(){
+            if( off ) {
+                this.innerHTML = '取消';
+                for (var i=0;i<aLi.length;i++){
+                    aLi[i].index = i;
+                    aLi[i].addEventListener('touchend',fnSel,false);
+                }
+            } else {
+                this.innerHTML = '选择';
+                aBtns[0].style.display = 'none';
+                for (var i=0;i<aLi.length;i++){
+                    aLi[i].style.opacity = 1;
+                    aLi[i].removeEventListener('touchend',fnSel,false);
+                }
+                aRomove.length = 0;
+            }
+            off = !off;
         }
         function fnSel(){
             aRomove.push(this.index);
@@ -173,9 +199,6 @@
         }
 
         function fnRemove(){
-//            for(var i=0;i<aRomove.length;i++){
-//                oPic.removeChild(aLi[i]);
-//            }
             aRomove = aRomove.sort(function(a,b){
                 return a-b;
             })
@@ -183,6 +206,9 @@
                 var iNub = aRomove.pop();
                 oPic.removeChild(aLi[iNub]);
             }
+            off = false;
+            fnEnd();
+            toPosition();
         }
     }
     creat(data);
