@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .wrap{
+            width: 600px;
+            height: auto;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .wrap h2{
+            width: 100%;
+            height: 40px;
+            background: #000;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+        }
+        .main li{
+            height: 30px;
+            border-bottom: #101010 1px solid;
+            line-height: 30px;
+            text-align: center;
+            background: #ccc;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oWrap = document.getElementById('wrap');
+            var aMain = oWrap.getElementsByTagName('ul');
+            for(var i=0;i<aMain.length;i++){
+                var aLi = aMain[i].getElementsByTagName('li');
+                for(var j=0;j<aLi.length;j++){
+                    aLi[j].onclick=function(){
+                        this.style.background = '#c00';
+                        this.style.color = '#fff';
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul class="wrap" id="wrap">
+    <li>
+        <h2>我的好友</h2>
+        <ul class="main">
+            <li>AA</li>
+            <li>BB</li>
+            <li>CC</li>
+            <li>DD</li>
+            <li>EE</li>
+        </ul>
+    </li>
+    <li>
+        <h2>陌生人</h2>
+        <ul class="main">
+            <li>FF</li>
+            <li>HH</li>
+            <li>II</li>
+            <li>JJ</li>
+            <li>HH</li>
+            <li>MM</li>
+            <li>NN</li>
+            <li>OO</li>
+            <li>PP</li>
+            <li>QQ</li>
+        </ul>
+    </li>
+    <li>
+        <h2>黑名单</h2>
+        <ul class="main">
+            <li>RR</li>
+            <li>SS</li>
+            <li>TT</li>
+            <li>UU</li>
+            <li>VV</li>
+            <li>WW</li>
+            <li>XX</li>
+            <li>YY</li>
+            <li>ZZ</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

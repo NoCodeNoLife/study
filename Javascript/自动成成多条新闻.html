@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            var oList = document.getElementById('list');
+            var oBtn = document.getElementById('btn');
+            var arr = [
+                '刑法规定下月起微信微博发假信息最高获刑7年',
+                '粤湛江东海渔政大队30余人腐败窝案:关键岗全军覆没',
+                '卫计委开内部座谈会 讨论调整社会抚养费征收问题',
+                '湖南省委巡视组：临湘干部吸毒情况比较严重',
+                '阿富汗强震遇难人数升至365人 超2000人受伤'
+            ];
+            var len = arr.length;
+            var onOff = true;//方法2:添加自定义属性，判断当自定义属性为true的时候可以点击，点击一次之后属性变为false，就不可以点击了。
+            oBtn.onclick = function () {
+                //oList.innerHTML = '';//1.解决每点击一次就会生成5个li的bug，思路：每次点击的时候先清空上次的内容；也就是先清空，后生成。性能低。
+                if (onOff) {
+                    for (var i = 0; i < len; i++) {
+                        oList.innerHTML += '<li>' + arr[i] + '</li>'
+                    }
+                    onOff = false;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<ul id="list"></ul>
+</body>
+</html>

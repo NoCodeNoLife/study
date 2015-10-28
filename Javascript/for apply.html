@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{
+            height: 30px;
+            border-bottom: #ccc 1px solid;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var aList = document.getElementsByTagName('li');
+
+            for(var i=0;i<aList.length;i++){
+                aList[i].onclick=function(){
+                    alert(1);
+                }
+            }
+
+            var str = '';
+            for (var j=0;j<200;j++){
+                str += '<input type="button" value="按钮 "/>';
+            }
+            document.body.innerHTML = str;
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
