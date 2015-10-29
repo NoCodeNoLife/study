@@ -74,16 +74,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qqlist.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qqlist.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Javascript/qqlist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9029463" vertical-offset="319" max-vertical-offset="2408">
+            <state vertical-scroll-proportion="-6.37931" vertical-offset="655" max-vertical-offset="2408">
               <caret line="71" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="e#2129#2315#0" expanded="false" />
                 <element signature="e#2369#2645#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parseInt parseFloat.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Javascript/parseInt parseFloat.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-14.4827585" vertical-offset="0" max-vertical-offset="728">
+              <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="isNaN.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Javascript/isNaN.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.77642983" vertical-offset="0" max-vertical-offset="924">
+              <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,6 +146,8 @@
         <option value="$PROJECT_DIR$/Javascript/索引值-图片切换.html" />
         <option value="$PROJECT_DIR$/Javascript/qqlist.html" />
         <option value="$PROJECT_DIR$/Javascript/typeof.html" />
+        <option value="$PROJECT_DIR$/Javascript/parseInt parseFloat.html" />
+        <option value="$PROJECT_DIR$/Javascript/isNaN.html" />
       </list>
     </option>
   </component>
@@ -548,13 +570,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Javascript/qqlist.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9029463" vertical-offset="319" max-vertical-offset="2408">
+        <state vertical-scroll-proportion="-6.37931" vertical-offset="655" max-vertical-offset="2408">
           <caret line="71" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="e#2129#2315#0" expanded="false" />
             <element signature="e#2369#2645#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Javascript/parseInt parseFloat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.4827585" vertical-offset="0" max-vertical-offset="728">
+          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Javascript/isNaN.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77642983" vertical-offset="0" max-vertical-offset="924">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>
