@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>isNaN示例</title>
+    <style>
+        span {
+            width: 100px;
+            line-height: 40px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<span></span>
+<script>
+    var arr = ['100px', 'abc' - 6, [], -98765, 34, -2, 0, '300', , function () {
+        alert(1)
+    }, null, document, [], true, '200px' - 30, '23.45元', 5, Number('abc'), function () {
+        alert('3');
+    }];
+    var oStr = document.getElementsByTagName('span')[0];
+
+    function fn1() {
+        for (var i = 0; i < arr.length; i++) {
+            if (typeof arr[i] === 'string') {
+
+                oStr.innerHTML += arr[i];
+            }
+        }
+    }
+    fn1();
+</script>
+</body>
+</html>
