@@ -64,11 +64,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="索引值-图片切换.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="索引值-图片切换.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Javascript/索引值-图片切换.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56325823" vertical-offset="2979" max-vertical-offset="3556">
+            <state vertical-scroll-proportion="-28.586206" vertical-offset="2475" max-vertical-offset="3556">
               <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qqlist.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Javascript/qqlist.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9029463" vertical-offset="319" max-vertical-offset="2408">
+              <caret line="71" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="e#2129#2315#0" expanded="false" />
+                <element signature="e#2369#2645#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="typeof.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Javascript/typeof.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.689655" vertical-offset="0" max-vertical-offset="504">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -100,6 +124,8 @@
         <option value="$PROJECT_DIR$/Javascript/自定义属性3.html" />
         <option value="$PROJECT_DIR$/Javascript/索引值.html" />
         <option value="$PROJECT_DIR$/Javascript/索引值-图片切换.html" />
+        <option value="$PROJECT_DIR$/Javascript/qqlist.html" />
+        <option value="$PROJECT_DIR$/Javascript/typeof.html" />
       </list>
     </option>
   </component>
@@ -279,7 +305,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -504,9 +532,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Javascript/索引值-图片切换.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56325823" vertical-offset="2979" max-vertical-offset="3556">
+        <state vertical-scroll-proportion="-28.586206" vertical-offset="2475" max-vertical-offset="3556">
           <caret line="118" column="17" selection-start-line="118" selection-start-column="17" selection-end-line="118" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Javascript/typeof.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.689655" vertical-offset="0" max-vertical-offset="504">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Javascript/qqlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9029463" vertical-offset="319" max-vertical-offset="2408">
+          <caret line="71" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="133" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#2129#2315#0" expanded="false" />
+            <element signature="e#2369#2645#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

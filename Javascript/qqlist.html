@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>模仿qq好友列表</title>
+    <style>
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #list {
+            width: 300px;
+            height: auto;
+            margin: 20px auto;
+            border: #666 1px solid;
+        }
+
+        #list h2 {
+            margin: 0;
+            padding: 0;
+            height: 30px;
+            line-height: 30px;
+            background: #666;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            border-bottom: #d0d0d0 1px solid;
+        }
+
+        #list .active {
+            background: #c00;
+        }
+
+        #list ul {
+            display: none;
+        }
+
+        #list ul li {
+            width: 100%;
+            height: 26px;
+            line-height: 26px;
+            border-bottom: #101010 1px solid;
+            text-align: center;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oList = document.getElementById('list');
+            var aH2 = oList.getElementsByTagName('h2');
+            var aUl = oList.getElementsByTagName('ul');
+            var aLi = null;
+            var arrAli = [];
+
+            for (var i = 0; i < aH2.length; i++) {
+                aH2[i].index = i;
+                aH2[i].onclick = function () {
+                    for(var i=0;i<aUl.length;i++){
+                        aUl[i].style.display = 'none';
+                        aH2[i].className = '';
+                    }
+                    aUl[this.index].style.display = 'block';
+                    aH2[this.index].className = 'active'
+
+//                    if (this.className == '') {
+//                        aUl[this.index].style.display = 'block';
+//                        this.className = 'active';
+//                    } else {
+//                        aUl[this.index].style.display = 'none';
+//                        this.className = '';
+//                    }
+
+                }
+
+            }
+
+            //找元素，方便以后扩展；
+            for (var i = 0; i < aUl.length; i++) {
+                aLi = aUl[i].getElementsByTagName('li');
+                for (var j = 0; j < aLi.length; j++) {
+                    arrAli.push(aLi[j]);
+                }
+            }
+
+            for (var i = 0; i < arrAli.length; i++) {
+                arrAli[i].onclick = function () {
+                    for (var i = 0; i < arrAli.length; i++) {
+                        arrAli[i].style.background = '';
+                    }
+                    this.style.background = "#ccc";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li class="main">
+        <h2>我的好友</h2>
+        <ul>
+            <li>AA</li>
+            <li>AA</li>
+            <li>AA</li>
+            <li>AA</li>
+            <li>AA</li>
+            <li>AA</li>
+            <li>AA</li>
+            <li>AA</li>
+        </ul>
+    </li>
+    <li class="main">
+        <h2>陌生人</h2>
+        <ul>
+            <li>BB</li>
+            <li>BB</li>
+            <li>BB</li>
+            <li>BB</li>
+        </ul>
+    </li>
+    <li class="main">
+        <h2>黑名单</h2>
+        <ul>
+            <li>CC</li>
+            <li>CC</li>
+            <li>CC</li>
+            <li>CC</li>
+            <li>CC</li>
+            <li>CC</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
