@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>索引值</title>
+    <style>
+        input {
+            width: 100px;
+            height: 40px;
+            margin-right: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var aInput = document.getElementsByTagName('input');
+            var arr = [ 'aa','bb','cc' ];
+
+            //想建立‘匹配关系’的时候就可以使用索引，
+            for (var i=0;i<aInput.length;i++){
+                aInput[i].index = i;
+                aInput[i].onclick = function(){
+                    //alert(this.index);
+                    this.value = arr[this.index];
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="btn1"/>
+<input type="button" value="btn2"/>
+<input type="button" value="btn3"/>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义属性</title>
+    <style>
+        ul{
+            width: 500px;
+            margin: 100px auto 0;
+            height: auto;
+            overflow: hidden;
+        }
+        li{
+            list-style: none;
+            width: 100px;
+            height: 200px;
+            float: left;
+            margin-right: 40px;
+            background: #ccc;
+            border: #666 1px solid;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oWrap = document.getElementById('wrap');
+            var aLi = oWrap.getElementsByTagName('li');
+
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].onoff = true;
+                aLi[i].onclick= function () {
+                  if(this.onoff){
+                      this.style.background = '#c00';
+                      this.onoff = false;
+                  }else{
+                    this.style.background = '#ccc';
+                    this.onoff = true;
+                  }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="wrap">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
