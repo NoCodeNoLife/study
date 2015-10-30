@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数传参实际应用</title>
+</head>
+<body>
+<script>
+    //JS数据类型：函数，未定义，对象，布尔，数字，字符串
+//    fn1(function(){
+//        alert('1');
+//    })
+//    function fn1(fn){
+//        fn();//1;
+//    }
+
+    function fn1(a){
+        //用来判断参数类型；
+        if(typeof a === 'number' && a === a){
+            alert(a+30);
+        } else if(typeof a === 'string'){
+            alert(a.charAt(2));
+        } else if(typeof a === 'function'){
+            a();
+        }
+    }
+    fn1(100);
+    fn1('code');
+    fn1(function(){
+        alert('1');
+    });
+
+</script>
+</body>
+</html>

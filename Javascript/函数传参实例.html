@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数传参实例-图片切换</title>
+    <style>
+        body {
+            background: #666;
+        }
+
+        .pic {
+            width: 500px;
+            height: 480px;
+            margin: 40px 80px;
+            overflow: hidden;
+            position: relative;
+            float: left;
+        }
+
+        .pic img {
+            width: 370px;
+            height: 480px;
+            float: left;
+        }
+
+        .pic span {
+            position: absolute;
+            top: 0;
+            display: block;
+            width: 370px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            background: #333;
+            background: #333;
+        }
+
+        .pic p {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 370px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: #333;
+        }
+
+        .pic ul {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .pic ul li {
+            width: 40px;
+            height: 40px;
+            background: #ccc;
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .pic .active {
+            background: #c00;
+        }
+
+    </style>
+    <script>
+        window.onload = function(){
+            tab('pic1','btn1','onclick',['img/a.png', 'img/b.png', 'img/c.png', 'img/d.png'],['图片介绍1', '图片介绍2', '图片介绍3', '图片介绍4']);
+            tab('pic2','btn2','onmouseover',['img/a.png', 'img/b.png', 'img/c.png'],['图片介绍1', '图片介绍2', '图片介绍3']);
+            tab('pic3','btn3','onmousemove',['img/a.png', 'img/b.png', 'img/c.png', 'img/d.png', 'img/b.png', 'img/c.png'],['图片介绍1', '图片介绍2', '图片介绍3', '图片介绍4', '图片介绍5', '图片介绍6']);
+        }
+
+        function tab(id1,id2,evt,arrURL,arrTEst) {
+            var oPic = document.getElementById(id1);
+            var oSpan = oPic.getElementsByTagName('span')[0];
+            var oP = oPic.getElementsByTagName('p')[0];
+            var aLi = oPic.getElementsByTagName('li');
+            var oBtn = document.getElementById(id2);
+            var aImg = oPic.getElementsByTagName('img')[0];
+            var num = 0;
+            for (var i = 0; i < arrURL.length; i++) {
+                oBtn.innerHTML += '<li></li>';
+            }
+
+            function fnTab(){
+                aImg.src = arrURL[num];
+                oSpan.innerHTML = 1 + num + '/' + arrURL.length;
+                oP.innerHTML = arrTEst[num];
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                }
+                aLi[num].className = 'active';
+            }
+            fnTab();
+
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].index = i;
+                aLi[i][evt] = function () {
+                    num = this.index;
+                    fnTab();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="pic1" class="pic">
+    <span></span>
+    <img src="" alt=""/>
+
+    <p></p>
+    <ul id="btn1"></ul>
+</div>
+
+<div id="pic2" class="pic">
+    <span></span>
+    <img src="" alt=""/>
+
+    <p></p>
+    <ul id="btn2"></ul>
+</div>
+
+<div id="pic3" class="pic">
+    <span></span>
+    <img src="" alt=""/>
+
+    <p></p>
+    <ul id="btn3"></ul>
+</div>
+</body>
+</html>
