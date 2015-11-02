@@ -104,6 +104,8 @@
 
                 if (this.checked == false) {
                     oBtn1.checked = false;
+                } else {
+                    //oBtn1.checked = true;
                 }
 
             };
@@ -126,7 +128,7 @@
                         oBtn1.checked = false;
                         PosiBtn.className = 'posibtn';
                     }
-                    isSelectAll();
+                    isSelectAll()
 
                 };
             }
@@ -136,6 +138,7 @@
 
 <body>
 <div id="wrap">
+    <span id="PosiBtn" class="posibtn"></span>
     <input type="checkbox" id="btn" />
     <br>
     <br>
