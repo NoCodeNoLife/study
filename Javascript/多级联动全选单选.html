@@ -1,0 +1,195 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #btn {
+            /*opacity: 0;*/
+            width: 18px;
+            height: 18px;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .posibtn {
+            width: 19px;
+            height: 19px;
+            position: absolute;
+            left: 20px;
+            top: 0;
+            background: url("icon.gif") no-repeat;
+        }
+
+        .posibtn-active {
+            width: 19px;
+            height: 19px;
+            position: absolute;
+            left: 20px;
+            top: 0;
+            background: url("icon.gif") no-repeat 0 -34px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            InputFn('btn1', 'div1');
+            InputFn('btn2', 'div2');
+            InputFn('btn3', 'div3');
+            var oBtn1 = document.getElementById('btn');
+            var inputAll = document.getElementsByClassName('aa');
+            var BB = document.getElementsByClassName('bb');
+            var PosiBtn = document.getElementById('PosiBtn');
+
+            oBtn1.onclick = function() {
+
+                for (var i = 0; i < inputAll.length; i++) {
+                    inputAll[i].checked = this.checked;
+                }
+
+                if (this.checked == true) {
+                    PosiBtn.className = 'posibtn-active';
+                } else {
+                    PosiBtn.className = 'posibtn';
+                }
+
+                for (var i = 0; i < BB.length; i++) {
+                    BB[i].checked = this.checked;
+                }
+
+            }
+
+
+
+
+
+        }
+
+        function isSelectAll() {
+            var inputAll = document.getElementsByClassName('aa');
+            var oBtn1 = document.getElementById('btn');
+            for (var i = 0; i < inputAll.length; i++) {
+                if (inputAll[i].checked == false) {
+                    oBtn1.checked = false;
+                    break;
+                }
+                if (i == inputAll.length - 1) {
+                    oBtn1.checked = true;
+                }
+            }
+        }
+
+
+
+        function InputFn(BtnId, DivId) {
+            var oBtn = document.getElementById(BtnId);
+            var oBtn1 = document.getElementById('btn');
+            var oDiv = document.getElementById(DivId);
+            var aInput = oDiv.getElementsByTagName("input");
+            var PosiBtn = document.getElementById('PosiBtn');
+
+            oBtn.onclick = function() {
+                isSelectAll()
+                for (var i = 0; i < aInput.length; i++) {
+                    aInput[i].checked = this.checked;
+                }
+
+                if (this.checked == false) {
+                    oBtn1.checked = false;
+                }
+
+            };
+
+
+            for (var i = 0; i < aInput.length; i++) {
+                aInput[i].onclick = function() {
+
+                    var count = 0; //统计选中的个数： 0都没选中
+                    for (var i = 0; i < aInput.length; i++) {
+                        if (aInput[i].checked == true) {
+                            count++;
+                        }
+                    }
+
+                    if (count == aInput.length) { //全中
+                        oBtn.checked = true;
+                    } else {
+                        oBtn.checked = false;
+                        oBtn1.checked = false;
+                        PosiBtn.className = 'posibtn';
+                    }
+                    isSelectAll();
+
+                };
+            }
+        };
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+    <input type="checkbox" id="btn" />
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="box1">
+        <input id="btn1" type="checkbox" class="aa" />
+        <br />
+        <div id="div1">
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="box2">
+        <input id="btn2" type="checkbox" class="aa" />
+        <br />
+        <div id="div2">
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="box3">
+        <input id="btn3" type="checkbox" class="aa" />
+        <br />
+        <div id="div3">
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+            <input type="checkbox" class="bb" />
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

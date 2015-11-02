@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>选项卡套选项卡</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            list-style:none;
+        }
+        #box{
+            width:500px;
+            height: 400px;
+            margin: 0 auto;
+            border: #333 1px solid;
+        }
+
+        #box ul{
+            width: 100%;
+            height:40px;
+            line-height: 40px;
+            background: #ccc;
+            border-bottom: #333 1px solid;
+        }
+
+        #box li{
+            width:164px;
+            text-align:center;
+            float: left;
+        }
+
+        #box .active{
+            background: #c00;
+        }
+
+        #box .w359{
+            height: 359px;
+            text-align:center;
+            line-height:359px;
+            font-size: 100px;
+            display:none;
+        }
+
+        #wrap{
+            width: 500px;
+            height: 359px;
+            position:relative;
+        }
+        #wrap div{
+            display: none;
+            width:500px;
+            line-height:359px;
+        }
+
+        #wrap ul{
+            height: 359px;
+            width:40px;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+
+        #wrap li{
+            height: 174px;
+            width: 40px;
+            font-size:16px;
+            text-align:center;
+            line-height:174px;
+        }
+
+        #wrap .active1{
+            background: green;
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            tab('wrap','active1','aa');
+            tab('box','active','w359');
+
+        }
+
+        function getByClass(oParent, sClass) {
+            if (oParent.getElementsByClassName) {
+                return oParent.getElementsByClassName(sClass);
+            } else {  //IE 8 7 6
+                var arr = [];
+                var reg = new RegExp('\\b' + sClass + '\\b');
+                var aEle = oParent.getElementsByTagName('*');
+                for (var i = 0; i < aEle.length; i++) {
+                    if (reg.test(aEle[i].className)) {
+                        arr.push(aEle[i]);
+                    }
+                }
+                return arr;
+            }
+        }
+
+        function tab(id,clsName,claName){
+            var oBox = document.getElementById(id);
+            var aUl = oBox.getElementsByTagName('ul')[0];
+            var aBtn = aUl.getElementsByTagName('li');
+            var aDiv = getByClass(oBox,claName);
+
+            for(var i=0;i<aBtn.length;i++){
+                aBtn[i].index = i;
+                aBtn[i].onclick=function(){
+                    for(var i=0;i<aBtn.length;i++){
+                        aBtn[i].className = '';
+                        aDiv[i].style.display = 'none';
+                    }
+                    this.className = clsName;
+                    aDiv[this.index].style.display = 'block';
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+<div id="box">
+    <ul>
+        <li class="active">AA</li>
+        <li>BB</li>
+        <li>CC</li>
+    </ul>
+    <div style="display:block" id="wrap" class="w359">
+        <ul>
+            <li class="active1">DD</li>
+            <li>EE</li>
+        </ul>
+        <div style='display:block;' class="aa">dd</div>
+        <div class="aa">ee</div>
+    </div>
+    <div class="w359">BB</div>
+    <div class="w359">CC</div>
+</div>
+</body>
+</html>
