@@ -11,6 +11,18 @@
             padding: 0;
         }
 
+        body{
+            background: #ccc;
+        }
+
+        #wrap{
+            margin: 100px auto;
+            width: 500px;
+            height: auto;
+            overflow: hidden;
+            position: relative;
+        }
+
         #btn {
             /*opacity: 0;*/
             width: 18px;
@@ -27,7 +39,7 @@
             position: absolute;
             left: 20px;
             top: 0;
-            background: url("icon.gif") no-repeat;
+            background: url("img/icon.gif") no-repeat;
         }
 
         .posibtn-active {
@@ -36,56 +48,51 @@
             position: absolute;
             left: 20px;
             top: 0;
-            background: url("icon.gif") no-repeat 0 -34px;
+            background: url("img/icon.gif") no-repeat 0 -34px;
         }
     </style>
     <script>
         window.onload = function() {
             InputFn('btn1', 'div1');
-            InputFn('btn2', 'div2');
-            InputFn('btn3', 'div3');
-            var oBtn1 = document.getElementById('btn');
-            var inputAll = document.getElementsByClassName('aa');
-            var BB = document.getElementsByClassName('bb');
-            var PosiBtn = document.getElementById('PosiBtn');
-
-            oBtn1.onclick = function() {
-
-                for (var i = 0; i < inputAll.length; i++) {
-                    inputAll[i].checked = this.checked;
-                }
-
-                if (this.checked == true) {
-                    PosiBtn.className = 'posibtn-active';
-                } else {
-                    PosiBtn.className = 'posibtn';
-                }
-
-                for (var i = 0; i < BB.length; i++) {
-                    BB[i].checked = this.checked;
-                }
-
-            }
-
-
-
-
-
+//            InputFn('btn2', 'div2');
+//            InputFn('btn3', 'div3');
+//            var oBtn1 = document.getElementById('btn');
+//            var inputAll = document.getElementsByClassName('aa');
+//            var BB = document.getElementsByClassName('bb');
+//            var PosiBtn = document.getElementById('PosiBtn');
+//
+//            oBtn1.onclick = function() {
+//
+//                for (var i = 0; i < inputAll.length; i++) {
+//                    inputAll[i].checked = this.checked;
+//                }
+//
+//                if (this.checked == true) {
+//                    PosiBtn.className = 'posibtn-active';
+//                } else {
+//                    PosiBtn.className = 'posibtn';
+//                }
+//
+//                for (var i = 0; i < BB.length; i++) {
+//                    BB[i].checked = this.checked;
+//                }
+//
+//            }
         }
 
-        function isSelectAll() {
-            var inputAll = document.getElementsByClassName('aa');
-            var oBtn1 = document.getElementById('btn');
-            for (var i = 0; i < inputAll.length; i++) {
-                if (inputAll[i].checked == false) {
-                    oBtn1.checked = false;
-                    break;
-                }
-                if (i == inputAll.length - 1) {
-                    oBtn1.checked = true;
-                }
-            }
-        }
+//        function isSelectAll() {
+//            var inputAll = document.getElementsByClassName('aa');
+//            var oBtn1 = document.getElementById('btn');
+//            for (var i = 0; i < inputAll.length; i++) {
+//                if (inputAll[i].checked == false) {
+//                    oBtn1.checked = false;
+//                    break;
+//                }
+//                if (i == inputAll.length - 1) {
+//                    oBtn1.checked = true;
+//                }
+//            }
+//        }
 
 
 
@@ -97,15 +104,13 @@
             var PosiBtn = document.getElementById('PosiBtn');
 
             oBtn.onclick = function() {
-                isSelectAll()
+//                isSelectAll()
                 for (var i = 0; i < aInput.length; i++) {
                     aInput[i].checked = this.checked;
                 }
 
                 if (this.checked == false) {
                     oBtn1.checked = false;
-                } else {
-                    //oBtn1.checked = true;
                 }
 
             };
@@ -128,7 +133,7 @@
                         oBtn1.checked = false;
                         PosiBtn.className = 'posibtn';
                     }
-                    isSelectAll()
+//                    isSelectAll();
 
                 };
             }
