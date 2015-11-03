@@ -1,0 +1,191 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style>
+        #div1,#div2,#div3{width:100px; height:100px; margin:10px;}
+        span,li{
+            width: 19px;
+            height: 19px;
+            display: inline-block;
+            background: #ccc;
+            margin: 0 20px 5px 0;
+        }
+        .active{
+            background: #c00;
+
+        }
+
+        #active{
+            width: 19px;
+            height: 19px;
+            display: block;
+            background: #c00;
+            margin: 0 20px 5px 0;
+        }
+    </style>
+
+    <script>
+
+        window.onload=function(){
+            var oWrap = document.getElementById('wrap');//box
+            var BigBtn = document.getElementById('btn');//大
+            var SubBtn = getByClass(oWrap,'aa');//小
+            var aLiAll = oWrap.getElementsByTagName('li');//ul li.bb 选项
+
+            BigBtn.onclick = function(){
+                if(!this.classList.contains("active")){
+                    this.classList.add("active");
+                    for(var i=0;i<SubBtn.length;i++){
+                        SubBtn[i].classList.add("active");
+                    }
+
+                    for(var i=0;i<aLiAll.length;i++){
+                        aLiAll[i].classList.add("active");
+                    }
+                } else {
+                    this.classList.remove("active");
+                    for(var i=0;i<SubBtn.length;i++){
+                        SubBtn[i].classList.remove("active");
+                    }
+
+                    for(var i=0;i<aLiAll.length;i++){
+                        aLiAll[i].classList.remove("active");
+                    }
+                }
+            }
+
+            isCheck('box1');
+            isCheck('box3');
+            isCheck('box2');
+        }/* end fn window.onload */
+
+        function getByClass(oParent, sClass) {
+            if (oParent.getElementsByClassName) {
+                return oParent.getElementsByClassName(sClass);
+            } else {  //IE 8 7 6
+                var arr = [];
+                var reg = new RegExp('\\b' + sClass + '\\b');
+                var aEle = oParent.getElementsByTagName('*');
+                for (var i = 0; i < aEle.length; i++) {
+                    if (reg.test(aEle[i].className)) {
+                        arr.push(aEle[i]);
+                    }
+                }
+                return arr;
+            }
+        }
+
+        function isCheckedAll(){
+            var oWrap = document.getElementById('wrap');
+            var SubBtn = getByClass(oWrap,'aa');
+            var BigBtn = document.getElementById('btn');
+
+            var count = 0;
+
+            for(var i=0;i<SubBtn.length;i++){
+                if(SubBtn[i].classList.contains("active")){
+                    count++
+                }
+            }
+
+            if(SubBtn.length == count){
+                BigBtn.classList.add("active");
+            } else {
+                BigBtn.classList.remove("active");
+            }
+
+        }/* end fn isCheckedAll */
+
+        function isCheck(id){
+            var oBox = document.getElementById(id);
+            var oBtn = oBox.children[0];//span  btn class "aa"
+            var aLi = oBox.getElementsByTagName('li');
+
+            oBtn.onclick = function(){
+                if(this.classList.contains("active")){
+                    this.classList.remove("active");
+                    for(var i=0;i<aLi.length;i++){
+                        aLi[i].classList.remove("active");
+                    }
+                } else {
+                    this.classList.add("active");
+                    for(var i=0;i<aLi.length;i++){
+                        aLi[i].classList.add("active");
+                    }
+                }
+
+                isCheckedAll();
+
+            }
+
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].onclick = function(){
+
+                    if(this.classList.contains("active")){
+                        this.classList.remove("active");
+
+                    } else {
+                        this.classList.add("active");
+                    }
+
+                    var count = 0;
+                    for(var i=0;i<aLi.length;i++){
+                        if(aLi[i].classList.contains("active")){
+                            count++;
+                        }
+                    }
+
+                    if(aLi.length == count){
+                        oBtn.classList.add("active");
+                    } else {
+                        oBtn.classList.remove("active");
+                    }
+                    isCheckedAll();
+                };
+            }
+
+        }/* end fn isCheck */
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+    <span id="btn" />大</span>
+    <div id="box1">
+        <span id="btn1" class="aa">小</span>
+        <br />
+        <div id="div1">
+            <ul>
+                <li class="bb"></li>
+                <li class="bb"></li>
+            </ul>
+        </div>
+    </div>
+    <div id="box2">
+        <span id="btn2" class="aa">小</span>
+        <br />
+        <div id="div2">
+            <ul>
+                <li class="bb"></li>
+                <li class="bb"></li>
+            </ul>
+        </div>
+    </div>
+    <div id="box3">
+        <span id="btn3" class="aa">小</span>
+        <br />
+        <div id="div3">
+            <ul>
+                <li class="bb"></li>
+                <li class="bb"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
