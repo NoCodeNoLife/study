@@ -1,0 +1,105 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>自动轮换选项卡</title>
+<style>
+*{margin:0; padding:0; font-size:12px; font-family:"Microsoft YaHei UI Light", "Microsoft YaHei UI";}
+li{list-style:none;}
+a{text-decoration:none;}
+img{vertical-align:top;}
+body{background:#333;}
+#box{width:394px; height:256px; margin:80px auto 0; position:relative;}
+#box a{width:100%; height:100%;  color:#FFF; text-align:center; line-height:35px;}
+input{width:90px; height:35px; background:#06F; color:#FFF; text-align:center; line-height:35px; border:none;}
+.a1, .a2{position:absolute; top:0;}
+.a1{left:0;}
+.a2{left:91px;}
+#box img{position:absolute; left:0; top:36px; height:215px;}
+#box ul{position:absolute; right:0; top:36px;}
+#box li{width:100px; height:35px; margin-bottom:1px; background:#06F; color:#FFF; text-align:center; line-height:35px;}
+</style>
+<script type="text/javascript" src="../js/zdlh.js"></script>
+</head>
+
+<body>
+<div id="box">
+    <input class="a1" value="选项卡一"  style="background:red"/>
+    <input class="a2"value="选项卡二" />
+    <img src="img/e.jpg" />
+    <ul style="z-index:2">
+        <li  style="background:red"><a href="">图片一</a></li>
+        <li><a href="">图片二</a></li>
+        <li><a href="">图片三</a></li>
+        <li><a href="">图片四</a></li>
+        <li><a href="">图片五</a></li>
+        <li><a href="">图片六</a></li>
+    </ul>
+    <ul>
+        <li><a href="">图片四</a></li>
+        <li><a href="">图片五</a></li>
+        <li><a href="">图片六</a></li>
+        <li><a href="">图片七</a></li>
+        <li><a href="">图片八</a></li>
+        <li><a href="">图片九</a></li>
+    </ul>
+</div>
+<script>
+    var oBox=document.getElementById("box");
+    var oInp=oBox.getElementsByTagName('input');
+    var oUl=oBox.getElementsByTagName('ul');
+    var oLi=oBox.getElementsByTagName('li');
+    var oImg=oBox.getElementsByTagName('img')[0];
+
+    var num=0;
+    var arrImg=[
+        "img/e.jpg",
+        "img/f.jpg",
+        "img/h.jpg",
+        "img/i.jpg",
+        "img/j.jpg",
+        "img/e.jpg",
+        "img/f.jpg",
+        "img/h.jpg",
+        "img/i.jpg",
+        "img/j.jpg",
+        "img/e.jpg",
+        "img/f.jpg"
+    ];
+
+    function autoPlay(){                        // 1、函数执行时
+
+        for(var i=0;i<oLi.length;i++){          // 2、清空li的样式
+            oLi[i].style.background="#06F"
+        }
+
+        for(var j=0;j<oInp.length;j++){         // 3、清空input的样式
+            oInp[j].style.background="#06F";    
+            oUl[j].style.zIndex=1;              // 4、让ul隐藏
+        } 
+
+        if(num==oLi.length){                    // 5、当li切换到最后是又从零开始切换
+            num=0
+        }
+
+        oImg.src=arrImg[num]                    // 6、切换图片的src
+
+        if(num<oLi.length/2){                   // 7、 当前的li小于图片个数的一半时 
+            oUl[0].style.zIndex=2;              //    让第一个ul显示
+            oInp[0].style.background="red"      //    让第一个input显示红色
+            oLi[num].style.background="red";    //    让当前的li显示红色
+            num++;                              //    让索引自加
+
+        }else{                                  // 8、 当前的li大于图片个数的一半时 
+            oUl[1].style.zIndex=2;              //    让第二个ul显示
+            oInp[1].style.background="red"      //    让第二个input显示红色
+            oLi[num].style.background="red";    //    让当前的li显示红色
+            num++;                              //    让索引自加
+        }
+    }
+
+    timer=setInterval(autoPlay,1000)            //定时器
+</script>
+</body>
+</html>
