@@ -41,7 +41,6 @@ window.onload = function () {
         }
     }
 
-
     oShow.onclick = function(){
         if (this.className == 'show') {
             move(oCon,{height:(oDiv[0].offsetHeight + 16) * parseInt((oDiv.length/3))});

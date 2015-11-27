@@ -21,19 +21,12 @@ body {
 }
 
 #wrap {
-    /*position: absolute;*/
-    /*left: 25px;*/
-    /*top: 15px;*/
     width: 950px;
-    /*height: 528px;*/
     overflow: hidden;
     padding-bottom: 15px;
 }
 
 #content {
-    /*position: absolute;*/
-    /*left: 0;*/
-    /*top: 0;*/
     width: 950px;
     height: 161px;
     overflow: hidden;
@@ -138,6 +131,7 @@ body {
 #content div p small{
     display: inline-block;
     margin-right: 6px;
+    font-size: 12px;
 }
 
 #content div p em{
