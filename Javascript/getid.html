@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div" style="width: 200px;height: 200px;background: #c00;">  </div>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    var oBox = $('div');
+    oBox.onclick = function(){
+        alert('1');
+    }
+</script>
+</body>
+</html>
