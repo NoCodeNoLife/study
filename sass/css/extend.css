@@ -1,0 +1,21 @@
+.box, .wrap, .content {
+  background: yellow;
+  width: 200px;
+  height: 200px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  border: #666 10px solid;
+  margin: 40px 20px;
+  float: left;
+}
+
+.wrap {
+  background: green;
+}
+
+.content {
+  background: #c00;
+}
+
+/*# sourceMappingURL=extend.css.map */

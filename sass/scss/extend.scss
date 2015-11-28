@@ -1,0 +1,36 @@
+@mixin borderRadius{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+@mixin border{
+  border: #666 10px solid;
+}
+
+@mixin margin{
+  margin: 40px 20px;
+  float: left;
+}
+
+$width: 200px;
+$height: 200px;
+
+.box{
+  background: yellow;
+  width: $width;
+  height: $height;
+  @include borderRadius;
+  @include border;
+  @include  margin;
+}
+
+.wrap{
+  background: green;
+  @extend .box;
+}
+
+.content{
+  background: #c00;
+  @extend .box;
+}

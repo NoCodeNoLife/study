@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    height: 2000px;
+    background: #f3f3f3;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+#box {
+    position: relative;
+    width: 950px;
+    height: auto;
+    margin: 10px auto;
+    padding: 15px 25px 30px 25px;
+    background: #fff;
+    overflow: hidden;
+}
+
+#wrap {
+    width: 950px;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+
+#content {
+    width: 950px;
+    height: 161px;
+    overflow: hidden;
+}
+
+#scroll {
+    position: absolute;
+    right: 12px;
+    top: 35px;
+    width: 18px;
+    height: 360px;
+    border: #ccc 1px solid;
+    border-top: 0;
+    border-bottom: 0;
+    background: #fff;
+    display: none;
+}
+
+#scroll a {
+    position: absolute;
+    right: -1px;
+    width: 18px;
+    height: 16px;
+    border: #ccc 1px solid;
+    border-radius: 3px;
+}
+
+#bar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 18px;
+    height: 30px;
+    background: #f5f5f5;
+}
+
+#scroll a#up {
+    top: -16px;
+    border-bottom: 0;
+    background: url("btn.png") no-repeat;
+}
+
+#scroll a#down {
+    bottom: -16px;
+    border-top: 0;
+    background: url("btn.png") no-repeat 0 -26px;
+}
+
+#content div{
+    width: 258px;
+    height: 128px;
+    border: #dadada 1px solid;
+    padding: 15px 20px;
+    margin: 0 16px 16px 0;
+    float: left;
+}
+
+#content div:hover{
+    cursor: pointer;
+    border: #ff9934 1px solid;
+}
+
+#content div:hover li{
+    color: #333;
+}
+
+#content div.active{
+    background: url("addressacive.png") no-repeat;
+    width: 260px;
+    height: 130px;
+    padding: 15px 20px;
+    border: 0;
+}
+
+#content div.active p span{
+    padding-left: 18px;
+    width: 152px;
+    background: url("address.png") no-repeat;
+    color: #069;
+}
+
+#content div.active li{
+    color: #333;
+}
+
+#content div p{
+    width: 258px;
+    height: 16px;
+    font-size: 12px;
+    color: #999;
+    line-height: 16px;
+    padding-bottom: 14px;
+}
+
+#content div p span{
+    display: inline-block;
+    width: 170px;
+    height: 16px;
+    line-height: 16px;
+}
+
+#content div p small{
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+#content div p em{
+    display: inline-block;
+    font-style: normal;
+}
+
+#content div ul{
+    width: 258px;
+    height: 98px;
+    overflow: hidden;
+}
+
+#content div ul li{
+    width: 258px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 1px;
+    color: #999;
+}
+
+#btn{
+    width: 932px;
+    height: 16px;
+    line-height: 16px;
+    position: absolute;
+    left: 25px;
+    bottom: 0;
+    padding-bottom: 15px;
+    background: #fff;
+}
+
+#btn a{
+    display: inline-block;
+    color: #069;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+#btn a:hover{
+    color: #c00;
+}
+
+#btn a.show{
+    float: left;
+    padding-right: 30px;
+    background: url("icondefault.png") no-repeat 48px 5px;
+}
+
+#btn a.show:hover{
+    background: url("iconactive.png") no-repeat 49px 5px;
+}
+
+#btn a.hide{
+    float: left;
+    padding-right: 30px;
+    background: url("icondefault.png") no-repeat 48px -19px;
+}
+
+#btn a.hide:hover{
+    background: url("iconactive.png") no-repeat 49px -19px;
+}
+
+#btn a.newadd{
+    float: right;
+    padding-left: 30px;
+    background: url("icondefault.png") no-repeat 10px -50px;
+}
+
+#btn a.newadd:hover{
+    background: url("iconactive.png") no-repeat 11px -50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

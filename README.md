@@ -1,6 +1,6 @@
 ﻿1.妙味课堂移动开发的学习与练习;
 
-2.妙味课堂JS基础部分的学习与练习;
+2.妙味课堂JS学习与练习;
 
 3.github的学习与操作;
 
@@ -13,3 +13,5 @@
 7.require.js和sea.js的学习与练习;
 
 8.html5学习和练习;
+
+9.jquery.validation.plugin.js的学习与练习;
