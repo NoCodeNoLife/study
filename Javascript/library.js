@@ -1,7 +1,7 @@
 /**
  * Created by zhaoshuai on 2015/11/30.
  */
-function getId(id){
+function $(id){
     return document.getElementById(id);
 };
 
