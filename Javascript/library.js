@@ -23,5 +23,16 @@ function getByClass(oParent,sClass){
 
 function getStyle(obj,name){
     return (obj.currentStyle || getComputedStyle(obj,false))[name];
-}
+};
 
+function addReady(fn){
+    if(document.addEventListener){
+        document.addEventListener('DOMContentLoaded',fn,false);
+    }else{
+        document.onreadystatechange=function(){
+            if(document.readyState=='complete'){
+                fn();
+            }
+        };
+    }
+}
