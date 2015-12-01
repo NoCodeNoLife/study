@@ -41,8 +41,8 @@
         <button id="check">检查表单</button>
     </p>
 </form>
-<script src="libs/jquery-1.10.0.js"></script>
-<script src="libs/jquery.validate-1.13.1.js"></script>
+<script src="../../libs/jquery-1.10.0.js"></script>
+<script src="../../libs/jquery.validate-1.13.1.js"></script>
 <script>
     var validaotr;
     $(function(){
@@ -50,7 +50,8 @@
         validaotr=$('#DemoForm').validate({
             rules:{//验证规则：
                 username:{
-                    required:true
+                    required:true,
+                    postcode:true
                 },
                 password:{//需要验证的元素，这里的username指的是input的name名，不是ID
                     required:true
@@ -71,6 +72,7 @@
             messages:{//提示信息，和验证规则保持一致
                 username:{//需要提示信息的元素，这里的username指的是input的name名，不是ID
                     required:'用户名不能为空'
+                   // postcode:'只能输入6为数字'
                 },
                 password:{//需要提示信息的元素，这里的username指的是input的name名，不是ID
                     required:'密码不能为空'
@@ -87,34 +89,56 @@
                 'eqpwd':{//此处的引号可加可不加
                     equalTo:'两次输入密码不一致！'
                 }
-            },
-            submitHandler:function(form){//submitHadler方法：所有的验证通过后执行的函数。
-                console.log($(form).serialize());
-            },
-            focusInvalid:true,
-            //focusInvalid:false
-            errorClass:'wrong',//错误提示信息的classname
-            validClass:'right'//正确提示信息的classname
-
+            }
         });
+        $.validator.addMethod('postcode',function(value,element,params){
+            var postcode = /^[0-9]{6}$/;
+            return this.optional(element) || (postcode.test(value));
+        },'请填写正确的邮编!');
 
-        //submitHandler:通过验证后运行的函数，可以加上表单提交的方法
-        //invalidHandler:无效表单提交后运行的函数
-        //ignore:对某些元素不进行验证
-        //rules:定义校验规则
-        //messages:定义提示信息
-        //groups:对异族元素的验证，用一个错误提示，用errorPlacement控制把出错信息放在哪里
-        //onsubmit:是否在提交时验证
-        //onfoucsout:是否在获取焦点是验证
-        //onkeyup:是否在敲击键盘时验证
-        //onclick:是否在鼠标点击时验证，一般用于checkbox或者radio
-        //focusInvalid:提交表单后，未通过验证的表单(第一个或提交之前获得焦点的未通过验证的表单)是否会获得焦点
-        //focusCleanup:当未通过验证的元素获得焦点时，是否移出错误提示。
+        //自定义验证方法：
+        //jQuery.validator.addMethod(name,method,[,message]) =  $.validator.addMethod(name,method,[,message]),其中：
+        // name:方法名称，message:提示信息，method:function(value,element,params):方法逻辑
+        //推荐：additional-methods.js 包含了很多扩展验证方法
 
     });
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>jquery.validation</title>
+    <title>jquery.validation(高级API)</title>
     <style>
         #DemoForm{
             width: 500px;
@@ -14,7 +14,7 @@
 <body>
 <form action="" method="get" id="DemoForm">
     <p>
-        <label for="">用户名：<input type="text" value="" name="username"/></label>
+        <label for="">用户名：<input type="text" value="" name="username" id="username"/></label>
     </p>
 
     <p>
@@ -38,37 +38,21 @@
     </p>
     <p>
         <input type="submit" id="submit"/>
+        <button id="check">检查表单</button>
     </p>
 </form>
-<script src="libs/jquery-1.10.0.js"></script>
-<script src="libs/jquery.validate-1.13.1.js"></script>
+<script src="../../libs/jquery-1.10.0.js"></script>
+<script src="../../libs/jquery.validate-1.13.1.js"></script>
 <script>
-    //基本验证方法：
-    //required:必填；
-    //remote：远程校验；
-    //minlength：最小长度；
-    //maxlength:最大长度；
-    //rangelength:长度范围；
-    //min:最小值；
-    //max：最大值；
-    //range:值的范围；
-    //email:email格式；
-    //url:URL格式；
-    //date:日期；
-    //dataISO:ISO日期；
-    //number:数字；
-    //digits:整数；
-    //equalTo:与另一个元素的值相等;
     $(function(){
-        //调用validate()方法；
+        //validate方法
         $('#DemoForm').validate({
-            //debug:true,//只作为调试，不会提交from，便于本地调试。在需要调试元素的时候开启。默认值为false;
             rules:{//验证规则：
-                username:{//需要验证的元素，这里的username指的是input的name名，不是ID，
-                    required:true,//require:必填
+                username:{
+                    required:true,
                     //minlength:2,//最小长度：2
                     //maxlength:10,//最大长度：10
-                    rangelength:[2,10],//长度范围:2-10位
+                    //rangelength:[2,10],//长度范围:2-10位
                     email:true,
                     //remote:'remote.json'//这是remote get请求方法；remote可以发送get请求，也可以发送post请求
                     remote:{//这是remote post请求方法
@@ -104,9 +88,9 @@
             messages:{//提示信息，和验证规则保持一致
                 username:{//需要提示信息的元素，这里的username指的是input的name名，不是ID
                     required:'用户名不能为空',
-                    //minlength:'最小长度为2位',
+                    minlength:'最小长度为2位',
                     //maxlength:'最大长度为10位',
-                    rangelength:'请键入长度为2-10位的用户名',
+                    //rangelength:'请键入长度为2-10位的用户名',
                     email:'用户名必须是邮箱格式',
                     remote:'用户名不存在'
                 },
@@ -123,15 +107,54 @@
                     url:'url格式错误！'
                 },
                 data:{
-                   //date:'日期非法！',
+                    //date:'日期非法！',
                     dateISO:'非法ISO格式日期!'//
                 },
                 'eqpwd':{//此处的引号可加可不加
                     equalTo:'两次输入密码不一致！'
                 }
             }
-        })
+        });
+
+        //valid()方法：
+        $('#check').click(function(){
+            alert($('#DemoForm').valid() ? '填写正确' : '填写错误');//valid()方法：检查表单或者摩羯元素是否有效
+        });
+
+        //rules方法：获取表单元素的校验规则
+        //rules('add',rules):向表单元素增加校验规则
+        //rules('remove',rules):删除表单元素的校验规则
+        $('#username').rules('add',{minlength:2,maxlength:10});//向id为username的input元素添加minlength和maxlength的新校验规则
+        $('#username').rules('remove','required minleng');//删除id为username的required验证方法。格式为$(id名称).rules('remove',验证规则 remove多个验证规则，每个验证规则之间用空格分开');
+
+        //validator对象方法：
     });
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
