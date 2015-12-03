@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>banner(opacity)</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .banner {
+        width: 470px;
+        height: 150px;
+        margin: 100px auto;
+        border: #333 1px solid;
+        position: relative;
+    }
+
+    .banner ul {
+        width: 470px;
+        height: 150px;
+    }
+
+    .banner ul li {
+        width: 470px;
+        height: 150px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        fliter: alpha(opacity=0);
+    }
+
+    .banner p {
+        height: 10px;
+        position: absolute;
+        left: 170px;
+        bottom: 14px;
+    }
+
+    .banner p a {
+        width: 10px;
+        height: 10px;
+        display: block;
+        float: left;
+        margin-right: 10px;
+        background: #333;
+        border-radius: 360px;
+    }
+
+    .banner p a.active {
+        background: #c00;
+    }
+</style>
+<script src="../libs/library.js"></script>
+<script>
+    addReady(function () {
+        var oBan = $('banner');
+        var aLi = oBan.getElementsByTagName('li');
+        var aBtn = oBan.getElementsByTagName('a');
+
+        for (var i = 0; i < aBtn.length; i++) {
+            aBtn[i].index = i;
+            aBtn[i].onmouseover = function () {
+                for (var i = 0; i < aBtn.length; i++) {
+                    move(aLi[i], {opacity: 0});
+                    aBtn[i].className = '';
+                }
+                move(aLi[this.index], {opacity: 1});
+                aBtn[this.index].className = 'active';
+            }
+        }
+
+    })
+</script>
+<body>
+<div class="banner" id="banner">
+    <ul>
+        <li style="filter:alpha(opacity=1);opacity: 1">
+            <img src="../images/ban1.jpg" alt=""/>
+        </li>
+        <li>
+            <img src="../images/ban2.jpg" alt=""/>
+        </li>
+        <li>
+            <img src="../images/ban3.jpg" alt=""/>
+        </li>
+        <li>
+            <img src="../images/ban4.jpg" alt=""/>
+        </li>
+        <li>
+            <img src="../images/ban5.jpg" alt=""/>
+        </li>
+    </ul>
+    <p>
+        <a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </p>
+</div>
+</body>
+</html>

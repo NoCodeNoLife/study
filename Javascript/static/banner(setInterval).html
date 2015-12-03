@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>banner(setInterval)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ban {
+            width: 470px;
+            height: 150px;
+            border: #333 1px solid;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ban ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 150px;
+        }
+
+        .ban ul li {
+            float: left;
+            width: 470px;
+            height: 150px;
+        }
+
+        .ban p {
+            position: absolute;
+            left: 0;
+            height: 5px;
+            bottom: 0;
+        }
+
+        .ban p span {
+            display: block;
+            float: left;
+            height: 5px;
+            background: #c00;
+            width: 0;
+        }
+    </style>
+    <script src="../libs/library.js"></script>
+    <script>
+        addReady(function () {
+            var oBan = $('ban');
+            var oUl = oBan.getElementsByTagName('ul')[0];
+            var aLi = oUl.getElementsByTagName('li');
+            var oP = oBan.getElementsByTagName('p')[0];
+            var aSpan = oP.getElementsByTagName('span');
+            oUl.style.width = aLi[0].offsetWidth * aLi.length + 'px';
+            var Num = 0;
+            var user = false;
+
+            function next(){
+                move(aSpan[Num],{width:aLi[0].offsetWidth},{time:8000,fn:function(){
+                    Num++;
+                    if(Num==aLi.length){
+                        Num=0;
+                    }
+                    move(oUl,{left:-Num*aLi[0].offsetWidth},{time:1500,fn:function(){
+                        for(var i=0;i<aSpan.length;i++){
+                            aSpan[i].style.width=0;
+                        }
+                        if(user==false){
+                            next();	//递归
+                        }
+                    }});
+                }});
+            };
+
+            next();
+            oBan.onmouseover=function(){
+                clearInterval(aSpan[Num].timer);
+                aSpan[Num].style.width=0;
+                user=true;
+            };
+            oBan.onmouseout=function(){
+                next();
+                user=false;
+            };
+        })
+    </script>
+</head>
+<body>
+<div class="ban" id="ban">
+    <ul>
+        <li><img src="../images/ban1.jpg" alt=""/></li>
+        <li><img src="../images/ban2.jpg" alt=""/></li>
+        <li><img src="../images/ban3.jpg" alt=""/></li>
+        <li><img src="../images/ban4.jpg" alt=""/></li>
+        <li><img src="../images/ban5.jpg" alt=""/></li>
+    </ul>
+    <p>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </p>
+</div>
+</body>
+</html>

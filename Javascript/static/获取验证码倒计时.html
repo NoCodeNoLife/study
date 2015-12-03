@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            width: 200px;
+            height: 40px;
+            display: block;
+            margin: 100px auto;
+        }
+    </style>
+    <script src="../libs/library.js"></script>
+    <script>
+        addReady(function () {
+            var oInput = $('input');
+            var timer = null;
+            var user = false;
+            oInput.onclick = function () {
+                var s = 10;
+
+                if (user)return;
+                user = true;
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    s--;
+                    oInput.value = s + '秒后重新获取';
+
+                    if (s == 0) {
+                        oInput.value = '重新获取验证码';
+                        clearInterval(timer);
+                        user = false;
+                    }
+
+                }, 1000);
+
+            }
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="获取验证码" id="input"/>
+</body>
+</html>

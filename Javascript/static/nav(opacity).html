@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>nav(opacity)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 500px;
+            height: 40px;
+            margin: 50px auto;
+        }
+
+        #box li {
+            float: left;
+            width: 98px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            position: relative;
+            border: #CCC 1px solid;
+        }
+
+        #box li ul {
+            position: absolute;
+            left: -1px;
+            top: 80px;
+            height: 0px;
+            overflow: hidden;
+            opacity: 0;
+        }
+    </style>
+    <script src="../libs/library.js"></script>
+    <script>
+        addReady(function () {
+            var oBox = $('box');
+            var oLi = oBox.getElementsByTagName('li');
+            for (var i = 0; i < oLi.length; i++) {
+                oLi[i].onmouseover = function () {
+                    var oMenu = this.getElementsByTagName('ul')[0];
+                    var aLi = oMenu.children;
+                    move(oMenu, {height: aLi[0].offsetHeight * aLi.length,opacity:1},{time: 1000, type: 'linaer'});
+                }
+                oLi[i].onmouseout = function () {
+                    var oMenu = this.getElementsByTagName('ul')[0];
+                    move(oMenu, {height: 0,opacity:0},{time: 1000, type: 'linaer'});
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+<ul id="box">
+    <li>onclick
+        <ul>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+        </ul>
+    </li>
+    <li>onclick
+        <ul>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+        </ul>
+    </li>
+    <li>onclick
+        <ul>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+        </ul>
+    </li>
+    <li>onclick
+        <ul>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+        </ul>
+    </li>
+    <li>onclick
+        <ul>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+            <li>show</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

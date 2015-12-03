@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            background: #c00;
+        }
+    </style>
+</head>
+<script>
+ window.onload = function(){
+     var timer = null;
+     var byUser = true; 	//用户滚的
+     var oToTop = document.getElementById('ToTop');
+     oToTop.onclick = function () {
+         moveScrollTop(0, 1000);
+     };
+     //当页面滚动----用户滚，js滚
+     window.onscroll = function () {
+         if (byUser) {
+             clearInterval(timer);
+         }
+         byUser = true;
+     };
+     function moveScrollTop(target, time) {
+         var start = document.documentElement.scrollTop || document.body.scrollTop;
+         var dis = target - start;
+
+         var count = Math.round(time / 30);
+         var n = 0;
+         clearInterval(timer);
+         timer = setInterval(function () {
+             n++;
+
+             var a = 1 - n / count;
+             var cur = start + dis * (1 - a * a * a);
+             byUser = false;
+             //也会让页面滚动---触发onscroll
+             document.body.scrollTop = cur;
+             document.documentElement.scrollTop = cur;
+
+             if (n == count) {
+                 clearInterval(timer);
+             }
+         }, 30);
+     }
+ }
+</script>
+<body style="height: 3000px;">
+<div id="ToTop"></div>
+</body>
+</html>

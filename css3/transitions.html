@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>transition</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 200px auto;
+            border: #333 1px solid;
+            border-radius: 360px;
+            overflow: hidden;
+        }
+
+        .box a {
+            display: block;
+            width: 100px;
+            height: 100px;
+            transition: all .5s;
+            background: #c00;
+            margin: 50px;
+            border-radius: 360px;
+        }
+
+        .box a:hover {
+            width: 200px;
+            height: 200px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <a href="javascript:;"></a>
+</div>
+</body>
+</html>
