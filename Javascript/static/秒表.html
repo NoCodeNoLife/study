@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>简易秒表</title>
+    <script src="../libs/library.js"></script>
+    <script>
+        addReady(function(){
+            var start = $('btn1');
+            var stop = $('btn2');
+            var txt = $('text');
+            var timer = null;
+            var count = 0;
+
+            start.onclick = function(){
+                clearInterval(timer);
+                timer = setInterval(function(){
+                    count++;
+                    var	m=parseInt(count/60);
+                    var n=count%60;
+                    txt.value= onDoubel(m)+':'+ onDoubel(n)
+                },100);
+            }
+
+            stop.onclick = function(){
+                clearInterval(timer);
+            }
+
+            function onDoubel(num){
+                if(num<10){
+                    return '0'+num;
+                }else{
+                    return num;
+                }
+            }
+
+        })
+    </script>
+</head>
+<body>
+<input type="text" value="00:00" id="text"/>
+<input type="button" value="开始" id="btn1"/>
+<input type="button" value="暂停" id="btn2"/>
+</body>
+</html>
