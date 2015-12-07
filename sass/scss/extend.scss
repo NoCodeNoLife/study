@@ -1,14 +1,14 @@
-@mixin borderRadius{
+@mixin borderRadius{//定义混合宏
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
 
-@mixin border{
+@mixin border{//定义混合宏
   border: #666 10px solid;
 }
 
-@mixin margin{
+@mixin margin{//定义混合宏
   margin: 40px 20px;
   float: left;
 }
@@ -20,17 +20,17 @@ $height: 200px;
   background: yellow;
   width: $width;
   height: $height;
-  @include borderRadius;
-  @include border;
-  @include  margin;
+  @include borderRadius;//使用混合宏
+  @include border;//使用混合宏
+  @include  margin;//使用混合宏
 }
 
 .wrap{
   background: green;
-  @extend .box;
+  @extend .box;//继承
 }
 
 .content{
   background: #c00;
-  @extend .box;
+  @extend .box;//继承
 }
