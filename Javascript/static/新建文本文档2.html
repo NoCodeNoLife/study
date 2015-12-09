@@ -23,16 +23,20 @@
     </style>
     <script src="../libs/library.js"></script>
     <script>
-        addReady(function () {
+        addReady(function(){
             var aDiv = document.getElementsByTagName('div');
-            var list = 0;//初始化列数为0；
+            var list = 0;//��ʼ������Ϊ0��
+            var aPos = [];
             for (var i = 0; i < aDiv.length; i++) {
-                list = (i - i % 6) / 6;//每6个div后把列数加1；
+                list = (i - i % 6) / 6;
+                aPos[i] = {left:(i % 6) * 120,top:list * 120};
                 aDiv[i].style.left = (i % 6) * 120 + 'px';
                 aDiv[i].style.top = list * 120 + 'px';
+
                 aDiv[i].onclick = function(){
                     for(var i=0;i<aDiv.length;i++){
-                        move(aDiv[i],{left:(i%6)*120});
+                        //move(aDiv[i],{left:(i%6)*120,top:index*120});
+                        move(aDiv[i],aPos[i]);
                     }
                     move(this,{left:0,top:0});
                 }
@@ -42,30 +46,6 @@
 
 </head>
 <body>
-<div class="box">1</div>
-<div class="box">2</div>
-<div class="box">3</div>
-<div class="box">4</div>
-<div class="box">5</div>
-<div class="box">6</div>
-<div class="box">7</div>
-<div class="box">8</div>
-<div class="box">9</div>
-<div class="box">10</div>
-<div class="box">11</div>
-<div class="box">12</div>
-<div class="box">13</div>
-<div class="box">14</div>
-<div class="box">15</div>
-<div class="box">16</div>
-<div class="box">17</div>
-<div class="box">18</div>
-<div class="box">19</div>
-<div class="box">20</div>
-<div class="box">21</div>
-<div class="box">22</div>
-<div class="box">23</div>
-<div class="box">24</div>
 <div class="box">1</div>
 <div class="box">2</div>
 <div class="box">3</div>
