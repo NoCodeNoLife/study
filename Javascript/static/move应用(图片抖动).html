@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片抖动</title>
+<style>
+#img{
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:100px;
+	top:100px;	
+}
+
+</style>
+<script src="move.js"></script>
+<script>
+window.onload = function(){
+	var oImg = document.getElementById('img');
+	
+	oImg.onmouseover = function(){
+		var _this = this;
+		shake(_this,'left',function(){
+			shake(_this,'top');	
+		});
+	}
+	
+	function shake(obj,attr,endFn){
+		var pos = parseInt(getStyle(obj,attr));
+		var arr = [];//用来存放抖动的范围；20,-20,18,-18····0
+		var num = 0;
+		var timer = null;
+		
+		
+		for(var i=20;i>0;i-=2){//抖动的范围在20，-20像素之间
+			arr.push(i,-i);	//20,-20,18,-18····
+		}	
+		arr.push(0);//返回到最初的位置：0
+		clearInterval(obj.shake);
+		obj.shake = setInterval(function(){
+			obj.style[attr] = pos + arr[num] + 'px';	
+			num++;
+			if(num == arr.length){
+				clearInterval(obj.shake);
+				endFn && endFn();	
+			}
+		},50);
+		
+		//alert(arr);	
+	}
+}
+</script>
+</head>
+
+<body>
+
+<img src="../images/h.jpg" id="img"/>
+
+</body>
+</html>
