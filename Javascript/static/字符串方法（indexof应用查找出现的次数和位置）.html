@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>查找字符串出现的次数和位置</title>
+<script>
+	window.onload = function () {
+		var str = '从今年 6 月下旬开始，BootCDN 就开始正式支持 https 协议了！首先，在此感谢又拍云给予的大力支持！还有众多热心的同学给我们提的建议，让 BootCDN 越来越完善！ http？https？相对协议？ 从目前的使用量上来说，http 协议仍然是主流，但是越来越多的站长';
+		
+		var s = 'Boot';//要查找的字符串；
+		var i = 0;
+		
+		for (; str.indexOf(s,i) !== -1;){//找不到就返回-1；如果等于-1的话，也就意味着找完了整个字符串并且没有找到。
+			alert(str.indexOf(s,i));//弹出 s 的位置，	
+			i = str.indexOf(s,i) + s.length;//从第一次出现的位置开始下一次查找，所以i= str.indexOf(s,i);如果说i等于19的话，那么第二次查找就从第19位开始查找。
+		}	
+		
+		//for循环液可以用while循环代替：
+		while( str.indexOf(s,i) !== -1 ){
+			alert(str.indexOf(s,i));
+			i = str.indexOf(s,i)+s.length;	
+		}
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>

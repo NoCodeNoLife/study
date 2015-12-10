@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>字符串方法(indexOf lastindexOf)</title>
+<script>
+	window.onload = function(){
+		var str = 'zhaoshuai.wordpress.com';
+		//找出‘w’所在的位置，方法1：
+		//for(var i=0;i<str.length;i++){
+		//	if( str.charAt(i) === 'w' ){
+		//		alert(i);	
+		//	}	
+		//}	
+		
+		//方法2：
+		alert(str.indexOf('w'));
+		alert(str.indexOf('i',4));//从字符串的第几位开始找字母‘i’;
+		
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>字符串实例(join)</title>
+<style>
+p { border:10px solid #ccc; background:#FFC; width:400px; padding:20px; font-size:16px; font-family:微软雅黑; }
+span { background:yellow; }
+</style>
+
+<script>
+window.onload = function () {
+	/*var arr = ['qq','vv','cc','bb','dd','ee','ff'];
+	
+	alert(arr.join('&'));	//join：做字符串连接。把数组里面的字符串用&连接起来。*/
+	function $(id){
+		return document.getElementById(id);	
+	}
+	var oTxt1 = $('txt1');
+	var oTxt2 = $('txt2');
+	var oBtn = $('btn');
+	var oP = document.getElementsByTagName('p')[0];
+	
+	oBtn.onclick = function(){
+		var str = oTxt1.value;
+		var newstr = oTxt2.value;
+		//if($('txt1').value == '')return;//也可以写成下面的形式：
+		if(!str)return;
+		oP.innerHTML = oP.innerHTML.split(str).join('<span>'+newstr+'</span>');
+			
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="text" id="txt1"/>
+<input type="text" id="txt2"/>
+<input type="button" value="替换" id="btn"/>
+
+<p>妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！<br />
+2013年底，妙味课堂最新推出"远程培训"服务，受到很多朋友们的喜爱与追捧，我们必将更加努力的帮助远程学习的朋友实现技术提升……</p>
+
+</body>
+</html>
