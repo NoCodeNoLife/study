@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>数组定义和数组清空效率问题</title>
+<script>
+window.onload = function (){
+	var arr = ['a','b','c'];
+	alert(arr.length);
+	arr.length = 0;//1.迅速清空数组的方法1，让数组的长度直接为0。
+	arr = [];//2.迅速清空数组的方法2，效率更高，直接给数组重新赋值。	
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

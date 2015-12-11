@@ -14,29 +14,42 @@
     </style>
     <script src="move.js"></script>
     <script>
-        window.onload = function () {
-            var len = 10;
+       window.onload = function () {
             var str = '';
-			var timer = null;
-			var num = 0;
-            for (var i = 0; i < len; i++) {		
-				str +='<div style="left:'+i * 60+'px"></div>'
+            var len = 10;
+            for (var i = 0; i < len; i++) {
+                str += '<div style="left:' + i * 70 + 'px;"></div>';
             }
             document.body.innerHTML = str;
-			var aDiv = document.getElementsByTagName('div');
-			document.onclick = function(){
-				
-				clearInterval(timer);
-				timer = setInterval(function(){
-					move(aDiv[num],'top',10,400);
-					num++;
-					if(num == len){
-						clearInterval(timer);
-					}
-				},100);
-							
-			}
+            var aDiv = document.getElementsByTagName('div');
+
+            var onoff = true;
+            document.onclick = function () {
+                var num = 0;
+                var timer = null;
+                clearInterval(timer);
+                if(onoff){
+                    timer = setInterval(function () {
+                        move(aDiv[num], 'top', 10, 400);
+                        num++;
+                        if (num == aDiv.length) {
+                            clearInterval(timer);
+                            onoff = false;
+                        }
+                    }, 100)
+                } else {
+                    timer = setInterval(function(){
+                        move(aDiv[num],'top',10,0);
+                        num++;
+                        if(num == aDiv.length){
+                            clearInterval(timer);
+                            onoff = true;
+                        }
+                    },100)
+                }
+            }
         }
+
     </script>
 </head>
 <body>
