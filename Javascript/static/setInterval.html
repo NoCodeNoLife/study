@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var i=0;
+    var timer = null;
+    function fn(){
+        i++;
+        document.title = i;
+        if(i==10){
+            clearInterval(timer);
+        }
+    }
+    timer = setInterval(fn,500);
+</script>
+</body>
+</html>

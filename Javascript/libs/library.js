@@ -62,8 +62,8 @@ function removeClass(obj,sClass){
 };/*删除className*/
 
 /*获取行间样式和move框架*/
-function getStyle(obj,name){
-    return(obj.currentStyel || getComputedStyle(obj,false))[name];
+function getStyle(obj,name){//不可获取复合样式，比如background
+    return obj.currentStyle ? obj.currentStyle[name] : getComputedStyle(obj)[name];
 }
 //move框架
 function move(obj,json,options){

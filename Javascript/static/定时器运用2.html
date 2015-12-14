@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: #c00;
+            position: absolute;
+            left: 0;
+            top: 40px;
+        }
+    </style>
+    <script>
+        function addReady(fn) {
+            if (document.addEventListener) {
+                document.addEventListener('DOMContentLoaded', fn, false);
+            } else {
+                document.onreadystatechange = function () {
+                    if (document.readyState == 'complete') {
+                        fn();
+                    }
+                };
+            }
+        }
+
+        function $(id) {
+            return document.getElementById(id);
+        }
+
+        function getStyle(obj, attr) {
+            return obj.currentStyle ? obj.currentStyle : getComputedStyle(obj)[attr];
+        }
+
+
+        addReady(function () {
+            var oQian = $('qian');
+            var oHou = $('hou');
+            var oBox = $('box');
+
+            function move(obj, attr, dir, target,endFn) {//obj:移动的物体，dir:移动的步长，attr:移动的方向，target:目标点
+                dir = parseInt(getStyle(obj, attr)) < target ? dir : -dir;
+                //步长 = 当前的位置 < 目标点，步长是正整数，否则的话，步长是负数。
+                clearInterval(obj.timer);
+                obj.timer = setInterval(function () {
+                    var speed = parseInt(getStyle(obj, attr)) + dir;
+                    if (speed > target && dir > 0 || speed < target && dir < 0) {
+                        speed = target;
+                    }
+                    obj.style[attr] = speed + 'px';
+                    if (speed == target) {
+                        clearInterval(obj.timer);
+                        endFn && endFn();
+                        //如果endFn存在，也就是不是undefined的话才会走到 &&的后面，也就是执行endFn函数。
+                    }
+                }, 30);
+            }
+
+            oQian.onclick = function () {
+                move(oBox, 'left', 10, 400,function(){
+                    move(oBox,'width',5,600);
+                });
+            }
+
+            oHou.onclick = function () {
+                move(oBox, 'left', 10, 0);
+            }
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="前" id="qian"/>
+<input type="button" value="后" id="hou"/>
+
+<div id="box"></div>
+</body>
+</html>

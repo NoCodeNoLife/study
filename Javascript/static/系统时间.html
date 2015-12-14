@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>系统时间</title>
+<script>
+window.onload = function () {
+	var str = '';
+	//alert(new Date());//当前系统时间；
+	function myTime(){
+		var myDate = new Date();//当前系统时间
+		var iYear = myDate.getFullYear();//当前年份
+		var iMont = myDate.getMonth() + 1;//当前月份，月份从0开始算，所有要加1，才是当前的月份
+		var oDay = myDate.getDate();//今天
+		var oHours = myDate.getHours();
+		var oSecond = myDate.getSeconds();
+		var oMins = myDate.getMinutes();
+		var iWeek = myDate.getDay();//星期几，出来的是阿拉伯数字，转为汉字的方法如下：
+		if(iWeek == '0')iWeek = '星期日';
+		if(iWeek == '1')iWeek = '星期一';
+		if(iWeek == '2')iWeek = '星期二';
+		if(iWeek == '3')iWeek = '星期三';
+		if(iWeek == '4')iWeek = '星期四';
+		if(iWeek == '5')iWeek = '星期五';
+		if(iWeek == '6')iWeek = '星期六';
+		//alert(iWeek);
+		
+		str = iYear+'年'+iMont+'月'+oDay+'日 '+iWeek+'  '+addZero(oHours)+': '+addZero(oMins)+': '+addZero(oSecond);
+		document.body.innerHTML = str;
+	}
+	myTime();
+	
+	function addZero( n ){//补0，如果小于10的数字，就在数字前面加0.否则就不加
+		//if( n < 10 ) {
+//			return '0' + n;	//字符串
+//		}else{
+//			return '' + n;	//字符串
+//		}	
+		
+		return n < 10 ? '0' + n : '' + n;
+	}
+	
+	setInterval(function(){
+		myTime();	
+	},1000);
+	
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

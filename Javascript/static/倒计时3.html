@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script>
+window.onload = function () {
+	function $(id){
+		return document.getElementById(id);	
+	}	
+	
+	var oTxt1 = $('txt1');
+	var oTxt2 = $('txt2');
+	var oBtn = $('btn');
+	var timer = null;
+	
+	
+	oBtn.onclick = function () {
+		clearInterval(timer);
+		var iNew = new Date(oTxt1.value);	
+		timer = setInterval(function(){
+			var iNow = new Date();
+			var t = Math.floor((iNew-iNow)/1000);
+			if( t >=0 ){
+				var str = Math.floor(t/84000) +'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+				oTxt2.value = str;	
+			}else{
+				clearInterval( timer );	
+			}
+		},1000);
+	}
+}
+</script>
+</head>
+
+<body>
+距离：<input type="text" id="txt1" value="November 27,2016 15:30:0"/>
+还剩：<input type="text" id="txt2"/>
+<input type="button" id="btn" value="开始倒计时"/>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

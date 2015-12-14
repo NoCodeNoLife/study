@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>取模(多行变色2)</title>
+    <script>
+        window.onload=function(){
+
+            var time = 90;
+            alert(Math.floor(time/60)+'分'+time%60+'秒');
+
+            var a = 12<90 && 20;//如果12<90，就走到&&的后面条件，也就是把20赋值给a,所以a=20;
+            alert(a);//20,
+
+            var aLi = document.getElementsByTagName('li');
+            var arr = ['red','yellow','green'];
+            var str = '';
+
+            for(var i=0;i<aLi.length;i++){
+
+                aLi[i].index = i;
+
+                aLi[i].style.background = arr[i%arr.length];
+
+                aLi[i].onmouseover = function(){
+                    str = this.style.background;//移上去的时候把背景色存一下，
+                    this.style.background = 'gray';
+                }
+
+                aLi[i].onmouseout = function(){
+                    this.style.background = str;//移开的时候再把颜色附上去。
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

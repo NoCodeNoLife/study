@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>倒计时2</title>
+<script>
+	var iNow = new Date();//当前时间
+	var iNew = new Date('june 1,2016 12:12:12');
+	var t= Math.floor((iNew - iNow)/1000); 
+	var str = Math.floor(t/84000) +'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+	alert( str );
+</script>
+</head>
+
+<body>
+</body>
+</html>

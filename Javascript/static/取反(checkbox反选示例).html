@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>取反(checkbox反选示例)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+            var aInput = document.getElementsByTagName('input');
+
+//            oBtn.onclick = function(){//方法1：
+//                for(var i=0;i<aInput.length;i++){
+//                    if(aInput[i].checked){
+//                        aInput[i].checked = false;
+//                    }else{
+//                        aInput[i].checked = true;
+//                    }
+//                }
+//            }
+
+            oBtn.onclick = function () {//方法2
+                for (var i = 0; i < aInput.length; i++) {
+                    aInput[i].checked = !aInput[i].checked;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="反选" id="btn"/>
+<ul style="width: 100px;height: 400px; margin: 0 auto;">
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+    <li><input type="checkbox"/></li>
+</ul>
+</body>
+</html>

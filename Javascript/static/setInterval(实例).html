@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>setInterval(实例)</title>
+    <style>
+        div {
+            width: 470px;
+            height: 150px;
+            margin: 100px auto;
+            border: #333 1px solid;
+        }
+    </style>
+    <script src="../libs/library.js"></script>
+    <script>
+        addReady(function () {
+            var oStart = $('start');
+            var oStop = $('stop');
+            var oBox = $('box');
+            var timer = null;
+            var i = 0;
+            var arr = ['../images/ban1.jpg', '../images/ban2.jpg', '../images/ban3.jpg', '../images/ban4.jpg'];
+            oBox.style.background = 'url('+arr[0]+')';
+            function change() {
+                i++;
+                if (i == arr.length) {
+                    i = 0;
+                }
+                oBox.style.background = 'url(' + arr[i] + ')';
+            }
+
+            oStart.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(change, 1000);
+            }
+
+            oStop.onclick = function () {
+                clearInterval(timer);
+            }
+        })
+    </script>
+</head>
+<body>
+<input type="button" value="Start" id="start"/>
+<input type="button" value="Stop" id="stop"/>
+
+<div id="box"></div>
+</body>
+</html>

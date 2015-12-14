@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>流程控制</title>
+    <script>
+        var str = 'js';
+        /*
+         if ( str === 'js' ) {
+         alert( 'js' );
+         } else if ( str === 'html' ) {
+         alert( 'html' );
+         } else {
+         alert( str );
+         }
+
+         switch( str ){
+         case 'js' :
+         alert( 'js' ); break;
+         case 'html' :
+         alert( 'html' ); break;
+         default :
+         alert( str );
+         }
+         */
+
+        if ( 12<45 ) {
+            //alert( '12<45' );
+        } else {
+            //alert( '12!<45' );
+        }
+
+        // 120<45 ? alert( '120<45' ) : alert( '120!<45' );
+
+        // alert( 120<450?'120<450':'120!<450' );
+
+        /*
+         var i=0;
+         while (i<3){
+         alert(i);
+         i++;
+         }
+         */
+
+        for(var i=0; i<6; i++){
+            if( i == 4 ){
+                // break;						// 跳出
+                continue;				// 跳过
+            }
+            // alert(i);
+        }
+        // i => 4
+        //真假的问题:
+        //真:非零(0)的数字,非空字符串，true,函数，能找到的元素，数组[]，json{},
+        //假:0，NaN,空字符串,false,不能找到的元素，null,undefined
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

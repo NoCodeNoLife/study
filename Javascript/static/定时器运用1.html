@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>定时器运用1</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background: #c00;
+            position: absolute;
+            left: 0;
+            top: 40px;
+        }
+    </style>
+    <script src="../libs/library.js"></script>
+    <script>
+        addReady(function () {
+            var oBtn = $('btn1');
+            var oBox = $('box1');
+            //oBox.timer = null;//自定义属性
+            oBtn.onclick = function () {
+                clearInterval(oBox.timer);
+                oBox.timer = setInterval(function () {
+                    var speed = parseInt(getStyle(oBox, 'left')) + 19;//速度
+                    if(speed > 800){
+                        speed = 800;
+                    }
+                    oBox.style.left = speed + 'px';
+                    if(speed == 800){
+                        clearInterval(oBox.timer);
+                    }
+                }, 30);
+            }
+        })
+    </script>
+</head>
+<body>
+<input id="btn1" type="button" value="按钮"/>
+
+<div id="box1"></div>
+</body>
+</html>
