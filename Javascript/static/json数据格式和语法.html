@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>json数据格式和语法</title>
+<script>
+window.onload = function () {
+	/*var json = {
+		arr : ['../images/a.png', '../images/b.png', '../images/c.png', '../images/d.png'],
+		text : ['图片介绍1', '图片介绍2', '图片介绍3', '图片介绍4']
+	}	
+	
+	alert(json.arr[0]);
+	alert(json.text[0]);*/
+	
+	/*
+	var json = {
+		'name':'shuaiz',
+		'age':'25',
+		'add':'beijing'
+	}
+	
+	for(var i in json){
+		//alert(i);//弹出键名
+		alert(json[i]);//弹出值
+	}
+	*/
+	
+	var json = {
+					arr : ['../images/a.png', '../images/b.png', '../images/c.png', '../images/d.png'],
+					text : ['图片介绍1', '图片介绍2', '图片介绍3', '图片介绍4']
+				}
+	for(var i in json){
+		for(var j=0;j<json[i].length;j++){
+			alert(json[i][j]);	
+		}	
+	}
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

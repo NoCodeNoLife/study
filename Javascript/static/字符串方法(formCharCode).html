@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>formCharCode(字符串加密)</title>
+<script>
+
+window.onload = function () {
+	/*var str = '';
+	for ( var i=10000; i<20000; i++ ) {
+		str += String.fromCharCode(i) + ' ';
+	}
+	document.body.innerHTML = str;
+*/
+
+	function $(id){
+		return document.getElementById(id);	
+	}
+	
+	var oTxt = $('txt');
+	var oBtn = $('btn');
+	var oInn = $('inner');
+	
+	oBtn.onclick = function () {
+		var str = oTxt.value;
+		var str1 = '';
+		for(var i=0;i<str.length;i++){
+			str1 += str.charCodeAt(i)+':';
+		}	
+		oInn.innerHTML = str1;
+	}
+
+}
+</script>
+</head>
+
+<body>
+<input type="text" id="txt"/>
+
+<input type="button" value="按钮" id="btn"/>
+<p id="inner"></p>
+</body>
+</html>

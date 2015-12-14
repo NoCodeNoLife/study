@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+* {
+	margin:0;
+	padding:0;
+}
+div {
+	margin:100px 0 0 300px;
+}
+ul {
+
+}
+ul li {
+	list-style-type:none;
+	float:left;
+	width:146px;
+	height:50px;
+	line-height:50px;
+	font-size:24px;
+	text-align:center;
+	color:#fff	;
+	margin:0 1px 0 0;
+	background:orange;
+}
+ul li.select {
+	background:#fcf;
+}
+dl dt img {
+	width:293px;
+	height:198px;
+}
+dl {
+	clear:both;
+	background:red;
+	width:400px;
+}
+dl dt {
+	background:#fff;
+	width:300px;
+	float:left;
+}
+dl dd {
+	float:left;
+	display:block;
+	width:100px;
+	height:64px;
+	line-height:64px;
+	margin:0 0 2px 0;
+	text-align:center;
+	background:#ccc;
+}
+dl dd.default {
+	background:#cfc;
+}
+
+</style>
+<script src="lxl.js"></script>
+<script>
+window.onload = function(){
+	var aList = document.getElementsByTagName('li');
+	var oImg = document.getElementsByTagName('img')[0];
+	var aDd = document.getElementsByTagName('dd');
+//	var oInput = document.getElementsByTagName('input')[0];
+	var arrImg = [['1.png','2.png','3.png'],['4.png','5.png','6.png']];
+	var arrText = [['图片一','图片二','图片三'],['图片四','图片五','图片六']];
+	var num = 0;
+	var counter = 0;
+
+    setInterval(carousel,1000);
+
+//	oInput.onclick = carousel;
+	function carousel(){
+		for(var i=0;i<aDd.length;i++){
+			aDd[i].className = '';
+		}
+		num ++;
+		if (num == 3){
+			for(var i=0;i<aList.length;i++){
+				aList[i].className = '';
+			}
+			num = 0;
+			counter ++;
+			if(counter > 1){
+				counter = 0;
+				for(var i=0;i<aDd.length;i++){
+					aDd[i].innerHTML = arrText[counter][i];
+				}
+			} else {
+				for(var i=0;i<aDd.length;i++){
+					aDd[i].innerHTML = arrText[counter][i];
+				}
+			}
+			aList[counter].className = 'select';
+		}
+		aDd[num].className = 'default';
+		oImg.src = arrImg[counter][num];
+	}
+}
+</script>
+</head>
+<body>
+	<div>
+		<ul>
+			<li class="select">菜单一</li>
+			<li>菜单二</li>
+		</ul>
+		<dl>
+			<dt><img src='1.png' /></dt>
+			<dd class="default">图片一</dd>
+			<dd>图片二</dd>
+			<dd>图片三</dd>
+		</dl>
+	</div>
+<!--	<input value="提交" type="submit" /> -->
+</body>
+</html>

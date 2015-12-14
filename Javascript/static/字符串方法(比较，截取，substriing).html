@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+p { border:10px solid #ccc; background:#FFC; width:400px; padding:20px; font-size:16px; font-family:微软雅黑; margin:40px auto 0; }
+
+</style>
+<script>
+window.onload = function () {
+	
+	/*function fn() {
+		//var str = '从今年6月下旬开始，BootCDN 就开始正式支持 https 协议了！首先，在此感谢又拍云给予的大力支持！还有众多热心的同学给我们提的建议，让 BootCDN 越来越完善！ http？https？相对协议？ 从目前的使用量上来说，http 协议仍然是主流，但是越来越多的站长';
+		
+		//alert(str.substring(10));	//从第10位置开始截取；
+		//alert(str.substring(10,20));//截取从第10位开始到20位之间的字符。
+		
+		//alert(str.slice(-10,-2));//从后往前倒着找。
+	
+	}
+	
+	fn();*/
+	
+	var oP = document.getElementsByTagName('p')[0];
+	var oSpan = oP.getElementsByTagName('span')[0];
+	var oA = oP.getElementsByTagName('a')[0];
+	var str = oSpan.innerHTML;
+	var onOff = true;
+	
+	oA.onclick = function () {
+		if(onOff){
+			oSpan.innerHTML = str.substring(0,50);
+			this.innerHTML = '展开';
+		}else{
+			oSpan.innerHTML = str;
+			this.innerHTML = '收缩';	
+		}	
+		onOff = !onOff;
+	}
+	
+
+}
+</script>
+</head>
+
+<body>
+
+<p><span>也可以特例特办，由全国人大授权国务院就可以推出。国务院常务会议12月9日通过《关于授权国务院在实施股票发行注册制改革中调整适用〈中华人民共和国证券法〉有关规定的决定（草案）》。草案明确，在决定施行之日起两年内，授权对拟在上海证券交易所、深圳证券交易所上市交易的股票公开发行实行注册制度。<br/>
+　　这也是不第一次了，上海自贸区就有过先例。<br/>
+　　2013年8月30日，十二届全国人大常委会第四次会议30日作出决定，授权国务院在中国(上海)自由贸易试验区暂时调整有关法律规定的行政审批。</span><a href="javascript:;">收缩</a></p>
+</body>
+</html>

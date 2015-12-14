@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--meta http-equiv="x-ua-compatible"content="ie=7"/--> 
+  <title>按钮控制商品图片上下滚动</title>
+  <style type="text/css">
+	* {
+		margin:0;
+		padding:0;
+	}
+	#up,#down {
+		width:200px;
+		height:22px;
+		background:#ccc url(imgs/up.gif) no-repeat center center;
+		z-index:1;
+		cursor: pointer;
+		position:absolute;
+	}
+	#down {
+		background:#ccc url(imgs/down.gif) no-repeat center center;
+		position:absolute;
+		bottom:0;
+	}
+	#pox {
+		margin:80px 400px;
+		height:300px;
+		width:200px;
+		position:relative;
+		overflow:hidden;
+		border-left:1px solid #ccc;
+		border-right:1px solid #ccc;
+	}
+	ul {
+		width:200px;
+		position:relative;
+		top:22px;
+	}
+	ul li {
+		clear:both;
+		width:200px;
+		height:70px;
+		list-style-type:none;
+		text-align:center;
+		border-bottom:1px solid #999;
+	}
+	ul li.head p {
+		float:left;
+		clear:both;
+		width:80px;	
+		font-size:4px;
+		margin:10px 0 0 10px;
+	}
+	ul li img {
+		margin:5px 0 0 0;
+	}
+	ul li.top h2 {
+		font-size:6px;
+		width:80px;
+		float:left;
+		margin:5px 0 0 10px;
+	}
+	ul li.top p {
+		font-size:4px;
+		width:80px;
+		float:left;
+		clear:both;
+		margin:5px 0 0 10px;
+	}
+	ul li.text p {
+		font-size:4px;
+		width:80px;
+		float:left;
+		margin:10px 0 0 10px;
+	}
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oBox = document.getElementById('pox');
+		var oList = oBox.getElementsByTagName('ul')[0];
+		var oUp = document.getElementById('up');
+		var oDown = document.getElementById('down');
+		var timer = null;
+		
+		function fn (){
+			var num = oList.currentStyle ? oList.currentStyle.top : getComputedStyle(oList)['top'];
+			return parseInt(num);
+		}
+		
+		oUp.onmousedown = function(){
+			timer = setInterval(fnUp,30);
+		}
+		oUp.onmouseup = function(){
+			window.clearInterval(timer);
+		}
+		
+		oDown.onmousedown = function(){
+			timer = setInterval(fnDown,30);
+		}
+		oDown.onmouseup = function(){
+			window.clearInterval(timer);
+		}
+		
+		function fnUp(){
+			var num = fn();
+			if(num <= -290){
+				oList.style.top = -290+'px';
+			} else {
+				oList.style.top = num-3+'px';
+			}
+		}
+		
+		function fnDown (){
+			var num = fn();
+			if(num <= 19){
+				oList.style.top = fn()+3+'px';
+			} else {
+				oList.style.top = 22+'px';
+			}
+		}
+	}
+  </script>
+ </head>
+ <body>
+	<div id="pox">
+		<div id="up"></div>
+			<ul>
+				<li class="head">
+					<p>Mac翻新产品</p>
+					<p>iPod翻新产品</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="top">
+					<h2>翻新笔记本</h2>
+					<p>RMB 5788起最多降低了35%</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="top">
+					<h2>翻新台式机</h2>
+					<p>RMB 7698起最多降低了46%</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="text">
+					<p>Mac 完全解析</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="text">
+					<p>无线网络基础</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="text">
+					<p>从PC到Mac:基本知识</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="text">
+					<p>转移到Mac</p>
+					<img src="imgs/0.gif" />
+				</li>
+				<li class="top">
+					<h2>翻新iPod</h2>
+					<p>RMB 348起最多降低了43%</p>
+					<img src="imgs/0.gif" />
+				</li>
+			</ul>
+		<div id="down"></div>
+	</div>
+ </body>
+</html>

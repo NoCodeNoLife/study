@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script>
+        window.onload=function(){
+                var aInput=document.getElementsByTagName('input');
+                var bClk=false;
+                
+                for(var i=2; i<aInput.length; i++){
+                        aInput[i].onclick=function(){
+                                if(this.checked){
+                                        if(aInput[0].value==''){
+                                                aInput[0].value=this.value;
+                                        }else{
+                                                aInput[0].value+=','+this.value;
+                                        }
+                                }else{
+                                        var arr=aInput[0].value.split(',');
+                                        
+                                        for(var i=0; i<arr.length; i++){
+                                                if(arr[i]==this.value){
+                                                        arr.splice(i,1);
+                                                }
+                                        }
+                                        
+                                        //alert(arr);
+                                        
+                                        aInput[0].value=arr;
+                                }
+                        }
+                }
+                
+                aInput[1].onclick=function(){
+                        var arr=aInput[0].value.split(',');
+                        
+/*                        if(bClk){
+                                bClk=false;        
+                        }else{
+                                bClk=true;        
+                        }
+*/                        
+
+                        //bClk=bClk==true?false:true;
+                        
+                        bClk=!bClk;
+
+                        arr.sort(function(str1,str2){
+                                
+                                if(bClk){
+                                        return str1.length-str2.length;
+                                }else{
+                                        return str2.length-str1.length;
+                                }
+                                
+                        });
+                        
+                        aInput[0].value=arr;
+                };
+        }
+</script>
+</head>
+
+<body>
+        <input type="text" /><input type="button" value="排序" /><br />
+        <input type="checkbox" value="html" />html<br />
+        <input type="checkbox" value="css" />css<br />
+        <input type="checkbox" value="flash" />flash<br />
+        <input type="checkbox" value="js" />js<br />
+</body>
+</html>

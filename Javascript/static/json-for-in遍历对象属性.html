@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>json-for-in遍历对象属性</title>
+<script>
+window.onload = function () {
+	查看window下有多少属性并且打印出属性值
+		var str = '';
+		var num = 0;
+		for(var attr in window){
+			num++;
+			str += num + '.' + attr + ':' + window[attr] + '<br/>'	;
+		}	
+		document.body.innerHTML = str;
+	
+	
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

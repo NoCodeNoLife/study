@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+* {
+	margin:0 0;
+	padding:0 0;
+}
+ul.list{
+	margin:20px 0 0 100px;
+	width:500px;
+	height:25px;
+	line-height:30px;
+	background:orange;
+	padding:5px 0 0 3px;
+	border-radius:5px;
+}
+ul.list li {
+	float:left;
+	list-style-type:none;
+	width:100px;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	color:#fff;
+	margin:0 3px 0 0;
+	text-align:center;
+	border-radius:5px;
+	cursor:pointer;
+}
+ul.list li:hover {
+	background:red;
+}
+
+ul.child {
+	position:absolute;
+	top:60px;
+	border:1px solid #f66;
+	height:18px;
+	padding:2px 10px 0 0;
+	display:block;
+	float:left;
+	border-radius:5px;
+}
+ul.child li {
+	list-style-type:none;
+	float:left;
+	border-right:1px solid #f6f;
+	padding:0 10px;
+	height:16px;
+	line-height:16px;
+	font-size:14px;
+	text-align:center;
+}
+ul.child li a {
+	text-decoration:none;
+	color:orange;
+}
+ul.child li a:hover {
+	border-bottom:2px solid orange;
+}
+ul.one {
+	display:none;
+}
+ul.two {
+	left:100px;
+	display:none;
+}
+ul.the {
+	left:225px;
+	display:none;
+}
+ul.four {
+	left:305px;
+	display:none;
+}
+
+
+
+/*
+div.container {
+	position:absolute;
+	top:30px;
+	left:40px;
+	font-size:9pt;
+	display:block;
+	height:100px;
+	width:200px;
+	background-color:transparent;
+//	*border:1px solid #666;
+}
+div.content {
+	border:1px solid #666;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	position:absolute;
+	background-color:#fff;
+	width:100%;
+	height:100%;
+	padding:5px;
+//	*top:-2px;
+//	*border-top:1px solid #666;
+//	*border-top:1px solid #666;
+//	*border-left:none;
+//	*border-right:none;
+//	*height:102px;
+	box-shadow:3px 3px 4px #999;
+	-moz-box-shadow:3px 3px 4px #999;
+	-webkit-box-shadow:3px 3px 4px #999;
+//	filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999');
+//	-ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#999')";
+}
+s{
+	position:absolute;
+	top:-20px;
+//	*top:-22px;
+	left:20px;
+	display:block;
+	height:0;
+	width:0;
+	font-size:0;
+	line-height:0;
+	border-color:transparent transparent #666 transparent;
+	border-style:dashed dashed solid dashed;
+	border-width:10px;
+}
+i{
+	position:absolute;
+	top:-9px;
+//	*top:-9px;
+	left:-10px;
+	display:block;
+	height:0;
+	width:0;
+	font-size:0;
+	line-height:0;
+	border-color:transparent transparent #fff transparent;
+	border-style:dashed dashed solid dashed;
+	border-width:10px;
+}*/
+</style>
+<script src="lxl.js"></script>
+<script>
+window.onload = function(){
+	var aList = document.getElementsByTagName('ul');
+	var len = aList.length;
+	var timer = null;
+	var aPox = aList[0].getElementsByTagName('li');
+	
+	box(0,len-1,aPox,1);
+	box(1,len,aList,0);
+
+	//鼠标移入移除事件
+	function box(num,max,obj,j){
+		for(var i=num;i<max;i++){
+			obj[i].index = i;
+			obj[i].onmouseover = function(){
+				show(this.index+j);
+			}
+			obj[i].onmouseout = function(){
+				hide(this.index+j);
+			}
+		}
+	}
+	
+	//延迟显示事件
+	function show(num){
+		clearInterval( timer );
+		for(var i=1;i<len;i++){
+			aList[i].style.display = 'none';
+		}
+		aList[num].style.display = 'block';
+	}
+	//延迟关闭事件
+	function hide(num){
+		timer = setTimeout(function(){aList[num].style.display = 'none';},500);
+	}
+	
+}
+</script>
+</head>
+<body>
+	<ul class='list'>
+		<li>首页</li>
+		<li>关于我们</li>
+		<li>作品</li>
+		<li>博客</li>
+	</ul>
+	<ul class='child one'>
+		<li><a href="#">最近更新</a></li>
+		<li><a href="#">活动</a></li>
+		<li><a href="#">报名试听</a></li>
+		<li><a href="#">学员反馈</a></li>
+	</ul>
+	<ul class='child two'>
+		<li><a href="#">妙味讲师</a></li>
+		<li><a href="#">培训方式</a></li>
+		<li><a href="#">培训理念</a></li>
+		<li><a href="#">联系我们</a></li>
+	</ul>
+	<ul class='child the'>
+		<li><a href="#">般固</a></li>
+		<li><a href="#">MATRIX</a></li>
+		<li><a href="#">留学e网</a></li>
+		<li><a href="#">ECMall</a></li>
+	</ul>
+	<ul class='child four'>
+		<li><a href="#">JS教程</a></li>
+		<li><a href="#">弹出层效果</a></li>
+		<li><a href="#">3D球面标签云</a></li>
+		<li><a href="#">window计算器</a></li>
+	</ul>
+
+<!--	
+	<div class='container'>
+		<div class='content'>123333444</div>
+		<s>
+		<i></i>
+		</s>
+	</div>
+-->
+</body>
+</html>
