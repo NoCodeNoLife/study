@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+			*{ margin: 0; padding: 0;}
+			#main{ width: 900px; height: 240px; border: 10px solid #999; margin: 90px auto; padding: 10px;}
+			#left,#right{ width: 350px; height: 240px; border: 1px solid #000; float: left;}
+			#conten{ width: 160px; height: 240px; float: left; text-align: center;}
+			#left textarea{ width: 350px; height: 240px; background: #FFADAD; outline: medium;}
+			#oa{ display: block; width:120px; height: 30px; background: orange; margin-left: 20px; line-height: 30px; text-decoration: none; color: #fff; margin-bottom: 10px;}
+			#list{ margin-top: 10px;}
+			#list li{ width: 20px; height: 30px; background: #DED6E7; float: left; list-style: none; margin-left: 5px;}
+			#list li.active{ background: yellow;}
+		</style>
+</head>
+	<script>
+		window.onload = function () {
+			var oDiv = document.getElementById("left");
+			var oSpan1 = document.getElementById("s1");
+			var oSpan2 = document.getElementById("s2");
+			var oTex = oDiv.getElementsByTagName("textarea")[0];
+			var newStr = "";
+			var num = 0;
+			var str= "";
+			var oRig = document.getElementById("right");
+			
+			var oA = document.getElementById("oa");
+			var oList = document.getElementById("list");
+			var aLi = oList.getElementsByTagName("li");
+			var ooc = 0;
+			oA.onclick = function () {
+				str = oTex.value;
+				newStr = str.split('');
+			   if(oTex.value == ""){
+					alert("请输入文字");
+					return;
+				}else{
+					this.style.background = "gray";
+				oRig.innerHTML = "";
+				num = 0;
+				oSpan2.innerHTML = newStr.length;
+				oList.style.display = "block";
+				timer = setInterval(ftn1,100);
+				}
+			}
+			function ftn1(){
+				lis(num);
+				oSpan1.innerHTML = num +1;
+				oRig.innerHTML += newStr[num];
+				num++;
+				if(num >= newStr.length){
+					clearInterval(timer);
+					oList.style.display = "none";
+					oA.style.background = "orange";
+				}
+					oTex.innerHTML = str.substring(num,str.length);
+				
+				}
+		
+			function lis(num){
+				for (var i = 0; i < aLi.length; i++) {
+					
+					aLi[i].className = "";
+				};
+				aLi[num%aLi.length].className = "active";
+			}
+
+		}
+	</script>
+<body>
+	<div id="main">
+		<div id="left">
+			<textarea>据这家广告公司负责人马克说，丽莎两周之前买下了这天的广告位，时间段是星期三早晨6点到9点的早高峰时间，这是城市中心交通最繁忙的路段，也是黄金广告位，丽莎此举正是为了保证在最多人的时间让最多人看见保罗的“罪行”。</textarea>
+		</div>
+		<div id="conten">
+			<a id="oa" href="#">把文字右移</a>
+			<span id="s1">0</span>
+			/
+			<span id="s2">0</span>
+			<div>
+				<ul id="list">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+		<div id="right"></div>
+	</div>
+</body>
+</html>

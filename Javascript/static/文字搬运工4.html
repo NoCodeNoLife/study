@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei UI Light", "Microsoft YaHei UI";
+            list-style: none;
+        }
+
+        #wrap {
+            width: 900px;
+            height: 400px;
+            margin: 100px auto;
+        }
+
+        #txt {
+            width: 280px;
+            height: 177px;
+            border: 1px dashed #c0c0c0;
+            font-size: 12px;
+            line-height: 20px;
+            padding: 14px 9px;
+            float: left;
+        }
+
+        #center {
+            width: 98px;
+            height: auto;
+            float: left;
+        }
+
+        #center a {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background: #c00;
+            color: #fff;
+            display: block;
+            margin: 0 19px;
+            text-decoration: none;
+            font-size: 14px;
+
+        }
+
+        #center p {
+            width: 98px;
+            height: 24px;
+            line-height: 24px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        #center ul {
+            width: 80px;
+            height: 8px;
+            display: none;
+            margin: 20px 0 20px 13px;
+        }
+
+        #center ul li {
+            width: 8px;
+            height: 8px;
+            border-radius: 360px;
+            background: #333;
+            float: left;
+            margin-right: 4px;
+        }
+
+        #center ul li.active {
+            background: #c00;
+        }
+
+        #center ul li:last-child {
+            margin-right: 0;
+        }
+
+        #right {
+            width: 280px;
+            height: 177px;
+            border: 1px dashed #c0c0c0;
+            font-size: 12px;
+            line-height: 20px;
+            padding: 14px 9px;
+            float: left;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oBtn = $('btn');
+            var oTxt = $('txt');
+            var oRight = $('right');
+            var aLi = document.getElementsByTagName('li');
+            var oSpan1 = $('span1');
+            var oSpan2 = $('span2');
+            var oMove = $('move');
+
+            var num = 0;
+            var timer = null;
+
+            oTxt.onblur = function(){
+                oSpan2.innerHTML = oTxt.value.length;
+            }
+
+            oBtn.onclick = function () {
+                oMove.style.display = 'block';
+
+                clearInterval(timer);
+                timer = setInterval(fn,100);
+            }
+            function fn(){
+                num++;
+                for (var i = 0; i < aLi.length; i++) {
+                    aLi[i].className = '';
+                }
+                if (num == aLi.length) num = 0;
+                aLi[num].className = 'active';
+
+                var str = oTxt.value;
+                var arr = str.split('');
+                var oRemove = arr.pop();
+                oTxt.value = arr.join('');
+                oRight.innerHTML = oRemove+oRight.innerHTML;
+
+                if(oTxt.value.length == 0){
+                    clearInterval(timer);
+                    oMove.style.display = 'none';
+                }
+                oSpan1.innerHTML = oTxt.value.length + '/';
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+<div id="wrap">
+    <textarea id="txt"></textarea>
+
+    <div id="center">
+        <a href="javascript:;" id="btn">文字右移</a>
+
+        <p>
+            <span id="span1">0/</span>
+            <span id="span2">0</span>
+        </p>
+        <ul id="move">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="right"></div>
+</div>
+</body>
+</html>
