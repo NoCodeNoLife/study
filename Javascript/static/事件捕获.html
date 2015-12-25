@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script>
+        window.onload = function () {
+            function fn1(){
+                alert('1');
+            }
+            function fn2(){
+                alert('2');
+            }
+//            document.onclick = fn1;//不会弹出，被下面的覆盖掉了。
+//            document.onclick = fn2;//覆盖了上面的fn1的执行。
+            document.addEventListener('click',fn1,false);//不支持IE8-
+            document.addEventListener('click',fn2,false);//不支持IE8-
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

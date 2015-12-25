@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>addClass,removeClass封装和实现原理</title>
+    <script>
+
+        function addClass(obj,cls) {//obj:要添加classname的元素，cls:要添加的classname;
+            //如果原来没有class：
+            if(obj.className == ''){
+                obj.className = cls;
+            } else {
+            //本来已经有class，新增class的情况：
+                var arrclassname = obj.className.split(' ');//
+                var index = arrIndexOf(arrclassname,cls);
+                if(index == -1) {
+                    //如果要添加的class在原来的元素上不存在：
+                    obj.className += ' ' + cls;
+                }
+            }
+        }
+
+        function arrIndexOf(arr,v){//检测数组中是否有相同的值存在，并且返回它的位置；
+            for(var i=0;i<arr.length;i++){
+                if(arr[i] == v){
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        function removeClass(obj,cls){
+            //如果有class的话：
+            if(obj.className != ''){
+                var arrClassName = obj.className.split(' ');//对原有class进行拆分，看看是否包含需要移除的class，也就是传参cls的classname；
+                var index = arrIndexOf(arrClassName,cls);
+                //r如果有需要移除的class
+                if(index != -1){
+                    arrClassName.splice(index,1);
+                    obj.className = arrClassName.join('');
+                }
+            }
+        }
+
+        window.onload = function () {
+            var oDiv = document.getElementById('box1');
+            var oDiv2 = document.getElementById('box2');
+            removeClass(oDiv2,'box1');
+            addClass(oDiv,'box1');
+
+        }
+    </script>
+</head>
+<body>
+<div id="box1" class="box">asdas</div>
+<div id="box2" class="box box1">asdas</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件默认行为</title>
+    <style>
+        #box {
+            width: 60px;
+            height: 120px;
+            background: red;
+            display: none;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            var oBox = document.getElementById('box');
+
+            document.oncontextmenu = function(ev){
+                var ev = ev || event;
+
+                oBox.style.left = ev.clientX + 'px';
+                oBox.style.top = ev.clientY + 'px';
+                oBox.style.display = 'block';
+                return false;//阻止系统的右键菜单；
+
+            }
+
+            document.onclick = function () {
+                oBox.style.display = 'none';
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

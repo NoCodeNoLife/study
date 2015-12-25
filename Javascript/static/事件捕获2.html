@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件捕获2</title>
+    <style>
+        div{
+            padding: 40px;
+        }
+        #div1{
+            background: blue;
+        }
+        #div2{
+            background: red;
+        }
+        #div3{
+            background: green;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id){
+                return document.getElementById(id);
+            }
+            var oDiv1 = $('div1');
+            var oDiv2 = $('div2');
+            var oDiv3 = $('div3');
+
+            oDiv1.addEventListener('click',function(){
+                alert('1');//第三个弹出：事件冒泡，执行完了div1的事件捕获之后继续div2 和 div3的事件，走到div3上面有冒泡，就按照反序的方式执行冒泡事件。
+            },false);
+
+            oDiv1.addEventListener('click',function(){
+                alert('3')
+            },true);//第一个弹出：事件捕获，顺序执行；div1--》div2--》div3
+
+            oDiv3.addEventListener('click',function(){
+                alert('2')
+            },false);//第二个弹出：事件冒泡，倒序执行，当执行完了div1的事件捕获之后继续走到div2和div3上面看看有没有事件，如果有，就执行事件冒泡div3--》div2--》div1
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+
+</body>
+</html>

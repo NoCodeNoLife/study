@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call</title>
+    <script>
+        window.onload = function () {
+//            function fn1(a,b){
+////                alert(this);//window;
+//                alert(a+b);
+//            }
+//
+//            fn1.call(1,10,20);//fn1.call() === fn1();1代表是改变了this指向，10和20分别对应的是a和b的参数
+
+            function fn1(){
+                alert('1');
+            }
+
+            function fn2(){
+                alert('2');
+            }
+
+            function bind(obj,evname,fn){
+                if(addEventListener){
+                    obj.addEventListener(evname,fn,false);
+                }else{
+                    obj.attachEvent('on'+evname,function(){
+                        fn.call(obj);
+                    })
+                }
+            }
+
+            bind(document,'click',fn1);
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

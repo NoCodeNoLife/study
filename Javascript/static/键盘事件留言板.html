@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>键盘事件留言板</title>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oBtn = $('btn');
+            var oUl = $('ul1');
+
+            oBtn.onkeyup = function (ev) {
+                var ev = ev || event;
+                if (this.value != '') {
+                    if (ev.keyCode == 13 || ev.ctrlKey) {
+                        var oLi = document.createElement('li');
+                        oLi.innerHTML = this.value;
+
+                        if (oUl.children[0]) {
+
+
+                            oUl.insertBefore(oLi, oUl.children[0])
+                        } else {
+                            oUl.appendChild(oLi);
+                        }
+                    }
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="btn">
+<ul id="ul1"></ul>
+</body>
+</html>

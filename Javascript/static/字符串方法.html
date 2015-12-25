@@ -5,29 +5,38 @@
 <title>字符串方法</title>
 <script>
 window.onload = function () {
-	var str = 'abcdefghijklmnopqrst';
+	var str1 = '一';
+	var str2 = '二'
+
+	alert(str1.charCodeAt(0));//19968
+	alert(str2.charCodeAt(0));//20108
+
+	alert(str1.charCodeAt(0) > str2.charCodeAt(0));//false
 	
 	//alert(str.charAt(1));//返回字符串中第一个是什么；
-	//alert(str.charCodeAt(1));//把字符串中第一个转换为unicode编码输出；
-	alert(String.fromCharCode(22937,21619));//根据unicode编码返回汉字；
-	function $(id) {
-		return document.getElementById(id);	
-	}
-	var oTxt = $('txt');
-	var oBtn = $('btn');
-	
-	oBtn.onclick = function () {
-		alert(isNum(oTxt.value));
-	}
-	
-	function isNum( str ) {
-		var num = 0;
-		for(var i=0;i<str.length;i++){
-			num = str.charCodeAt(i);
-			if(num<48 || num>57)return false;//48，57是数字0-9的unicode编码；
-		}
-		return true;
-	}
+//	alert(str1.charCodeAt(0));//把字符串中第一个转换为unicode编码输出；
+
+
+
+//	alert(String.fromCharCode(22937,21619));//根据unicode编码返回汉字；
+//	function $(id) {
+//		return document.getElementById(id);
+//	}
+//	var oTxt = $('txt');
+//	var oBtn = $('btn');
+//
+//	oBtn.onclick = function () {
+//		alert(isNum(oTxt.value));
+//	}
+//
+//	function isNum( str ) {
+//		var num = 0;
+//		for(var i=0;i<str.length;i++){
+//			num = str.charCodeAt(i);
+//			if(num<48 || num>57)return false;//48，57是数字0-9的unicode编码；
+//		}
+//		return true;
+//	}
 	
 }
 </script>

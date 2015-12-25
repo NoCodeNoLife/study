@@ -5,7 +5,7 @@ function getStyle(obj, attr) {
     return obj.currentStyle ? obj.currentStyle : getComputedStyle(obj)[attr];
 }
 
-function move(obj, attr, dir, target,endFn) {//obj:移动的物体，dir:移动的步长，attr:移动的方向，target:目标点
+function move(obj, attr, dir, target, endFn) {//obj:移动的物体，dir:移动的步长，attr:移动的方向，target:目标点
     dir = parseInt(getStyle(obj, attr)) < target ? dir : -dir;
     //步长 = 当前的位置 < 目标点，步长是正整数，否则的话，步长是负数。
     clearInterval(obj.timer);

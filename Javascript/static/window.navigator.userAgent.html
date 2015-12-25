@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>window.navigator.userAgent</title>
+    <style>
+        .wrap {
+            width: 160px;
+            height: 200px;
+            border: #333 1px solid;
+            margin: 100px auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 160px;
+            height: 400px;
+            background: #c00;
+        }
+    </style>
+    <script>
+        /*
+         //alert(window.navigator.userAgent);//弹出的是字符串，每个浏览器都不一样；
+         alert(window.location);
+         //判断不同的浏览器做不同的事情；
+         if(window.navigator.userAgent.indexOf('MSIE') != -1){//如果浏览器信息中返回的字符串包含 MSIE,找到了就不等于-1，就执行下面的操作；找不到就等于-1；
+         alert('Explorer')
+         } else {
+         alert('非IE');
+         }
+         */
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+
+//            alert(oBox.scrollHeight);
+//            alert(document.documentElement.offsetHeight);//得到的值是2018，因为body默认上下各有9个像素的填充；
+                alert(document.body.offsetHeight);
+        }
+    </script>
+</head>
+<body style="height:2000px;">
+<div class="wrap" id="wrap">
+    <div class="box" id="box"></div>
+</div>
+</body>
+</html>

@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <title>数组方法(随机排序)</title>
     <script>
-        var arr = [1,2,3,4,5,6,7,8,9];
+        /*var arr = [1,2,3,4,5,6,7,8,9];
         arr.sort(function(a,b){
-            return Math.random()-0.1;s
+            return Math.random()-0.1;
         });
-        document.onclick = function () {
             alert(arr);
-        }
+            */
+
+//        alert(Math.round(3.5));//4,Math.rounud:四舍五入；
+
+        //弹出0-1之间的随机正整数：
+//        alert(Math.round(Math.random()));
+
+        //弹出0-10之间的随机正整数：
+//        alert(Math.round(Math.random()*10));
+
+        //弹出5-10之间的随机正整数：
+        alert(Math.round( Math.random()*5+5 ));
     </script>
 </head>
 <body>

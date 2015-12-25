@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select方法</title>
+    <script>
+        window.onload = function() {
+            var oBtn = document.getElementById('btn');
+            var oTxt = document.getElementById('text1');
+
+
+
+            oTxt.onfocus = function () {
+                if(this.value == '请输入内容'){
+                    this.value = '';
+                }
+            }
+
+            oTxt.onblur = function () {
+                if (this.value == ''){
+                    this.value = '请输入内容';
+                }
+            }
+
+//            oTxt.focus();//页面一进入元素就获得焦点，不需要用户鼠标点击；
+
+            oBtn.onclick = function () {
+                oTxt.select();
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="text1" value="请输入内容">
+<input type="button" value="按钮" id="btn">
+</body>
+</html>

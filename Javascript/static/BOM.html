@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM</title>
+    <script>
+        window.onload = function () {
+            var oBtn1 = document.getElementById('btn1');
+            var oBtn2 = document.getElementById('btn2');
+            var opener = null;
+
+            oBtn1.onclick = function () {
+//                window.open('', '_target');
+                opener = window.open('','_target');
+//              alert(opener == window);//false;新打开的窗口的window和当前页面的window不相等；
+                opener.document.body.style.background = 'red';//新打开的窗口的背景色是红色；
+
+            }
+
+            oBtn2.onclick = function () {
+                opener = window.open('','_target');
+                opener.close();//在当前页面关闭新打开的窗口；
+            }
+        }
+        var i=0;
+        window.onscroll = function () {//window.onscroll和window.onresize都是根据时间间隔计算的，同样的高度下，拉动滚动条的速度越快，值越小，速度越慢，值越大。根据在同一时间段触发定时器的次数有关；
+
+            document.title = i++;
+
+        }
+    </script>
+</head>
+<body style="height:3000px;">
+<input type="button" value="打开" name="btn" id="btn1">
+<input type="button" value="关闭" name="btn" id="btn2">
+</body>
+</html>

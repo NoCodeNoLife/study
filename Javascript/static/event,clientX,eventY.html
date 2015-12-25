@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+
+            function fn1(ev){
+                var ev = ev || event;
+                alert(ev.clientX);
+            }
+
+            document.onclick = function () {
+                fn1();
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

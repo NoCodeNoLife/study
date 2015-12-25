@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点事件</title>
+    <script>
+        window.onload = function () {
+            var oTxt = document.getElementById('text1');
+
+
+
+            oTxt.onfocus = function () {
+                if(this.value == '请输入内容'){
+                    this.value = '';
+                }
+            }
+
+            oTxt.onblur = function () {
+                if (this.value == ''){
+                    this.value = '请输入内容';
+                }
+            }
+
+            oTxt.focus();//页面一进入元素就获得焦点，不需要用户鼠标点击；
+
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="text1" value="请输入内容">
+
+</body>
+</html>
