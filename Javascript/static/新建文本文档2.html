@@ -23,6 +23,27 @@
     </style>
     <script src="../libs/library.js"></script>
     <script>
+<<<<<<< HEAD
+        addReady(function(){
+            var aDiv = document.getElementsByTagName('div');
+            var list = 0;//��ʼ������Ϊ0��
+            var aPos = [];
+            for (var i = 0; i < aDiv.length; i++) {
+                list = (i - i % 6) / 6;
+                aPos[i] = {left:(i % 6) * 120,top:list * 120};
+                aDiv[i].style.left = (i % 6) * 120 + 'px';
+                aDiv[i].style.top = list * 120 + 'px';
+
+                aDiv[i].onclick = function(){
+                    for(var i=0;i<aDiv.length;i++){
+                        //move(aDiv[i],{left:(i%6)*120,top:index*120});
+                        move(aDiv[i],aPos[i]);
+                    }
+                    move(this,{left:0,top:0});
+                }
+            }
+        })
+=======
         window.onload = function(){
             var aDiv = document.getElementsByTagName('div');
             var list = 0;
@@ -43,6 +64,7 @@
 				})(i);
             }
         }
+>>>>>>> a302105e264772e8fb78050f9d85a30004512315
     </script>
 
 </head>

@@ -1,0 +1,1 @@
+document.getElementById("test").innerHTML = "请修HTML、CSS等文件，查看效果。使用命令行工具(比如:PowerShell)切换到当前目录下，然后使用grunt watch 命令，并且在浏览器中打开LiveReload查看效果，感觉真是棒棒哒！";
