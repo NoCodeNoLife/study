@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽的原理</title>
+    <style>
+        #box {
+            width: 40px;
+            height: 40px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oBox = $('box');
+
+            oBox.onmousedown = function(ev) {
+                var ev = ev || event;
+                var disX = ev.clientX - this.offsetLeft;//鼠标的X轴的值 - div的offsetLeft = 鼠标到元素的left值;
+                var disY = ev.clientY - this.offsetTop;//鼠标到元素的top值；
+//
+//                alert(this.offsetLeft);
+//                alert(disX);
+
+                document.onmousemove = function(ev) {//此处用document是因为：如果用oBox的话，拖动速度快，鼠标会离开当前元素，所以用document。只要鼠标在document上移动，oBox的值就始终等于鼠标的位置；
+                    var ev = ev || event;
+                    oBox.style.left = ev.clientX - disX + 'px';//移动中鼠标的坐标 - 鼠标偶倒元素的left值 = div的位置；
+                    oBox.style.top = ev.clientY - disY + 'px';
+
+                }
+
+                document.onmouseup = function (){
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
