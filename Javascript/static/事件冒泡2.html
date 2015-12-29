@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 300px;
+            background: red;
+            position: absolute;
+            left: -100px;
+            top: 100px;
+        }
+
+        #div2 {
+            width: 24px;
+            height: 60px;
+            background: black;
+            color: white;
+            position: absolute;
+            right: -24px;
+            top: 120px;
+            text-align: center;
+            font-size: 14px;
+            font-family: "Microsoft YaHei UI Light", "Arial";
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            //利用的的是冒泡的原理，鼠标移动到div2上面的时候，把事件传递给div1，让div1来控制显示或者隐藏。
+            var oDiv1 = document.getElementById('div1');
+
+            oDiv1.onmouseover = function () {
+                this.style.left = '0px';
+            }
+
+            oDiv1.onmouseout = function () {
+                this.style.left = '-100px';
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">分享到</div>
+</div>
+</body>
+</html>

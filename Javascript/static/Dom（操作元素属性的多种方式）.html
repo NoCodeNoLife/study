@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dom（操作元素属性的多种方式）</title>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+            var oBox = document.getElementById('box');
+            oBtn.onclick = function (){
+                var oLi = document.createElement('li');
+                oLi.innerHTML = '12345';
+//                oBox.appendChild(oLi);//插入到最后一位；
+                oBox.insertBefore(oLi,oBox.children[0]);//插入到第一位；
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" id="btn"/>
+<ul id="box"></ul>
+</body>
+</html>

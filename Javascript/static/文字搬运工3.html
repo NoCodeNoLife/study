@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>文字搬运工</title>
+  <style type="text/css">
+	/*height:205px;*/
+	p,ul,li,textarea{margin:0;padding:0;}
+	li{list-style:none;}
+	a{text-decoration:none;}
+	.clear:after{content:"";display:block;clear:both;}
+	
+
+	#box{width:730px;border:10px solid #c0c0c0;padding:9px;margin:30px auto;}
+	#box div{float:left;}
+	textarea, .rightContent{width:280px;height:177px;border:1px dashed #c0c0c0;font-size:12px;line-height:20px;padding:14px 9px;text-align:justify;text-justify:inter-ideograph;}
+	textarea{overflow:hidden;background:#efefd6;resize:none;word-break:break-all;float:left;}
+	.rightContent{background:#63eff7;}
+	.mid{width:112px;height:207px;padding:0 7px;position:relative;}
+	a,span{width:112px;height:37px;font-size:12px;text-align:center;line-height:37px;display:block;color:#fff;position:absolute;}
+	span{background:#fff;opacity:0.7;filter:alpha(opacity=70);}
+	a{z-index:1;background:#c63908;}
+	p{position:absolute;top:47px;width:112px;text-align:center;}
+	ul{padding:10px 11px 0 14px;position:absolute;top:67px;}
+	li{width:7px;height:9px;overflow:hidden;float:left;margin-right:3px;background:#efc663;}
+	.active{background:#ff3131;}
+
+  </style>
+  <script type="text/javascript">
+	window.onload = function(){
+		var oRi = getByClass(document,'rightContent')[0];
+		var oA = document.getElementsByTagName('a')[0];
+		var oP = document.getElementsByTagName('p')[0];
+		var oU = document.getElementsByTagName('ul')[0];
+		var oTxt = document.getElementById('txt');
+		var oTxt2 = document.getElementById('text2');
+		var aLi = document.getElementsByTagName('li');
+		var num = 0;
+		var oTxtNum = '';
+		var timer = null;
+		var onOff = true;
+
+		oA.onclick = function(){
+			
+			
+			if(onOff){
+				clearInterval(timer);
+				if(oTxt.value.search(/^\s*$/) == 0 ){
+					return;
+				}
+				onOff = false;
+				oA.style.zIndex = 0;
+				oA.style.color = "#000";
+				oU.style.display = 'block';
+				oRi.innerHTML = '';
+				
+				oTxtNum = oTxt.value.length;
+		
+				timer = setInterval(runFn,60);
+
+			}
+
+			
+		}
+
+
+		function runFn(){	
+
+			var str = oTxt.value;
+			var arr = str.split('');
+			var oRemove = arr.pop();
+			oTxt.value = arr.join('');
+
+			oRi.innerHTML = oRemove+oRi.innerHTML;
+			oP.innerHTML = oRi.innerHTML.length+'/'+ oTxtNum;
+
+			if(oTxt.value.length == 0){
+				oU.style.display = 'none';
+				oA.style.zIndex = 1;
+				oA.style.color = "#fff";
+				onOff = true;
+				clearInterval(timer);
+			}
+
+			for(var i=0;i<aLi.length;i++){
+				aLi[i].className = '';
+			}
+			aLi[num%aLi.length].className = 'active';
+			num++;
+
+		}
+
+		
+		
+
+
+		
+	}
+
+	function getByClass(obj,attr){
+		var arrObj = obj.getElementsByTagName('*');
+		var len = arrObj.length;
+		var arr = [];
+		for(var i=0;i<len;i++){
+			if(arrObj[i].className == attr){
+				arr.push(arrObj[i]);
+			}
+		}
+
+		return arr;
+	}
+  </script>
+ </head>
+ <body>
+ <div id="box" class="clear">
+	<textarea id="txt">秒味课堂是一支充满温馨并且极富人情味的IT团队；2010~2011年，秒味深度关注WEB前端开发领域，为此精心研发出一套灵活而充满趣味的JavaScript课程。2011~2013年，秒味精准研发出最新HTML5\CSS3课程，并推出远程培训课堂方案，尝试将线下优良的培训模式移植到远程网络培训中，希望尽最大努力，将一种快乐愉悦的授课体验、结合HTML\CSS\JS知识点，精准传递给秒味课堂的每一位学员。</textarea>
+	<div class="mid">
+		<a href="#">把文字右移动</a><span></span>
+		<p>0/0</p>
+		<ul class="clear">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="rightContent"></div>
+ </div>
+ </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            padding: 40px 50px;
+        }
+
+        #div1 {
+            background: red;
+            position: relative;
+        }
+
+        #div2 {
+            background: green;
+            position: relative;
+        }
+
+        #div3 {
+            background: orange;
+            position: relative;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv3 = document.getElementById('div3');
+            var iTop = 0; //初始化为 0
+            var obj = oDiv3;
+//            //取当前元素到页面的绝对距离的方法,推理过程：
+//            while( obj ) {//如果当前div存在，
+//                alert(obj.id + ':' + obj.offsetTop);
+//                iTop += obj.offsetTop;
+//                obj = obj.offsetParent;
+//                alert(obj.id);
+//            }
+//            alert(iTop);
+
+            var oP = getPos( oDiv3 );
+            alert(oP.left );
+            alert( oP.top );
+
+        }
+
+        //取当前元素到页面的绝对距离的方法：
+        function getPos(obj) {
+            var pos = {left:0,top:0}
+            while( obj ) {
+                pos.left += obj.offsetLeft;//因为上面是循环，也就是obj不是一个，所以肯定不是一次，所以要用+=；
+                pos.top += obj.offsetTop;
+                obj = obj.offsetParent;
+            }
+            return pos;
+        }
+
+
+    </script>
+</head>
+<body id="body1">
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+</body>
+</html>

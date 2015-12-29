@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onousedown</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #up {
+            width: 100px;
+            height: 40px;
+            background: #c00;
+            display: block;
+            margin: 0 auto;
+        }
+
+        #wrap {
+            width: 200px;
+            padding: 20px;
+            height: 500px;
+            border: #333 1px solid;
+            margin: 50px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #box {
+            width: 200px;
+            position: absolute;
+            left: 20px;
+            top: 0;
+        }
+
+        #box li {
+            width: 200px;
+            border-bottom: #333 1px solid;
+            height: 20px;
+            background: #ccc;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oUp = $('up');
+            var oBox = $('box');
+            var oWrap = $('wrap');
+            var aLi = oBox.getElementsByTagName('li');
+            var timer = null;
+
+            oBox.style.height = aLi[0].offsetHeight * aLi.length + 'px';
+//            var stopPos = oBox.scrollHeight - oWrap.offsetHeight;
+
+            function getStyle() {
+                var pos = oBox.currentStyle ? oBox.currentStyle.top : getComputedStyle(oBox)['top'];
+                return pos;
+            }
+
+            oUp.onmousedown = function () {
+
+
+                timer = setInterval(function(){
+                    var num = parseInt(getStyle());
+
+                    if (num == -(oBox.scrollHeight - oWrap.offsetHeight) ) {
+
+                        clearInterval(timer)
+
+                    } else {
+                        oBox.style.top = num - 2 + 'px';
+                    }
+                }, 30);
+
+            }
+
+            oUp.onmouseup = function () {
+                clearInterval(timer);
+            }
+
+//            function fnTop() {
+//                var num = parseInt(getStyle());
+//                if (num == 1600 ) {
+//
+//                    clearInterval(timer)
+//
+//                    oBox.style.top = -1600 + 'px';
+//
+//
+//                } else {
+//                    oBox.style.top = num - 20 + 'px';
+//                }
+//            }
+
+        }
+    </script>
+</head>
+<body>
+
+<span id="up"></span>
+<div id="wrap">
+    <ul id="box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

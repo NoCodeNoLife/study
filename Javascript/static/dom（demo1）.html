@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            var oUl = document.getElementById('ul1');
+            var aLi = oUl.childNodes;
+
+            for(var i=0;i<aLi.length;i++){
+                if( aLi[i].nodeType == 1 ){//li属于节点类型，节点类型的值为1，所以判断值是不是等于1就知道是不是节点类型，是节点类型的话，就走下面的操作。
+                    aLi[i].style.background = 'red';
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1">
+    <li>1234</li>
+    <li>1234</li>
+    <li>1234</li>
+    <li>1234</li>
+</ul>
+</body>
+</html>

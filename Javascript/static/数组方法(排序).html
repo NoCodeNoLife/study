@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>数组方法(排序)</title>
+    <script>
+        //sort:按照从小到大的排序方法进行排序；
+//        var arr = ['q', 'd', 's', 'a'];
+//        arr.sort();//按照字符编码进行了排序；
+//        alert(arr);
+//        var arr2 = [1,2,3,67,8,9];//
+//        arr2.sort();
+//        alert(arr2);//排序有错误，按照字符串的unicode编码进行了排序，也就是给数组里面的每个都加上引号'',然后按照字符串的unicode编码进行排序，所以67是一个整体，也就是'67','8',6的unicode编码比8小，所以排在8的前面，所以，修正如下：
+        var arr2 = [1,2,3,67,8,9];
+        arr2.sort(function (a,b) {
+            return a-b;//随机从数组arr2里面抽出两个数字进行比较，如果a-b是整数，就说明a比b大，所以sort排序就会交换a和b的位置，如果两个数相等，就return 0；
+        });
+        alert(arr2);
+
+        var arr3 = ['10px','30px','4px','1px','90px'];
+        arr3.sort(function(a,b){
+            return parseInt(a)-parseInt(b);
+        });
+        alert(arr3);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

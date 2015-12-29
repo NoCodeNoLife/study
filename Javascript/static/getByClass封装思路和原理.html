@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>getByClass函数封装(思路和原理)</title>
+    <script>
+        function getByClass (parent,tagname,cls) {
+//            var aEls = parent.getElementsByTagName('*');//获取页面中所有的元素；此方法不适合这种情况：<li class="box"></li><p class="box"></p>,如果只想选择classname为box的li元素，就会把p也选上，所以此处应该用传参，修改如下：
+            var aEls = parent.getElementsByTagName(tagname);
+            var arr = [];//声明一个数组，用来存放被选中的元素；
+
+            for(var i=0;i<aEls.length;i++){//循环获取到的每一个元素；
+                //1.方法不适合这种情况：<li class="box box1 box2"></li>
+//                if(aEls[i].className == cls){//如果某一个元素的className == 传参进来的className;
+//                    arr.push(aEls[i]);//就把这个元素放到数组里面；
+//                }
+
+                //2.改进：思路：把每一个aEls的className用split进行切割，然后得到一个数组，拿数组里面的每一个值和传参进来的classname进行比较；这里切分出来后得到的就是classname
+                var aClassName = aEls[i].className.split(' ');
+                for( var j=0; j<aClassName.length; j++ ){
+                    if(aClassName[j] == cls){//所以这里不要写成aClassName[j].classname == cls;
+                        arr.push( aEls[i] );
+                        break;//这里用break是为了防止这样的情况：<li classname="box box"></li>,加break的意思就是在当前元素里面只找一次，然后就返回，进行下一个元素的寻找。
+                    }
+                }
+            }
+            return arr;//最后返回这个数组；此时这个数组里面就包含className=='box'的元素；
+        }
+        window.onload = function () {
+            var oWrap1 = document.getElementById('wrap1');
+            var oWrap2 = document.getElementById('wrap2');
+            var aLi = getByClass( oWrap1,'li', 'box' );
+            var list = getByClass(oWrap2,'li','box1')
+            alert(aLi.length);
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].style.background = 'red';
+            }
+
+            alert(list.length);
+            for(var i=0;i<list.length;i++){
+                list[i].style.background = 'blue';
+            }
+
+            console.log( aLi );
+        }
+    </script>
+</head>
+<body>
+<ul id="wrap1">
+    <li class="box"></li>
+    <li class="box box1"></li>
+    <li class="box"></li>
+    <li class="box box1"></li>
+</ul>
+<ul id="wrap2">
+    <li class="box"></li>
+    <li class="box box1"></li>
+    <li class="box"></li>
+    <li class="box box1"></li>
+</ul>
+<p class="box"></p>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload =function () {
+            var oForm = document.getElementById('form1');
+
+            var oInput = oForm.input1;//oForm.input1:这里的input1指的是input的name；
+
+            var re = oForm.re;
+
+            re.onclick = function () {
+
+                // var isTrue = confirm('你确定要重置内容吗?');//confirm:选择对话框，弹出的对话框有选择和取消按钮；点击确定返回true，点击取消返回false；可以根据这个属性来判断用户是否真的要充值内容；示例如下：
+
+                //方法1.一下是推理过程；可以简写成方法2的样子：
+//                if( isTrue ){//如果confirm返回的是true；说明用户确定要重置内容，所以根据confirm返回true就重置返回false就不重置的特性，我们也返回一个true就可以；
+//                    return true;
+//                } else {//如果confirm返回的是false；说明用户取消重置内容；
+//                    return false;
+//                }
+
+                //方法2：如果写成方法2的样子，就可以把上面var isTrue = confirm('你确定要重置内容吗?');的声明取消掉；
+                return confirm('你确定要重置内容吗?');
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<form action="" id="form1">
+    <input type="text" name="input1">
+    <input type="text" name="input2">
+    <input type="reset" name="re">
+</form>
+</body>
+</html>

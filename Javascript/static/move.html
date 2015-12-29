@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>move</title>
+    <style>
+        #btn, #down {
+            width: 200px;
+            height: 20px;
+            display: block;
+            background: #ccc;
+        }
+
+        #down{
+            background: #c00;
+            margin-left: 210px;
+        }
+
+        #wrap {
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            border: #333 1px solid;
+            margin: 0 auto;
+        }
+
+        #box {
+            width: 300px;
+            height: 1000px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #63eff7;
+        }
+
+        #box p {
+            height: 50px;
+            line-height: 50px;
+            color: #c00;
+            font-size: 30px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oBtn = $('btn');
+            var height = $('wrap').clientHeight;
+            var oBox = $('box');
+            var oDown = $('down');
+
+            var num = 0;
+            var timer = null;
+
+            oBtn.onmousedown = function () {
+                timer = setInterval(fn1, 30);
+            }
+
+            oBtn.onmouseup = function () {
+                clearInterval(timer);
+            }
+
+            oDown.onmousedown = function () {
+                timer = setInterval(fn2, 30);
+            }
+
+            oDown.onmouseup = function () {
+                clearInterval(timer);
+            }
+
+
+            function fn2() {
+                num += 10;
+                if (num >= 0) {
+                    clearInterval(timer);
+                    num = 0;
+                }
+
+                oBox.style.top = num + 'px';
+            }
+
+            function fn1() {
+                num -= 10;
+//                console.log(num);
+                if (num <= -height) {
+                    clearInterval(timer);
+                    num = -height;
+                }
+
+                oBox.style.top = num + 'px';
+
+            }
+        }
+    </script>
+</head>
+<body>
+<span id="btn"></span>
+<span id="down"></span>
+<div id="wrap">
+    <div id="box">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p>end</p>
+
+
+    </div>
+</div>
+</body>
+</html>

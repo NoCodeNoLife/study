@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            padding: 40px;
+        }
+        #div1{
+            background: red;
+        }
+        #div2{
+            background: green;
+        }
+        #div3{
+            background: blue;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id){
+                return document.getElementById(id);
+            }
+            var oDiv1 = $('div1');
+            var oDiv2 = $('div2');
+            var oDiv3 = $('div3');
+
+            function fn1(){
+                alert(this.id);
+            }
+
+            oDiv1.onclick = fn1;
+            oDiv2.onclick = fn1;
+            oDiv3.onclick = fn1;
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <Script>
+        window.onload = function (){
+            function $(id){
+                return  document.getElementById(id);
+            }
+            var oList = document.getElementsByClassName('list');
+            var oStrong = document.getElementsByTagName('strong')[0];
+            var aSpan = document.getElementsByTagName('span');
+            function fn (obj){
+                var ojian = obj.getElementsByTagName('a')[0];
+                var ojia = obj.getElementsByTagName('a')[1];
+                var oSpan = obj.getElementsByTagName('span')[0];
+                var num = 0;
+
+                ojia.onclick = function(){
+                    num++;
+                    oSpan.innerHTML = num;
+                    oStrong.innerHTML = Number(aSpan[0].innerHTML) + Number(aSpan[1].innerHTML);
+                }
+
+                ojian.onclick = function () {
+                    num--;
+                    oStrong.innerHTML = Number(aSpan[0].innerHTML) - Number(aSpan[1].innerHTML);
+                }
+            }
+
+
+
+            for(var i=0;i<oList.length;i++){
+                fn(oList[i]);
+            }
+        }
+    </Script>
+</head>
+<body>
+<p class="list">
+    <a   href="javascript:;">-</a>
+    <span  >0</span>
+    <a   href="javascript:;">+</a>
+</p>
+<p class="list">
+    <a   href="javascript:;">-</a>
+    <span  >0</span>
+    <a   href="javascript:;">+</a>
+</p>
+<p class="list">
+    <a   href="javascript:;">-</a>
+    <span  >0</span>
+    <a   href="javascript:;">+</a>
+</p>
+<p class="list">
+    <a   href="javascript:;">-</a>
+    <span  >0</span>
+    <a   href="javascript:;">+</a>
+</p>
+<strong></strong>
+</body>
+</html>
