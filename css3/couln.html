@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #container {
+            /*column-count 为列数； column-gap 为每列间隔距离； column-rule 为间隔边线大小； column-width 为每列宽度；*/
+            width: 1000px;
+            height: 1000px;
+            background: #eee;
+            margin: 0 auto;
+            -webkit-column-count: 5; /*5列*/
+            -webkit-column-gap: 10px; /*每列10px*/
+            /*-webkit-column-rule: 5px solid #333; *//*间隔边线*/
+            -webkit-column-width: 210px; /*没列宽210px*/
+
+            -moz-column-count: 5;
+            -moz-column-gap: 20px ;
+            /*-moz-column-rule : 5px solid #333;*/
+            -moz-column-width: 210px;
+
+            column-count: 5;
+            column-gap: 10px;
+            /*column-rule: 5px solid #333;*/
+            column-width: 210px;
+            overflow: hidden;
+        }
+
+        #container a {
+            float: left;
+            width: 210px;
+            height: 210px;
+            display: block;
+            background: #c00;
+            margin: 10px 0;
+        }
+        #container a:first-child{
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a>
+    <a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a>
+    <a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a>
+    <a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a>
+    <a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a><a href="javascript:;"></a>
+    
+</div>
+</body>
+</html>
