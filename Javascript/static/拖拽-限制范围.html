@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽-限制范围</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+            left: 0;
+            top: 0;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            function $(id){
+                return document.getElementById(id);
+            }
+            var oBox = $( 'box' );
+
+            oBox.onmousedown = function ( ev ){
+                var ev = ev || event;
+                var disX = ev.clientX - this.offsetLeft;
+                var disY = ev.clientY - this.offsetTop;
+
+                if( oBox.setCapture ){
+                    oBox.setCapture();
+                }
+
+                document.onmousemove = function ( ev ) {
+                    var ev = ev || event;
+                    var L = ev.clientX - disX;//提前存好left和top的值，
+                    var T = ev.clientY - disY;//提前存好left和top的值，
+
+                    if( L < 100 ){
+                        L = 0;
+                    } else if( L > document.documentElement.clientWidth - oBox.offsetWidth ){
+//                      L > 可视去的宽度 - oBox的宽度，也就是oBox可以移动的范围；
+                        L = document.documentElement.clientWidth - oBox.offsetWidth;
+//                        L = 可视区的宽度 - oBox的宽度，oBox可以移动的范围；
+                    }
+
+                    if( T < 0 ){
+                        T = 0;
+                    }else if( T > document.documentElement.clientHeight - oBox.offsetHeight ){
+                        T = document.documentElement.clientHeight - oBox.offsetHeight
+                    }
+
+                    oBox.style.left = L + 'px';
+                    oBox.style.top = T + 'px';
+                }
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+
+                    if( oBox.releaseCapture ){
+                        oBox.releaseCapture();
+                    }
+
+                }
+
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

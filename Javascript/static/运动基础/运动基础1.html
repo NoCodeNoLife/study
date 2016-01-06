@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运动的基本原理</title>
+    <style>
+        #box {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            left: 10px;
+            top: 30px;
+        }
+    </style>
+    <script>
+        window.onload = function  () {
+            var oBtn = document.getElementById('btn');
+            var oBox = document.getElementById('box');
+            var timer = null;
+
+            oBtn.onclick = function () {
+                clearInterval(timer);
+                timer = setInterval(function(){
+                    if(oBox.offsetLeft == 500){//运动的距离必须被速度整除才行，500/10，如果运动的速度不是10，而是7或者3之类不可以被运动距离整除的，这个判断就不会生效。
+                        clearInterval(timer);
+                    }else{
+                        oBox.style.left = oBox.offsetLeft + 10 + 'px';
+                    }
+                },30);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多物体多属性运动6</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            background: #c00;
+            left: -100px;
+            top: 100px;
+        }
+
+        #div2 {
+            width: 30px;
+            height: 60px;
+            color: #fff;
+            background: black;
+            text-align: center;
+            position: absolute;
+            right: -30px;
+            top: 70px;
+        }
+
+        #div3 {
+            width: 150px;
+            height: 150px;
+            background: blue;
+            position: absolute;
+            left: 300px;
+            top: 150px;
+            opacity: .3;
+            filter: alpha(opacity=30);
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv1 = document.getElementById('div1');
+            var oDiv3 = document.getElementById('div3');
+//            var timer = null;
+
+            oDiv1.onmouseover = function () {
+                move(this, 'left', 0, 10);
+            }
+
+            oDiv1.onmouseout = function () {
+                move(this, 'left', -100, -10);
+            }
+
+            oDiv3.onmouseover = function () {
+                move(this, 'opacity', 100,10);
+            }
+
+            oDiv3.onmouseout = function () {
+                move(this, 'opacity', 30,-10);
+            }
+
+            function getStyle(obj,attr){
+                return obj.currentStyle ? obj.currentStyle : getComputedStyle(obj,false)[attr];
+            }
+//obj:运动的元素,attr:运动的属性,target:目标点;speed:运动的速度;
+            function move(obj, attr, target, speed) {
+                clearInterval(obj.timer);
+                var iCur = 0;
+                obj.timer = setInterval(function () {
+
+                    if(attr == 'opacity'){//如果传进来的参数是opacity，
+                        iCur = Math.round(getStyle(oDiv3,'opacity') * 100);
+                    } else {//如果传进来的参数不是opacity，那么就直接得到元素的行间样式;
+                        iCur = parseInt(getStyle(obj,attr));
+                    }
+
+                    if(iCur == target){
+                        clearInterval(obj.timer);
+                    }else{
+                        if(attr == 'opacity'){
+                            obj.style.opacity = (iCur + speed) / 100;
+                            obj.style.filter = 'filter(alpha='+(iCur+speed)+')';
+                        }else{
+                            obj.style[attr] = iCur + speed + 'px';
+                        }
+
+                    }
+                }, 30);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">分享到</div>
+</div>
+<div id="div3"></div>
+</body>
+</html>

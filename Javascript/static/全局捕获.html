@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局捕获</title>
+    <script>
+        //全局捕获：setCaptrue:IE下有这个方法，FF下也有，但是不执行，chrome下没有这个方法；也就是出现了兼容性问题；
+        //释放全局捕获：releaseCaptrue;
+
+        window.onload = function () {
+            var aIpnput = document.getElementsByTagName( 'input' );
+            aIpnput[0].setCapture();//设置全局捕获;当我们给一个元素设置全局捕获以后，那么这个元素就会坚挺后续发生的所有事件;当有事件发生的时候，就会被当前设置了全局捕获的元素所触发;
+            aIpnput[0].onclick = function () {
+                alert( '1' );
+            }
+            aIpnput[1].onclick = function () {
+                alert( '2' );
+            }
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="按钮1">
+<input type="button" value="按钮2">
+</body>
+</html>
