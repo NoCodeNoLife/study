@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片延迟加载</title>
+    <style>
+        body {
+            padding: 5%;
+        }
+
+        img {
+            width: 180px;
+            height: 240px;
+            display: block;
+            float: left;
+            border: black 1px solid;
+            margin: 0 10px 10px 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var aImg = oBox.getElementsByTagName('img');
+
+            //思路:当滚动距离+可视去高度大于图片到顶部的距离的时候，说明图片已经进入到了可视区，就替换为正确的src路径。
+
+            function showImg() {
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;//获取滚动条滚动的高度;
+                var clientH = document.documentElement.clientHeight;//获取可视区高度;
+                for (var i = 0; i < aImg.length; i++) {
+                    if ( !aImg[i].isload && getTop(aImg[i]) < scrollTop + clientH ) {// !aImg[i].osload:意思就是aImg[i].isload值为false;值为false，说明图片没有被加载过;图片没有被加载过,当用户华东滚动条的时候就可以执行showImg()函数;如果被加载过,值就是true,当用户滑动滚动条就不执行showImg()函数,避免造成资源浪费.!aImg[i].isload放在连个判断条件的前面也是优化代码的一部分,当执行到!aImg[i].isload发现为false的时候就不会执行第二个判断条件了,不用进行重复无用的计算.
+                        //alert(i);只会弹出在可视区的图片的个数;不在可视区的弹不出来.
+//                        alert(aImg[i].getAttribute('_src'))//getAttribute:获取自定义属性值,这里的_src就是自定义属性,得到的是_src的属性值，也就是路径;
+                     aImg[i].src = aImg[i].getAttribute('_src');//这句话的意思:aImg[i]的src = 通过getAttribu获取到的自定义属性值，也就是把getAttribute获取到的路径赋值给aImg;
+                        aImg[i].isload = true;//给已经加载过的img添加自定义属性isload,值为true;当isload值为true的时候，说明这个图片已经加载过了，避免用户下拉页面加载图片后在往上滑动滚动条,后在下拉滚动条重复执行showImg()函数，这样会造成资源浪费;
+                    }
+                }
+
+            }
+
+            function getTop(obj) {
+                var iTop = 0;
+                while (obj) {
+                    iTop += obj.offsetTop;
+                    obj = obj.offsetParent;
+                }
+                return iTop;
+            }
+
+            showImg();
+
+            window.onscroll = showImg;
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+    <img _src="../../images/e.jpg" alt="">
+    <img _src="../../images/f.jpg" alt="">
+    <img _src="../../images/g.jpg" alt="">
+    <img _src="../../images/h.jpg" alt="">
+    <img _src="../../images/i.jpg" alt="">
+    <img _src="../../images/j.jpg" alt="">
+</div>
+</body>
+</html>

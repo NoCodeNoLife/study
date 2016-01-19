@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预加载</title>
+    <script>
+        window.onload = function () {
+            var oImg = document.getElementById('img1');
+            var oImage = new Image();//image对象;
+
+            var imgarr = [//用来存放图片地址;
+                '../../images/0.JPG',
+                '../../images/1.JPG',
+                '../../images/2.JPG',
+                '../../images/3.JPG',
+                '../../images/4.JPG',
+                '../../images/5.JPG',
+                '../../images/6.JPG',
+            ];
+
+            var iCur = 0;//当前下载到第几张，默认第一张;
+
+            function download() {
+                oImage.src = imgarr[iCur];
+
+                //oImage.onload:图片加载完成后执行的函数;对应的还有onerror:图片加载失败后执行;比如可以把下载下来的图片数量打印出来:
+                document.title = iCur + '/' + imgarr.length;
+
+                oImage.onload = function () {
+
+                    iCur++;//当前数量增加;
+
+                    if (iCur < imgarr.length) {//如果下载的属相小于数量存放的图片的数量，就继续执行download函数继续下载
+                        download();//递归;
+                    }
+
+                }
+
+                oImage.onerror = function () {
+                    alert('图片加载失败！');
+                }
+
+            }
+
+            download();//执行download函数;
+
+            var i = 0;//代表用户点击的是第几张图片，或者用户看到的是第几张图片。
+
+            oImg.onclick = function () {
+
+                i++;//用户点击了当前的图片，i 就增加1，
+
+                alert(i);
+
+                if (i < imgarr.length) {//如果 i 小于存放图片的数量，i 就一直增加，oImg的地址就一直变化为当前的 i ;
+
+                    oImg.src = imgarr[i];
+
+                }
+
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<img src="../../images/0.JPG" alt="" id="img1">
+</body>
+</html>

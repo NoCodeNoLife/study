@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>摩擦,减速,运动</title>
+    <style>
+        #box{
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+            left:800px;
+            top: 30px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('btn');
+            var oBox = document.getElementById('box');
+            var timer = null;
+
+            oBtn.onclick = function() {
+
+                clearInterval(timer);
+
+                var speed = 10;//speed=10：初始速度。摩擦运动的原理：过程中，运动的速度越来越慢；也就是speed在不断减小；越接近目标点，速度越小；
+
+                timer = setInterval(function(){
+
+//                    speed -=1; //每次速度减少一个像素;这样的话下面加上的速度实际上是加了一个负数，所以会倒着跑；
+
+                    speed = Math.ceil((500 - oBox.offsetLeft) / 8);//此种方法可以解决方向的问题。可以改变oBox的style left属性试试。
+//Math.ceil():向上取整;  Math.floor():向下取整;
+                    speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+                    if(oBox.offsetLeft == 500){
+                        clearInterval(timer);
+                    }else{
+                        oBox.style.left = oBox.offsetLeft + speed + 'px';
+                    }
+                },30);
+
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="box"></div>
+</body>
+</html>
