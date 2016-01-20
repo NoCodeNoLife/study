@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>碰撞检测</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+        }
+
+        #box1 {
+            left: 0;
+            top: 0;
+        }
+
+        #box2 {
+            left: 50%;
+            top: 50%;
+            margin: -100px 0 0 -100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oBox1 = $('box1');
+            var oBox2 = $('box2');
+
+            oBox1.onmousedown = function (ev) {
+                var ev = ev || event;
+                var disX = ev.clientX - this.offsetLeft;
+                var disY = ev.clientY - this.offsetTop;
+
+                if (oBox1.setCapture) {
+                    oBox1.setCapture();
+                }
+
+                document.onmousemove = function (ev) {
+                    var ev = ev || event;
+                    var L = ev.clientX - disX;
+                    var T = ev.clientY - disY;
+
+                    var L1 = L;
+                    var R1 = L + oBox1.offsetWidth;
+                    var T1 = T;
+                    var B1 = T + oBox1.offsetHeight;
+
+                    var L2 = oBox2.offsetLeft;
+                    var R2 = L2 + oBox2.offsetWidth;
+                    var T2 = oBox2.offsetTop;
+                    var B2 = T2 + oBox2.offsetHeight;
+
+                    if (R1 < L2 || L1 > R2 || B1 < T2 || T1 > B2) {
+                        oBox2.style.background = 'red';
+                    } else {
+                        oBox2.style.background = 'green';
+                    }
+
+                    if (L < 0) {//限定左右移动的距离;
+                        L = 0;
+                    } else if (L > document.documentElement.clientWidth - oBox1.offsetWidth) {
+                        L = document.documentElement.clientWidth - oBox1.offsetWidth;
+                    }
+
+                    if (T < 0) {//限制上下移动的距离;
+                        T = 0;
+                    } else if (T > document.documentElement.clientHeight - oBox1.offsetHeight) {
+                        T = document.documentElement.clientHeight - oBox1.offsetHeight;
+                    }
+
+                    oBox1.style.left = L + 'px';
+                    oBox1.style.top = T + 'px';
+                }
+
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+
+                    if (oBox1.releaseCapture) {
+                        oBox1.releaseCapture();
+                    }
+
+                }
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="box1"></div>
+<div id="box2"></div>
+</body>
+</html>

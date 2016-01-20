@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多图片展开收缩实例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;;
+            list-style: none;
+        }
+
+        ul {
+            margin: 100px auto;
+            width: 330px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        #ul1 li {
+            width: 100px;
+            height: 100px;
+            background: red;
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+
+    </style>
+    <script>
+
+        function startMove(obj, json, fn) {
+            clearInterval(obj.iTimer);
+            var iCur = 0;
+            var iSpeed = 0;
+
+            obj.iTimer = setInterval(function () {
+
+                var iBtn = true;
+
+                for (var attr in json) {
+
+                    var iTarget = json[attr];
+
+                    if (attr == 'opacity') {
+                        iCur = Math.round(css(obj, 'opacity') * 100);
+                    } else {
+                        iCur = parseInt(css(obj, attr));
+                    }
+
+                    iSpeed = ( iTarget - iCur ) / 8;
+                    iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+
+                    if (iCur != iTarget) {
+                        iBtn = false;
+                        if (attr == 'opacity') {
+                            obj.style.opacity = (iCur + iSpeed) / 100;
+                            obj.style.filter = 'alpha(opacity=' + (iCur + iSpeed) + ')';
+                        } else {
+                            obj.style[attr] = iCur + iSpeed + 'px';
+                        }
+                    }
+
+                }
+
+                if (iBtn) {
+                    clearInterval(obj.iTimer);
+                    fn && fn.call(obj);
+                }
+
+            }, 30);
+        }
+
+        function css(obj, attr) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return getComputedStyle(obj, false)[attr];
+            }
+        }
+
+        window.onload = function () {
+            var oUl = document.getElementById('ul1');
+            var aLi = oUl.getElementsByTagName('li');
+            var arrPosi = [];
+            var zIndex = 1;
+
+            for (var i = 0; i < aLi.length; i++) {
+                arrPosi.push({
+                    left: aLi[i].offsetLeft,
+                    top: aLi[i].offsetTop
+                });//用来存放每个li最初的left和top值；
+            }
+
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].style.position = 'absolute';//把每个li转换为定位布局;
+                aLi[i].style.left = arrPosi[i].left + 'px';//每个li转换为定位布局之后，left值等于最初li的left值
+                aLi[i].style.top = arrPosi[i].top + 'px';//每个li转换为定位布局之后，top值等于最初li的top值
+                aLi[i].style.margin = '0px';//去掉style里面的每个li的margin值，以免转换定位布局之后位置有偏移。
+
+                aLi[i].index = i;
+                aLi[i].onmouseover = function() {
+
+                    this.style.zIndex = zIndex++;
+
+                    startMove( this, {
+                        width : 200,
+                        height : 200,
+                        left : arrPosi[this.index].left - 50,//left值等于最初li的left值减去50；
+                        top : arrPosi[this.index].top - 50
+                    });
+
+                }
+
+
+                aLi[i].onmouseout = function () {
+                    startMove(this, {
+                        width: 100,
+                        height: 100,
+                        left:arrPosi[this.index].left,//left值恢复成最初的arrPosi里面存放的left值；
+                        top:arrPosi[this.index].top
+                    })
+                }
+
+            }
+
+        }
+    </script>
+</head>
+<body>
+<ul id="ul1">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

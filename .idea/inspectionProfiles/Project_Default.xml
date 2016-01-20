@@ -1,0 +1,25 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0" is_locked="false">
+    <option name="myName" value="Project Default" />
+    <option name="myLocal" value="false" />
+    <inspection_tool class="CheckNodeTest" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="CssNoGenericFontName" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="HardwiredNamespacePrefix" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="ImplicitTypeConversion" enabled="true" level="ERROR" enabled_by_default="true">
+      <option name="BITS" value="1720" />
+      <option name="FLAG_EXPLICIT_CONVERSION" value="true" />
+      <option name="IGNORE_NODESET_TO_BOOLEAN_VIA_STRING" value="true" />
+    </inspection_tool>
+    <inspection_tool class="IndexZeroUsage" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="JSHint" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="JSLint" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="RedundantTypeConversion" enabled="true" level="ERROR" enabled_by_default="true">
+      <option name="CHECK_ANY" value="false" />
+    </inspection_tool>
+    <inspection_tool class="UnresolvedReference" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
+    <inspection_tool class="XsltDeclarations" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
+    <inspection_tool class="XsltTemplateInvocation" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
+    <inspection_tool class="XsltUnusedDeclaration" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
+    <inspection_tool class="XsltVariableShadowing" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
+  </profile>
+</component>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            border: black 1px solid;
+        }
+
+        #box {
+            width: 300px;
+            height: 30px;
+            line-height: 30px;;
+        }
+
+        #box li {
+            width: 100px;
+            float: left;
+            text-align: center;
+            list-style: none;
+            background: #ccc;
+        }
+
+        #main li {
+            width: 300px;
+            height: 170px;
+            text-align: center;
+            display: none;
+            background: yellow;
+            color: red;
+        }
+
+        #main li p {
+            width: 300px;
+            height: 55px;
+            border-bottom: #c00 1px solid;
+        }
+
+        #main li p em {
+            display: block;
+            width: 300px;
+            height: 55px;
+            text-align: center;
+            line-height: 55px;
+            color: green;
+            display: none;
+        }
+
+        #box li.active1 {
+            background: red;
+            color: #fff;
+        }
+
+        #box li.active2 {
+            background: blue;
+            color: #fff;
+        }
+
+        #box li.active3 {
+            background: green;
+            color: #fff;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBtn = document.getElementById('box').getElementsByTagName('li');
+            var oMain = document.getElementById('main').getElementsByTagName('li');
+
+            for (var i = 0; i < oBtn.length; i++) {
+                oBtn[i].index = i;
+                oBtn[i].onclick = function () {
+
+                    for (var i = 0; i < oBtn.length; i++) {
+                        oBtn[i].className = '';
+                        oMain[i].style.display = 'none';
+                    }
+
+                    if (this.index == 0) {
+                        this.className = 'active1';
+                    } else if (this.index == 1) {
+                        this.className = 'active2';
+                    } else if (this.index == 2) {
+                        this.className = 'active3';
+                    }
+                    oMain[this.index].style.display = 'block'
+                    var aP = oMain[this.index].getElementsByTagName('p');
+                    var oEm = oMain[this.index].getElementsByTagName('em');
+                    alert(oEm.length);
+                    for (var i = 0; i < aP.length; i++) {
+                        aP[i].index = i;
+                        aP[i].onclick = function () {
+//                            for(var i=0;i<oEm.length;i++){
+//                                oEm[i].style.display = 'none';
+//                            }
+//                            alert(this.index);
+                            oEm[this.index].style.display = 'block';
+                        }
+                    }
+
+                }
+
+
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+<div id="wrap">
+    <ul id="box">
+        <li class="active1">aa</li>
+        <li>bb</li>
+        <li>cc</li>
+    </ul>
+
+    <ol id="main">
+        <li style="display: block">
+            <p><em>1</em></p>
+            <p><em>2</em></p>
+            <p><em>3</em></p>
+        </li>
+        <li>bb</li>
+        <li>cc</li>
+    </ol>
+</div>
+</body>
+</html>

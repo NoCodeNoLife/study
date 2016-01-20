@@ -4,59 +4,66 @@
     <meta charset="UTF-8">
     <title></title>
     <Script>
-        window.onload = function (){
-            function $(id){
-                return  document.getElementById(id);
-            }
+        window.onload = function () {
+
             var oList = document.getElementsByClassName('list');
             var oStrong = document.getElementsByTagName('strong')[0];
             var aSpan = document.getElementsByTagName('span');
-            function fn (obj){
+
+            function fn(obj) {
                 var ojian = obj.getElementsByTagName('a')[0];
                 var ojia = obj.getElementsByTagName('a')[1];
                 var oSpan = obj.getElementsByTagName('span')[0];
                 var num = 0;
 
-                ojia.onclick = function(){
+
+                ojia.onclick = function () {
                     num++;
                     oSpan.innerHTML = num;
-                    oStrong.innerHTML = Number(aSpan[0].innerHTML) + Number(aSpan[1].innerHTML);
+                    var n = 0;
+                    for(var i=0;i<aSpan.length;i++){
+                        oStrong.innerHTML = (n += Number(aSpan[i].innerHTML));
+                        //console.log(aSpan[i].innerHTML);
+                    }
                 }
-
                 ojian.onclick = function () {
                     num--;
-                    oStrong.innerHTML = Number(aSpan[0].innerHTML) - Number(aSpan[1].innerHTML);
+                    oSpan.innerHTML = num;
+                    var n = 0;
+                    for(var i=0;i<aSpan.length;i++){
+                        oStrong.innerHTML = (n += Number(aSpan[i].innerHTML));
+                    }
                 }
             }
 
-
-
-            for(var i=0;i<oList.length;i++){
+            for (var i = 0; i < oList.length; i++) {
                 fn(oList[i]);
+
             }
+
         }
     </Script>
 </head>
 <body>
 <p class="list">
-    <a   href="javascript:;">-</a>
-    <span  >0</span>
-    <a   href="javascript:;">+</a>
+    <a href="javascript:;">-</a>
+    <span>0</span>
+    <a href="javascript:;">+</a>
 </p>
 <p class="list">
-    <a   href="javascript:;">-</a>
-    <span  >0</span>
-    <a   href="javascript:;">+</a>
+    <a href="javascript:;">-</a>
+    <span>0</span>
+    <a href="javascript:;">+</a>
 </p>
 <p class="list">
-    <a   href="javascript:;">-</a>
-    <span  >0</span>
-    <a   href="javascript:;">+</a>
+    <a href="javascript:;">-</a>
+    <span>0</span>
+    <a href="javascript:;">+</a>
 </p>
 <p class="list">
-    <a   href="javascript:;">-</a>
-    <span  >0</span>
-    <a   href="javascript:;">+</a>
+    <a href="javascript:;">-</a>
+    <span>0</span>
+    <a href="javascript:;">+</a>
 </p>
 <strong></strong>
 </body>

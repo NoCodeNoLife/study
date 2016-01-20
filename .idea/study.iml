@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
+<<<<<<< HEAD
+=======
     <content url="file://$MODULE_DIR$" />
+<<<<<<< HEAD
+=======
+>>>>>>> bb81ce6ad2e8893ea23399dbed757496c1697d5f
+    <content url="file://D:/订单流程" />
+    <content url="file://$MODULE_DIR$" />
+>>>>>>> 427788970586eb707765e72bc43cac36469da403
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>运动回调-链式运动</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: #c00;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv1 = document.getElementById('div1');
+
+            oDiv1.onclick = function () {
+                move(this, {width:200,}, 10,function(){
+                    move(oDiv1,{height:400},10);
+                });//width:300里面width代表的就是原来的attr，也就是操作的属性，300就是target，也就是目标点
+            }
+
+            function getStyle(obj,attr){
+                return obj.currentStyle ? obj.currentStyle : getComputedStyle(obj,false)[attr];
+            }
+//obj:运动的元素,attr:运动的属性,target:目标点;speed:运动的速度;
+            function move(obj, json, speed,fn) {
+                clearInterval(obj.timer);
+                var iCur = 0;
+                obj.timer = setInterval(function () {
+                    var iBtn = true;
+                    //定时器每走一下，就把要运动的属性推进一次;
+                    for(attr in json){
+                        var target = json[attr];
+                        if(attr == 'opacity'){//如果传进来的参数是opacity，
+                            iCur = Math.round(getStyle(obj,'opacity') * 100);
+                        } else {//如果传进来的参数不是opacity，那么就直接得到元素的行间样式;
+                            iCur = parseInt(getStyle(obj,attr));
+                        }
+
+                        if(iCur != target){
+                            iBtn = false;
+                            if(attr == 'opacity'){
+                                obj.style.opacity = (iCur + speed) / 100;
+                                obj.style.filter = 'filter(alpha='+(iCur+speed)+')';
+                            }else{
+                                obj.style[attr] = iCur + speed + 'px';
+                            }
+                        }
+                    }
+                    //在这里看一下是不是所有的属性都到了目标点，到了就清楚定时器。
+                    if(iBtn){
+                        clearInterval(obj.timer);
+                        fn && fn();
+                    }
+
+                }, 30);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

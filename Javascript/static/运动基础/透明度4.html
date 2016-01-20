@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出</title>
+    <style>
+        #div3{
+            width: 200px;
+            height: 200px;
+            background: blue;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            opacity: .3;
+            filter:alpha(opacity:30);
+        }
+    </style>
+    <script>
+        function getStyle(obj,attr){
+            return obj.currentStyle ? obj.currentStyle : getComputedStyle(obj,false)[attr];
+        }
+        window.onload = function () {
+            var oDiv3 = document.getElementById('div3');
+            var timer = null;
+
+            alert(getStyle(oDiv3,'opacity'));
+
+            oDiv3.onmouseover = function () {
+                move(this,100,10);
+            }
+
+            oDiv3.onmouseout = function () {
+                move(this,30,-10);
+            }
+
+            function move(obj, target,speed) {//obj:移动的元素;target:目标点;speed:移动的速度;
+                clearInterval(timer);
+                var iCur = 0;//声明获取到元素的行间opacity值
+                timer = setInterval(function () {
+
+                    iCur = Math.round(getStyle(oDiv3,'opacity') * 100);//如果不乘以100，icur得到的值是小数，而小数存在精度问题(小数精度问题5.html)，所以要用整数，乘以100得到的就是整数。 Math.round()四舍五入。iCur指的是获取到元素的行间opacity，并且做四舍五入处理。
+
+                    if (iCur == target) {
+                        clearInterval(timer);
+                    } else {
+                        obj.style.opacity = (iCur + speed) / 100;//opacity的值是小数，所以这里要除以100还原会小数；
+                        obj.style.filter = 'alpha(opacity='+(iCur + speed)+')';
+                    }
+                }, 30);
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div id="div3"></div>
+</body>
+</html>

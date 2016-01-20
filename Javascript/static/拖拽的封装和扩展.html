@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽的封装和扩展</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background: red;
+            left: 0;
+            top: 0;
+        }
+
+        #img1 {
+            position: absolute;
+            left: 120px;
+            top: 0;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function $(id) {
+                return document.getElementById(id);
+            }
+
+            var oBox = $('box');
+            var oImg = $('img1');
+
+            function drag( obj ) {
+                obj.onmousedown = function (ev) {
+                    var ev = ev || event;
+                    var disX = ev.clientX - this.offsetLeft;
+                    var disY = ev.clientY - this.offsetTop;
+
+                    if( obj.setCapture ){//全局捕获
+                        obj.setCapture()
+                    }
+
+                    document.onmousemove = function (ev) {
+                        var ev = ev || event;
+                        obj.style.left = ev.clientX - disX + 'px';
+                        obj.style.top = ev.clientY - disY + 'px';
+                    }
+
+                    document.onmouseup = function () {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+
+                        if( obj.releaseCapture ){
+                            obj.releaseCapture();
+                        }
+
+                    }
+
+                    return false;
+
+                }
+            }
+
+            drag( oBox );
+            drag( oImg );
+
+        }
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<img src="../images/0.JPG" alt="" id="img1">
+</body>
+</html>
