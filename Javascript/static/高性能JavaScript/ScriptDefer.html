@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<!--defer:延迟脚本执行.该属性致命元素中所包含的脚本不打算修改DOM,因此代买可以稍后执行.如果浏览器执行defer属性,以下依次弹出,如果浏览器不支持defer属性,弹出 script2--defer1--load3-->
+<script defer>
+	alert('defer1');
+</script>
+<script>
+	alert('script2');
+</script>
+<script>
+	window.onload = function(){
+		alert('load3');	
+	}
+</script>
+</head>
+
+<body>
+</body>
+</html>
