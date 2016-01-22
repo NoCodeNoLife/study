@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>作用于链和标识符</title>
+</head>
+
+<body>
+
+<script>
+function initUI(){//首先将 document 的引用存入 doc 中,现在访问全局变量的次数是1次,用 doc 代替 document 更快,因为他是一个局部变量.当然这个函数不会显示出巨大的性能改进,不过可以想象一下,如果几十个全局变量被反复访问,那么性能改进将显得多么出色.
+	var doc = document;
+		bd = doc.body;
+		links = doc.getElementsByTagName('tagname');
+		i = 0;
+		len = links.length;
+		while( i<len ){
+			update( links[i++] );	
+		}	
+		doc.getElementById('id').onclick = function () {
+			start();	
+		}
+		bd.className = 'active';
+}
+//一般来说,一个运行期上下文的作用域链不会被改变.但是,有两种表达式可以再运行时临时改变运行期上下文作用域链.第一个是 with 表达式.另外一个是 try-catch 表达式.
+//with 表达式为所有对象属性创建一个默认操作变量.所以 initUI 函数可以重写成如下样式:
+function initUI() {//此本版使用了 with 表达式,避免多次重复书写 document .这样看起来更有效率,但是query产生了 临时改变作用域链 的问题,所以访问的代价更高了.这样访问 document 的速度很快,但是访问局部变量的速度却变慢了.所以最好不要使用 with 表达式.向上一个版本,只需要将 document 存储在一个局部变量中,就可以获得性能上的提升.
+	with( document ){
+		var bd = body;
+		links = getElementsByTagName('tagname');
+		i = 0;
+		len = links.length;
+		while( i<len ){
+			upadte( links[i++] );	
+		}
+		getElementById('id').onclick = function () {
+			start();	
+		}
+		bd.className = 'active';
+	}	
+}
+
+</script>
+
+</body>
+</html>

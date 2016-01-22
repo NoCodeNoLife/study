@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>作用域链和标识符</title>
+</head>
+
+<body>
+<script>
+/*
+	每一个 JavaScript 函数都表示为对象,它拥有可以编程访问的属性和一系列不能被程序访问仅供 JavaScript 引擎使用的内部属性.其中一个属性是 [ Scope ],y由 ECMA-262 第三版定义. [ Scope ]属性包含一个函数被创建的作用域中对象的集合.刺激和被称为作用域链,它决定那些数据可以被函数访问.示例:
+	
+	function add(num1,num2) {
+		var sum = num1 + num2;
+		return sum;	
+	}
+	
+	add函数的作用域链将会在运行时用到.假设运行下面的代码:
+	var total = add( 5,10 );
+	
+	用局部变量存储本地范围之外的变量值,如果他们在函数中的使用多余一次,考虑下面的写法:
+	
+	function initUI(){//此函数中包含三个 document 的引用，document 是一个全局对象.搜索这个变量,必须遍历整个作用域链,这就造成了对性能的影响,因为要访问全局变量3次.
+		var bd = document.body;
+			links = document.getElementsByTagName('a');
+			i = 0;
+			len = links.lnegth;
+			while( i<len ){
+				update( links[i++] );	
+			}
+			document.getElementById('id').onclick = function () {
+				start();	
+			}
+			bd.className = 'active';
+	}//此种方法性能不高,可以写成如下所示:
+
+	function initUI(){//首先将 document 的引用存入 doc 中,现在访问全局变量的次数是1次,用 doc 代替 document 更快,因为他是一个局部变量.当然这个函数不会显示出巨大的性能改进,不过可以想象一下,如果几十个全局变量被反复访问,那么性能改进将显得多么出色.
+		var doc = document;
+			bd = doc.body;
+			links = doc.getElementsByTagName('tagname');
+			i = 0;
+			len = links.length;
+			while(i<len){
+				update(links[i++]);	
+			}	
+			doc.getElementById('id').onclick = function () {
+				start();	
+			}
+			bd.className = 'active';
+	}
+*/
+
+</script>
+</body>
+</html>

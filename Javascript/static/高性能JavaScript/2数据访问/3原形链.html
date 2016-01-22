@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>原形链</title>
+</head>
+
+<body>
+<script>
+function Book(title,publisher){
+	this.title = title;
+	this.publisher = publisher;	
+}
+
+Book.prototype.sayTitle = function () {
+	alert( this.title );	
+}
+
+var book1 = new Book( 'High Performance JavaScript','Yahoo!Press' );
+
+var book2 = new Book( 'JavaScript:The Good Parts','Yahoo!Press' );
+
+alert( book1 instanceof Book );//true;
+
+alert( book2 instanceof Object );//true;
+
+book1.sayTitle();//'Heig Performance JavaScript'
+
+alert( book1.toString() );//[ object objet ]
+</script>
+</body>
+</html>

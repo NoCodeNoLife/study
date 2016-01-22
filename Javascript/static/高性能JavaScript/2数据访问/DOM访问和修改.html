@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>DOM访问和修改</title>
+</head>
+
+<body>
+<script>
+/*
+function innerHTMLLoop() {
+	for( var i=0;i<100000;i++ ){
+		document.body.innerHTML += 'a';	
+	}	
+}
+
+innerHTMLLoop();//这个函数的问题是,每次循环单元中都对 DOM 访问两次,一次读取 innerHTML 属性内容,另一次写入它.另一个更有效的方法是使用局部变量存储更新后的内容,在循环结束后一次性写入,见 innerHTMLLoop2():
+*/
+
+function innerHTMLLoop2(){//此函数只对 DOM 执行一次写入操作,性能比 innerHTMLLoop 快的多.
+	var inner = ''
+	for( var i=0;i<1000000;i++ ){
+		inner+= 'b';	
+	}	
+	document.body.innerHTML = inner;
+}
+
+innerHTMLLoop2();
+
+</script>
+
+</body>
+</html>

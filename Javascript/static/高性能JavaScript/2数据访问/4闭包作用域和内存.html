@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>闭包作用域和内存</title>
+</head>
+
+<body>
+<script>
+//闭包允许函数访问局部范围之外的数据.为了了解与闭包相关的性能问题,请查看下面的例子:
+function assignEvents() {
+	var id = 'xdi9592';
+	document.getElementById('id').onclick = function (event) {
+			saveDocument(id);
+	}	
+}
+</script>
+</body>
+</html>
