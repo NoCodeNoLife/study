@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dynamic Script Elements (动态脚本元素)</title>
+<script>
+//动态脚本元素:新的 script 元素加载 files.js 文件.此文件当 script 元素添加到页面之后立刻开始下载.此技术的重点在于:无论在何处启动下载,文件的下载和运行都不会阻塞页面其他程序处理.你甚至可以把这些代码放在 head 部分而不会对其余页面代码造成影响(除了用于下载文件的http链接).
+function loadScript( url,callback) {
+	
+	var script = document.createElement('script');
+	
+	script.type = 'text/javascript';
+	
+	//readyState有5种取值:
+	//1.uninitialized:默认状态;
+	//2.loading：开始下载;
+	//3.loaded:下载完成;
+	//4.interactive:下载完成但是尚不可用;
+	//5.complete:所有数据已经准备好.
+	
+	if( script.readyState ){//IE,readyState是只有IE下才有的属性;这个判断的意思就是说,如果认识 readyState,就说明是IE浏览器,那么就走下面的语句:
+		
+		script.onreadystatechange = function () {
+			
+			if( script.readyState == 'loaded' || script.readyState == 'complete' ) {
+			
+				script.onreadystatechange = null;
+				
+				callback();//回调函数;
+				
+			}
+				
+		}
+			
+	} else {
+		
+		script.onload = function () {
+			
+			callback();//回调函数;
+			
+		}
+			
+	}	
+	
+	script.src = url;
+	
+	document.getElementsByTagName('head')[0].appendChild( script );//把 script 标签插入到 head 标签的位置;
+	
+}
+
+//此函数接收两个参数:JavaScript文件的url,和一个当javascript接收完成时触发的回调函数.属性检查用于决定监视哪种事件.最后一步,设置url,并且将 script 元素插入到页面 head 部分.此 loadScript() 函数使用方法如下:
+
+loadScript('file1.js',function(){
+	alert( '文件引入完成!' );	
+});
+
+//你可以在页面动态加载很多 JS 文件,但是浏览器不能保证文件的加载顺序. 所有主流浏览器只有 Firefox和 opera 保证按照你指定的顺序加载,其他浏览器按照服务器返回他们的顺序下载并运行不同的代码文件.你可以将下载操作串连在一起保证他们的次序,如下所示,此代码要等file1可用之后才开始加载file2,等file2可用之后才开始加载file3.虽然此方法可行,但是如果要下载和执行的文件很多,还是会有些麻烦.如果多个文件的次序十分重要,更好的办法是将这些文件按照正确的次序连接成一个文件.独立文件可以一次性下载所有代码( 由于这是异步进行的,使用一个大文件并没有什么损失. ).动态脚本加载是非阻塞JavaScript下载中最常用的模式,因为他可以跨浏览器,而且简单易用.
+loadScript( 'file1.js',function(){
+
+	loadScript( 'file2.js',function(){
+
+		loadScript('file3.js',function(){
+			
+			alert('all files  are loaded!');
+				
+		});
+	} );	
+});
+
+</script>
+</head>
+
+<body>
+</body>
+</html>
