@@ -1,0 +1,82 @@
+对 DOM 的操作代价是昂贵的.比如把 DOM 看作是一个岛屿,把 JavaScript( ECMAScript ) 看成是另一个岛屿,两者之间以一座收费桥链接.每次 ECMAScript 需要访问 DOM 时,就需要过桥交过桥费. DOM 操作次数越多,费用越高.一般建议是减少过桥次数,努力停留在 ECMAScript 上.
+
+一、访问和修改 DOM 元素
+
+二、修改 DOM 元素的样式,造成重绘和重新排版
+
+三、通过 DOM 事件处理用户响应
+
+innerHTML 和 document.creatElement() 性能差别不大, 但是在所有浏览器中, innerHTML 速度回稍快一些.
+
+在大多数浏览器上,节点克隆( element.cloneNode() )的效率更高,但是效果提升不明显.
+
+下列函数的返回值就是一个集合:
+
+document.getElementsByName();
+
+document.getElementsByClassName();
+
+document.getElementByTagName();
+
+document.images();//所有的<img>元素;
+
+document.links();//所有的<a>元素;
+
+document.forms();//所有的form
+
+document.forms[0].elements;//页面中死一个表单的所有字段;
+
+不建议用数组的 length 属性做循环判断条件,访问集合的 length 比数组的 length 还要慢,它意味着每次都要重新运行查询过程. HTML 集合实际上在查询文档,当你更新信息时,每次都要重复执行这种查询操作,例如读取集合中元素的数目( 也就是length ),这正是低效率的来源.
+
+一般来说,对于任何类型的 DOM 访问,如果同一个 DOM 属性或者方法被访问一次以上,最好使用一个局部变量缓存此 DOM 成员.当遍历一个集合时,第一个优化是将集合引用存储于局部变量,并在循环之外缓存 length 属性.然后，如果在循环体中多次访问同一个集合元素,那么使用局部变量缓存它.
+
+在不同浏览器上,nextSibling 和 childNodes 运行时间基本相等.在 IE6 中,nextSibling 比 childNodes 快 16倍, IE7中快105倍.建议在老版本 IE 中使用 nextSibling 抓取 DOM 是首选方法.其他情况下看个人和团队偏好.
+
+遍历 children 比 childNodes 更快,因为集合项更少. HTML 源码中的空格实际上是文本节点,它们不包含在 children 集合中.所有浏览器中 children 比 childNodes 更快, 虽然差别不大,通常快1.5到3倍.尤其是IE,遍历 children 明显快于 childNodes, 在 IE6 中快24倍,在 IE7 中快124倍.
+
+当浏览器下载完所有页面 HTML 标记,javascript,css,image之后,它会解析并且创建两个内部数据结构: 一颗 DOM 树( a dom tree,表示页面结构 ),一棵渲染树( a render tree,表示页面节点如何显示 ).
+
+在以下情况中会造成重排版:
+	1.添加或删除可见的 DOM 元素;
+	2.元素位置改变;
+	3.元素尺寸改变( 因为边距,填充,边框宽度,宽度,高度等属性改变 );
+	4.内容改变,例如文本改变或图片被另一个不同尺寸的所代替;
+	5.最初的页面渲染;
+	6.浏览器窗口改变尺寸.
+
+重绘和重排版代价昂贵,所以,提高程序响应速度的一个好方法是减少此类操作发生的机会.为减少发生次数,你应该将多个 DOM 和风格合并到一个批次中一次性执行.
+
+
+
+
+原形,闭包,继承,cookie,语义化, ------->83页面:重绘和重排版.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

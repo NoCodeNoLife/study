@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>timeline</title>
+    <link rel="stylesheet" href="timeline.css"/>
+    <!--<script src="jquery.1.11.3.min.js"></script>-->
+    <script src="timeline.json"></script>
+    <!--<script src="timeline-min.js"></script>-->
+    <link rel="stylesheet" href="http://veritetimeline.appspot.com/latest/timeline.css" />
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="http://veritetimeline.appspot.com/latest/timeline-min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var timeline = new VMM.Timeline();
+            timeline.init("timeline.json");
+        });
+    </script>
+</head>
+<body>
+<!--来源:http://www.w3cplus.com/blog/267.html-->
+<div id="timeline">
+    <!-- Timeline will generate additional markup here -->
+</div>
+</body>
+</html>
