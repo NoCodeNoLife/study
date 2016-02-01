@@ -1,0 +1,12 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	deleted:    "Javascript/\351\253\230\346\200\247\350\203\275JavaScript/3DOM\347\274\226\347\250\213/querySelectorAll.html"
+#	deleted:    "Javascript/\351\253\230\346\200\247\350\203\275JavaScript/3DOM\347\274\226\347\250\213/\346\230\202\350\264\265\347\232\204\351\233\206\345\220\210.html"
+#	deleted:    "Javascript/\351\253\230\346\200\247\350\203\275JavaScript/3DOM\347\274\226\347\250\213/\351\207\215\347\273\230\345\222\214\351\207\215\346\216\222\347\211\210.html"
+#
+
