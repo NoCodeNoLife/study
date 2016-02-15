@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>循环</title>
+</head>
+
+<body>
+<script>
+//for
+for( var i=0; i<items.length; i++ ){
+	process( items[i] );	
+}
+
+//while
+var j = 0;
+while( j<items.length ){
+	process( items[j++] );	
+}
+
+//do-while
+var k = 0;
+do{
+	process( items[k++] )	
+}while( k<items.length );
+
+//以上在每个循环体中,都要发生如下几个操作:
+//	1.在控制条件中读取一次属性( items.length );
+//	2.在控制条件中执行一次比较( i<items.length );
+//	3.比较操作,查看条件控制体的运算结果是不是 true ( i<items.length == true );
+//	4.一次自加操作 ( i++ );
+//	5.一次数组查找( items[i] );
+//	6.一次函数调用( process(items[i]) );
+//优化循环工作量的第一步是减少对象成员和数组项查找的次数,上例中的循环没刺都要查找 items.length,这是一种浪费.因为该值在驯化你执行过程中不会改变,因此产生了不必要的性能损失.建议:可以讲 items.length 存在一个局部变量中,在控制条件在宏使用这个局部变量,从而提高性能.
+for( var i = 0, len = items.length; i<len; i++ ){
+	process	( items[i] );
+}
+//这样重写后的循环值在循环执行之前对数组长度进行一次属性查询.这是得控制条件只有局部变量参与运算，所以速度更快,根据数组的长度,在大多数浏览器上可以节省约 25% 的总循环时间(在 Internet Explorer可以节省50%).
+//还可以通过改变驯顺提高循环性性能.可以从最后一个开始,直到处理完第一个元素.倒叙循环是编程语言中最常用的性能优化方法,但是不容易理解.上面的循环可以写成这样:
+for(var i = items.length;i--;){
+	process( items[i] );	
+}
+
+var j = items.length;
+while(j--){
+	process( items[j] );	
+}
+
+var k = items.length;
+do{
+	process( items[k] );	
+}while(k--);
+//例子中使用了倒序循环,并且使用了减法.每个控制条件只是简单地与零进行比较.控制条件与true进行比较,任何非零数组自动强制转换为true,而零等同于false.实际上,控制条件已经多次比较( 迭代少于总数吗? 它等于 true 吗? )减少到一次比较( 它等于true吗? ).将每个迭代中两次比较减少到一次可以大幅度提高循环速度.通过倒序比较,执行速度比原始版本快50%-60%.余原始版本相比,每次迭代中只进行如下操作:
+//	1.在控制条件中进行一次比较( i==true );
+//	2.一次减法操作( i-- );
+//	3.一次数组查询( items[i] );
+//	4.一次函数调用( process(items[i]) );
+//	新循环代码每次迭代中减少两个操作,随着迭代次数的增长,性能将显著提升.
+
+</script>
+</body>
+</html>
