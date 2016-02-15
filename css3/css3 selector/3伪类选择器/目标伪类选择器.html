@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>目标伪类选择器[ e:target ]</title>
+    <style>
+        /*
+            选择匹配E的所有元素，且匹配元素被相关URL指向。
+            通俗点说，页面的url如果带有#something这样的字样,那么:target就是用来匹配页面中id为#something(section-1)的元素的。
+            demo来源:https://rawgit.com/zhangmengxue/Practice/master/CSS%E7%9B%B8%E5%85%B3/%E7%BA%AFcss%E6%89%8B%E9%A3%8E%E7%90%B4%E6%95%88%E6%9E%9C.html#section-1
+        */
+        .accordion{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .accordion h2{
+            position: relative;
+            margin: 5px 0;
+        }
+        /*标题栏小三角效果*/
+        .accordion h2:before{
+            border: 5px solid #fff;
+            border-color: #fff transparent transparent;
+            content:'';
+            height: 0;
+            width: 0;
+            position: absolute;
+            right: 10px;
+            top: 13px;
+        }
+        /*标题栏效果*/
+        .accordion h2 a{
+            background: #8f8f8f;
+            border-radius: 5px;
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 10px 10px;
+        }
+        .accordion :target h2 a,
+        .accordion h2 a:focus,.accordion h2 a:hover,.accordion h2 a:active{
+            background: #2288dd;
+        }
+        /*标题栏对应的内容*/
+        .accordion p{
+            margin: 0;
+            height: 0;/*隐藏高度*/
+            overflow: hidden;
+            padding: 0 10px;
+            transition: height 0.5s ease-in;
+            -webkit-transition: height 0.5s ease-in;
+        }
+        .accordion :target p{
+            height: 100px;
+            overflow: auto;
+        }
+        .accordion :target h2:before{
+            border-color:transparent transparent transparent #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="accordion">
+    <div id="section-1">
+        <h2><a href="#section-1">section-1</a></h2>
+        <p>这是第一部分...</p>
+    </div>
+    <div id="section-2">
+        <h2><a href="#section-2">section-2</a></h2>
+        <p>这是第二部分...</p>
+    </div>
+    <div id="section-3">
+        <h2><a href="#section-3">section-3</a></h2>
+        <p>这是第三部分...</p>
+    </div>
+</div>
+</body>
+</html>

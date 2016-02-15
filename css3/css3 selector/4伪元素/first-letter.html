@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>::first-letter</title>
+    <style>
+        /*
+            以前我们使用的伪元素是:first-letter,:first-line,:before,:after,这样的。但css3定义的伪元素变成了双冒号，主要用来区分伪类和伪元素。对于IE6-8,仅支持单冒号表示方法，但是其他现代浏览器两种表示方法是都可以的，也就是说在现代浏览器中伪元素使用双冒号和单冒号都是会识别的。
+            ::first-letter用来选择文本块的第一个字母,常用于文本排版方面。
+        */
+        div p::first-letter{/*将会选中<p>中的第一个字母t*/
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <p>this is test lin ······</p>
+</div>
+</body>
+</html>

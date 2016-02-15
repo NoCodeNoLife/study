@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>相邻元素选择器</title>
+    <style>
+        /*
+            相邻元素选择器[ E + F ] E和F是同辈元素,具有相同的父元素,并且F元素紧邻在E元素的后面,此时可以使用相邻兄弟选择器.
+            会选中内容为2的div
+        */
+        div {
+            width: 100%;
+            height: 20px;
+            margin-top: 10px;
+            background: blue;
+        }
+
+        .demo + div {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="demo">1</div>
+    <div>2</div>
+    <div>3</div>
+</div>
+</body>
+</html>

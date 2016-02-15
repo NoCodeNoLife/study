@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>first-line</title>
+    <style>
+        /*
+            ::first-line用于匹配元素的第一行文本,经常用于文本排版
+        */
+        div p{
+            background: green;;
+        }
+        div p::first-line {
+            background: red;
+            color: #fff;
+        }
+
+        /*
+            「::before,::after」  ::before,::after同我们之前熟用的:before和:after使用方法相同，它们不是指存于标记中的内容，是配合使用content属性可以插入额外内容的位置，尽管生成的内容不会成为DOM的一部分，但它同样可以设置样式。
+        */
+    </style>
+</head>
+<body>
+<div>
+    <p>
+        this is first line ~~~~~~<br/>
+        this is second line ~~~~~~
+    </p>
+</div>
+</body>
+</html>

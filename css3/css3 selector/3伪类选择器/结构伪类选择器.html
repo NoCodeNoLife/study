@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>结构伪类选择器[ E:first-child,E:lasr-child,E:root,E:nth-child(n),E:nth-last-child(n),E:nth-of-type(n),E:nth-last-of-type(n),E:first-of-type,E:last-of-type,E:only-child,E:only-of-type,E:empty ]</title>
+    <style>
+        li{
+            list-style: none;
+            height: 20px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        ul{
+            margin-bottom: 40px;
+        }
+        ul.demo1 > li:first-child{/* 用来选取特定元素的第一个子元素*/
+            background: red;
+        }
+
+        ul.demo2 > li:last-child{/* 用来选取特定元素的最后一个子元素*/
+            background: blue;
+        }
+
+        /*1.
+            [E:nth-child()],[E:nth-last-child()]
+            用来选取某个父元素的一个或多个特定的子元素，其中的n可以是数值(从1开始)，也可以是包含n的表达式，也可以是odd(奇数)，even(偶数)。
+            E:nth-last-child()选择器的使用方法于E:nth-child()是相同的，不同的是E:nth-last-child()选择的元素是从父元素的最后一个子元素开始算起。
+        */
+        ul.demo3 > li:nth-child(2n+1){/*用来选取ul中的第2n+1(奇数)个li元素*/
+            background: green;
+        }
+
+        /*2.
+             [E:root]用来匹配元素E所在的文档中的根元素，在html文档中根元素就始终是html。
+        */
+
+        /*3.
+            [E:nth-of-type(),E:nth-last-of-type()]
+            E:nth-of-type()只计算父元素中指定的某种类型的子元素，当某个元素的子元素类型不只是一种时，使用nth-of-type来选择会比较有用。
+            E:nth-last-of-type()的用法同E:nth-of-type()相同，不同的是:nth-last-of-type()也是从父元素的最后一个子元素开始算起。
+            li:nth-of-type(3)的话就会标识它只会选择第三个li元素，别的元素会忽略掉，如：
+        */
+        ul.demo4 > li:nth-of-type(3){/*//会选中内容为5的li元素*/
+            background: yellow;
+        }
+
+        /*4.
+             [E:first-of-type,E:last-of-type] :first-of-type和:last-of-type这两个选择器类似于:first-child和:last-child，不同的就是指定了元素的类型。
+        */
+        ul.demo5 > li:first-of-type{/*会选中内容为1的元素*/
+            background: #c00;
+        }
+
+        /*5.
+            [E:only-child] 匹配的元素E是其父元素的唯一子元素，也就是说匹配元素的父元素只有一个子元素.
+        */
+        .demo6 > p:only-child{/*会选取到内容为2-1的p元素*/
+            background: darkolivegreen;
+        }
+
+        /*6.
+            [E:only-of-type] :only-of-type用来选择一个元素，他的类型在他父元素的所有子元素中是唯一的。也就是说，一个父元素有很多子元素，而其中只有一个子元素的类型是唯一的，那么就可以使用:only-of-type来选取这个元素。
+        */
+        .demo7 > h2:only-of-type{
+            background: #c00;
+            color: #fff;
+        }
+
+        /*7.
+            [E:empty]:empty用来选择没有任何内容的元素，哪怕是一个空格都没有的元素。
+        */
+
+        /*8.
+            否定伪类选择器「E:not(F)」可以用来选取所有除了F外的所有元素。
+            input:not([type=submit]){do something} //可以用来给表单的所有input元素定义样式，除了submit按钮之外.
+        */
+        .list > li:not(:last-child){
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<ul class="demo1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<ul class="demo2">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<ul class="demo3">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<ul class="demo4">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+</ul>
+
+<ul class="demo5">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<div class="demo6">
+    <p>1-1</p>
+    <p>1-2</p>
+</div>
+<div class="demo6">
+    <p>2-1</p>
+</div>
+
+<div class="demo7">
+    <h2>special title</h2>
+    <p>section1</p>
+    <p>section1</p>
+    <p>section1</p>
+    <p>section1</p>
+</div>
+<div class="demo7">
+    <h2>title</h2>
+    <h2>title</h2>
+    <h2>title</h2>
+    <p>section1</p>
+    <p>section1</p>
+</div>
+
+<ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>
+        <ul>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>0</li>
+            <li>01</li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

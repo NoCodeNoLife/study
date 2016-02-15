@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>E[attr$=val]</title>
+    <style>
+        /*
+             这个选择器刚好跟E[attr^=val]相反，用来选择具有attr属性且属性值以val结尾的元素
+        */
+        a[title$=link] {/*将会选择内容为3的a元素*/
+            width: 100%;
+            height: 20px;
+            display: block;
+            margin: 4px 0;
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <a href="http://zhangmengxue.com" id="test" title="test first">1</a>
+    <a href="www.taobao.com" class="taobao web" title="secondtest">2</a>
+    <a href="#" id="show" title="testlink">3</a>
+</div>
+</body>
+</html>

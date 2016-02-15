@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>后代选择器</title>
+    <style>
+        /*后代选择器[ EF ] 选择匹配 E 元素内的所有 F 元素.
+        会选择parent里面的所有div,不管是子元素.child还是孙元素.c-child和.c-c-child*/
+        .parent div{
+            background: red;
+            width: 100%;
+            height: 20px;
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="child">00</div>
+    <div class="child">00
+        <div class="c-child">12
+            <div class="c-c-child">34</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
