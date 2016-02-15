@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1"><!--强制页面以webkit内核进行渲染,如果是IE的话,就以IE浏览器最高版本edge进行渲染-->
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scale=no">
+    <meta name="format-detection" content="telephone=no"><!--此句话的意思是:为了避免网页中的数字被当成电话号码拨号.-->
+    <title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="demo.css"/>
+    <script src="demo.js" defer></script>
+</head>
+<body>
+<div class="music"><!--music begin 播放器-->
+    <img class="music_pointer" src="images/music_pointer.png" />
+    <img  class="music_disc"  id="music" src="images/music_disc.png" />
+</div><!-- music end-->
+<div class="page" id="page1"><!--page1 begin-->
+    <div class="bg"></div>
+    <div class="p1_lantern">点击屏幕<br/>开启好运2016</div>
+    <div class="p1_imooc"></div>
+    <div class="p1_words">2016年慕课网新年特献</div>
+</div><!--page1 end-->
+<div class="page" id="page2"><!--page2 begin-->
+    <div class="bg p2_bg_loading"></div>
+    <div class="bg"></div>
+    <div class="p2_circle"></div>
+    <div class="p2_2016"></div>
+</div><!--page2 end-->
+<div class="page" id="page3"><!--page3 begin-->
+    <div class="bg"> </div>
+    <div class="p3_logo"></div>
+    <div class="p3_title"></div>
+    <div class="p3_second"></div>
+    <div class="p3_first"></div>
+    <div class="p3_blessing"></div>
+</div><!--page3 end-->
+<audio autoplay="true">
+    <source src="gxfc.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
+<!--
+可以把demo放到wampServer里面的www目录下,然后启动wamp并且切换到在线状态,cmd查看IP,然后手机浏览器输入IP/imooc/demo.html,这样在同一个局域网内所有的手机都可以访问该页面，方便调试.-->
