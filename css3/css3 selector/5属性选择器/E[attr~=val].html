@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>E[attr~=val]</title>
+    <style>
+        /*
+            当某个元素的某个属性具有多个用空格隔开的属性值，此时使用E[attr~=val]只要attr属性多个属性值中有一个于val匹配元素就会被选中。
+        */
+        a[title~=test]{/*//将会选择具有title属性且其中一个属性值为test的a标签*/
+            width: 100%;
+            display: block;
+            height: 20px;
+            margin-bottom: 10px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <a href="" id="test" title="test first">1</a>
+    <a href="www.taobao.com" class="taobao web" title="second test">2</a>
+    <a href="#" id="show">3</a>
+</div>
+</body>
+</html>

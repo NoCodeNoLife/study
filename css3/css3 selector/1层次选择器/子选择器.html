@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>子选择器</title>
+    <style>
+        /*
+            子选择器[ E > F ] 选择匹配 E 元素的 F 直系子元素.
+            只会选择.parent元素的直系子元素，也就是只会选择到 .child元
+        */
+        .parent > div{
+            background: red;
+            width: 100%;
+            height: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="child">00</div>
+    <div class="child">00
+        <div class="c-child">12
+            <div class="c-c-child">34</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

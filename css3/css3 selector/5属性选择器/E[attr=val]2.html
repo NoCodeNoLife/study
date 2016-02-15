@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>E[attr|=val]</title>
+    <style>
+        /*
+            E[attr|=val]用来选择具有属性attr且属性的值为val或以val-开头的元素(其中-是不可或缺的)
+        */
+        a[lang|=zh] {/*将会选择具有lang属性值为zh或属性值以zh开头的a标签*/
+            widh: 100%;
+            height: 20px;
+            background: red;
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <a href="" id="test" title="test" lang="zh">1</a>
+    <a href="www.taobao.com" class="taobao" lang="zh-cn">2</a>
+    <a href="#" id="show" title="test">3</a>
+</div>
+</body>
+</html>

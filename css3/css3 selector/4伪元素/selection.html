@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>selection</title>
+    <style>
+        /*
+            css3新定义的伪元素::selection用来匹配突出显示的文本。但是使用前需要确认浏览器对它的支持程度。浏览器默认的情况下，我们选中的文本背景是蓝色，字体是白色。通过使用::selection，我们可以改变它的效果。但是需要注意的是，::selection仅接受两个属性，一个是background，一个是color。
+        */
+
+        div::selection{background:#ccc;color:red} /*这样改写后我们选中的文本背景颜色和文字颜色就可以自定义了*/
+    </style>
+</head>
+<body>
+<div>
+    this is text content~~~~
+</div>
+</body>
+</html>

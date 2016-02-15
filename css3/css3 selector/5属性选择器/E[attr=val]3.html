@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>E[attr*=val]</title>
+    <style>
+        /*
+            这个属性选择器使用了通配符，用来选择具有属性attr并且只要属性值中包含val字符串的元素。也就是说只要所选属性中有val字符串，不管是不是多个用空格分隔的属性值，都将被选中。
+        */
+        a[title*=test] {/*将会选择具有title属性并且其属性值包含test字符串的a标签,此案例中3个a都将被选中*/
+            display: block;
+            width: 100%;
+            height: 20px;
+            background: red;
+            margin-bottom: 6px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="demo">
+    <a href="" id="test" title="test first">1</a>
+    <a href="www.taobao.com" class="taobao web" title="secondtest">2</a>
+    <a href="#" id="show" title="testlink">3</a>
+</div>
+</body>
+</html>
