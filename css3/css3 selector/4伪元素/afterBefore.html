@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>after and before</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .demo {
+            width: 600px;
+            height: 40px;
+            line-height: 40px;
+            background: #ccc;
+            color: #000;
+            text-align: center;
+        }
+
+        .demo:before {
+            content: 'h';
+        }
+
+        .demo:after{
+            content: 'd';
+        }
+    </style>
+</head>
+<body>
+<p class="demo">ello worl</p>
+</body>
+</html>
