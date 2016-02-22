@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>div+css实现的左右两个等高div</title>
+<style>
+*{
+	margin: 0;
+	paddig: 0;
+}
+.wrap{
+	width: 700px;
+	overflow:hidden;
+	margin: 0 auto;
+}
+
+.left,.right{
+	margin-bottom: -1000px;
+	padding-bottom: 1000px;
+}
+
+.left{
+	width: 300px;
+	float: left;
+	background: yellow;
+}
+
+.right{
+	width: 400px;
+	float: right;
+	background: green;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="left">
+    	left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>end</p>
+    </div>
+    <div class="right">
+    <p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p>	
+    	<p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p>
+        <p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p>	
+    	<p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p><p>left</p>
+        <p>left</p><p>
+    	<p>right</p><p>right</p><p>right</p>
+        <p>end</p>
+        </div>
+</div>
+
+</body>
+</html>
