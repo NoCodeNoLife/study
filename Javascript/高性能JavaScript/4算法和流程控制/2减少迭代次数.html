@@ -3,28 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>减少迭代次数</title>
-<style>
-.list > li:not(:last-child){ background: red;}
-</style>
+<Script>
+	window.onload = function () {
+		var len = 100000;
+		var str = '';
+				
+		for( var i=len;i--;){
+			str+= '<input type="button" value="按钮" />';
+		}
+		
+		document.body.innerHTML = str;
+	}
+</Script>
 </head>
 
 <body>
-<ul class="list">
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li></li>
-	<li>
-    	<ul>
-        	<li></li>
-        	<li></li>
-        	<li></li>
-        	<li></li>
-        	<li></li>
-        	<li></li>
-        </ul>
-    </li>
-</ul>
+
 </body>
 </html>
