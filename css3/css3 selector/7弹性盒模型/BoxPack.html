@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>box-pack</title>
+<style>
+/*
+	box-pack:对盒子富裕的空间进行管理,有以下取值:
+		start:所有子元素在盒子左侧显示,富裕空间在右侧,
+		end:所有子元素在盒子右侧显示,富裕空间在左侧,
+		center:所有子元素居中显示,
+		justify:富裕空间在子元素之间平均分布.
+*/
+.box{
+	height: 100px;
+	padding: 10px;
+	border: #333 3px solid;
+	display: -webkit-box;
+	-webkit-box-pack: justify;
+}
+
+.box div{
+	width:100px;
+	height: 100px;
+	background: red;
+	border-right: 3px solid white;
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+</div>
+</body>
+</html>

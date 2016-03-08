@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E[attr*=val]</title>
+    <style>
+        p {
+            height: 30px;
+            border: black 1px solid;
+        }
+
+        p a{
+            background: #c00;
+            display: block;
+            height: 30px;
+            color: #fff;
+        }
+
+        p a[href*=doc]{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <a href="www.baidu.com/text/javascript.html">123</a>
+</p>
+<p>
+    <a href="www.baidu.com/doc/javascript.html">456</a>
+</p>
+<p>
+    <a href="www.baidu.com/pdf/javascript.html">789</a>
+</p>
+</body>
+</html>

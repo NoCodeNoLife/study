@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nth-child</title>
+    <style>
+        p:nth-child(odd) {/*奇数行*/
+            height: 30px;
+            background: #c00;
+        }
+
+        p:nth-child(even) {/*偶数行*/
+            height: 30px;
+            background: green;
+        }
+
+        p:nth-child(5n-1){/*运算: 找到(5 * (1,2,3,4,5·····) - 1)的元素,n代表无穷大的正整数 */
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<p>1</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>6</p>
+<p>7</p>
+<p>8</p>
+<p>9</p>
+</body>
+</html>

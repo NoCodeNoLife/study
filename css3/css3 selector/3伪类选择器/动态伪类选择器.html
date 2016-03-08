@@ -11,8 +11,28 @@
              4 E:hover{do something} //选择鼠标停留的匹配的E元素
              5 E:focus{do something} //选择匹配的E元素，且元素获得焦点
         */
+        *:focus{
+            outline: none;
+        }
+        input {
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            border: #ccc 1px solid;
+            border-radius: 5px;
+        }
+
+        input:hover{
+            border: deeppink 1px solid;
+        }
+
+        input:focus{
+            border: #c00 2px solid;
+        }
+
     </style>
 </head>
 <body>
+<input type="text">
 </body>
 </html>

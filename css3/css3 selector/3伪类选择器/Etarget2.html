@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+p ~ h1{
+	background: #c00;
+}
+
+label{
+	float: left;
+	margin: 0 5px;
+	overflow:hidden;
+	position:relative;
+}
+
+label input{
+	position: absolute;
+	left: -50px;
+	top: -50px;
+}
+
+label span{
+	float: left;
+	width: 14px;
+	height: 14px;
+	border: #333 1px solid;
+	border-radius:50%;
+}
+
+input:checked ~ span{
+	background:#c00;
+}
+</style>
+</head>
+
+<body>
+<h1>h1</h1>
+<p>p</p>
+<h1>h1</h1>
+<h1>h1</h1>
+<label>
+	<input type="radio" name="tab"/>
+    <span></span>
+</label>
+<label>
+	<input type="radio" name="tab"/>
+    <span></span>
+</label>
+<label>
+	<input type="radio" name="tab"/>
+    <span></span>
+</label>
+<label>
+	<input type="radio" name="tab"/>
+    <span></span>
+</label>
+</body>
+</html>

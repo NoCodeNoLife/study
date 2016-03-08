@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文字排版</title>
+<style>
+p{
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	border: #333 1px solid;
+	direction:rtl;
+	unicode-bidi:bidi-override;
+	/*	direction:文字排列顺序.
+		使用direction的时候一定要配合 Unicode-bidi使用.
+	*/
+}
+
+.demo{
+	width: 400px;
+	height: 30px;
+	line-height:30px;
+	border: #333 1px solid;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	/*文字超出部分显示省略号:
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+	*/
+}
+</style>
+</head>
+
+<body>
+<p>前端前端</p>
+<div class="demo">极具人性化的前端开发培训极具人性化的前端开发培训极具人性化的前端开发培训.</div>
+</body>
+</html>

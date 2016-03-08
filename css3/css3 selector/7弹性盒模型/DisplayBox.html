@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>display-box</title>
+<style>
+/*
+	注意子使用弹性和模型的时候,父级元素必须要加display:box或者display:inline-box
+	box-orient:定义盒子模型的排列方向,有以下两个取值:
+		Horizontal:水平显示,
+		vertical:垂直显示,
+	box-direction:元素排列顺序,有以下两个取值:
+		normal:反序
+		reverse:正序
+	box-ordinal-group:设置元素的具体位置.
+*/
+.box{
+	height: 100px;
+	padding: 10px;
+	border: #333 3px solid;
+	display: -webkit-box;
+	/*-webkit-box-orient:vertical;垂直显示*/
+	/*-webkit-box-direction:reverse;倒序显示*/
+}
+
+.box div{
+	width:100px;
+	height: 100px;
+	background: red;
+	border-right: 3px solid white;
+}
+
+.box div:nth-of-type(1){
+	-webkit-box-ordinal-group: 2;/*设置元素在父级的排列顺序.*/
+}
+.box div:nth-of-type(2){
+	-webkit-box-ordinal-group: 1;
+}
+.box div:nth-of-type(3){
+	-webkit-box-ordinal-group: 4;
+}
+.box div:nth-of-type(4){
+	-webkit-box-ordinal-group: 3;
+}
+.box div:nth-of-type(5){
+	-webkit-box-ordinal-group: 6;
+}
+.box div:nth-of-type(6){
+	-webkit-box-ordinal-group: 5;
+}
+</style>
+</head>
+
+<body>
+<div class="box">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+</div>
+</body>
+</html>
