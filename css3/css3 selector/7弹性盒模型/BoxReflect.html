@@ -10,18 +10,36 @@
 		距离:
 		渐变(可选参数)
 */
-    img{
+    .img{
         display:block;
         width: 196px;
         height: 196px;
         margin: 100px auto;
         -webkit-box-reflect: right 10px;
     }
+
+    .demo{
+        width: 200px;
+        height: 200px;
+        border: black 1px solid;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .demo > img{
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
 </style>
 </head>
 
 <body>
-<img src="1.png" alt="">
+<img src="1.png" alt="" class="img">
+
+<div class="demo">
+    <img src="1.png" alt="">
+</div>
 </body>
 </html>
 

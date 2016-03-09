@@ -5,14 +5,14 @@
 <title>display-box</title>
 <style>
 /*
-	注意子使用弹性和模型的时候,父级元素必须要加display:box或者display:inline-box
+	注意使用弹性盒模型的时候,父级元素必须要加display:box或者display:inline-box
 	box-orient:定义盒子模型的排列方向,有以下两个取值:
 		Horizontal:水平显示,
-		vertical:垂直显示,
+		  vertical:垂直显示,
 	box-direction:元素排列顺序,有以下两个取值:
-		normal:反序
+		 normal:反序
 		reverse:正序
-	box-ordinal-group:设置元素的具体位置.
+	box-ordinal-group:设置元素的具体位置,取值为大于0小于子元素个数的正整数.
 */
 .box{
 	height: 100px;

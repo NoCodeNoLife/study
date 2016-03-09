@@ -30,11 +30,15 @@ div{
 	text-align:center;
 	margin-top: 10px;
 	background: #eaeaea;
-	display: none;
+	position: absolute;
+	left: -500px;
+	top: -500px;
+	-webkit-transition: all .5s;
 }
 
 div:target{/*E:target:让选中的目标E元素发生一些事情.不支持IE8-;表示当前的URL片段的元素类型,这个元素必须是 E*/
-	display:block;
+	left: 0;
+	top: 30px;
 }
 
 input{
