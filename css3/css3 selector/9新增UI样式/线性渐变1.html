@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>线性渐变</title>
+    <style>
+        /*
+            线性渐变格式(只能用在背景上):
+                linear-gradient:( [ <起点> || <角度> ,]?<点>,<点>···)
+                IE:
+                    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#fff",endColorstr="#c00",GradienType="1")
+                参数:
+                    起点:从什么方向开始渐变,默认top,有三个取值:(left,top,left top)
+                    角度:从什么角度开始渐变,取值(XXXdeg的形式)
+                      点:渐变点的颜色和位置,比如(black 50%),注意位置是可选参数.
+        */
+        .box1{
+            width: 900px;
+            height: 80px;
+            border: black 3px solid;
+            margin: 50px auto;
+            background-image: -webkit-linear-gradient(30deg,red 100px,blue 200px,green 300px,pink 200px);
+            /*background-image: -webkit-linear-gradient(left top,red,blue,yellow,pink,green);从左上角开始的线性渐变,*/
+            /*background-image: -webkit-linear-gradient(30deg,red 100px,blue 200px,green 300px,pink 200px);从30度角开始的线性渐变,颜色为红色到100px的位置结束,蓝色到200px的位置结束···*/
+
+        }
+
+        .box2{
+            width: 900px;
+            height: 80px;
+            border: black 3px solid;
+            background-image: -webkit-repeating-linear-gradient(60deg,red 0,blue 30px);
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

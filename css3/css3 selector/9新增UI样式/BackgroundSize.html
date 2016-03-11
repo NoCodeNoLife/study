@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background-size</title>
+    <style>
+        /*
+            background-size(X轴[接收具体数字如:100px,也接受比分比,如:100%],Y轴[接收具体数字如:100px,也接受比分比,如:100%]);有下面两个取值:
+            cover:放大,覆盖,
+            contain:缩小,包含
+        */
+        .box{
+            width: 200px;
+            height: 200px;
+            border: black 5px solid;
+            margin: 50px auto;
+            background: url("../1.png") no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+
+</div>
+</body>
+</html>

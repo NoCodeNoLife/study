@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分栏布局</title>
+    <style>
+        /*
+            分栏布局:
+                column-width:栏目宽度
+                column-count:栏目列数
+                  column-gap:栏目距离
+                 column-rule:栏目间隔线;取值跟 border 的写法一样.
+        */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap{
+            width: 600px;
+            padding: 10px;
+            border: 1px solid black;
+            margin: 20px auto;
+            font: 14px/28px 'Miscrosoft YaHei';
+            text-indent: 2em;
+            /*-webkit-column-width: 200px;!*告诉浏览器每一栏的宽度是 200px*!*/
+            -webkit-column-count: 4;/*告诉浏览器一共分为4栏,每一栏的宽度让浏览器自己计算*/
+               -moz-column-count: 4;
+              -webkit-column-gap: 30px;/*每个栏目之间的距离是30px*/
+                 -moz-column-gap: 30px;
+             -webkit-column-rule: 1px solid #c00;
+                -moz-column-rule: 1px solid pink;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <p>新华社首尔3月10日电(记者王家辉)韩联社10日援引韩国联合参谋本部消息报道说，朝鲜当天向朝鲜半岛东部海域发射2枚短程弹道导弹。</p>
+    <p>报道说，朝鲜当天5时20分许向朝鲜半岛东部海域发射2枚短程弹道导弹。据悉，导弹飞行距离约500公里。</p>
+    <p>报道说，据推测朝鲜此次发射的可能是“飞毛腿”系列导弹。韩国联合参谋本部称，韩军正在密切追踪监视相关情况，维持万全的应对态势。</p>
+    <p>联合国安理会2日一致通过涉朝问题第2270号决议，谴责朝鲜进行核试验和使用弹道导弹技术发射卫星，决定实施一系列制裁措施遏制朝鲜的核导计划，并呼吁恢复六方会谈。</p>
+</div>
+</body>
+</html>
