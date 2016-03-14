@@ -28,11 +28,11 @@
     var oLeft = -300;//背景图的初始位置;
 
     function move() {
+        clearInterval(timer)
         timer = setInterval(function () {
             oLeft+=10;
             document.title=oLeft;
             if (oLeft == 1000) {
-                //alert('1');
                 oLeft = -300;
                 clearInterval(timer);
             }
@@ -44,7 +44,7 @@
     clearInterval(timer1);
     timer1 = setInterval(function () {
         move();
-    }, 5000);
+    }, 2000);
 </script>
 </body>
 </html>
