@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transitionend事件</title>
+    <style>
+        /*
+            过渡完成事件:
+                webkit内核:
+                    obj.addEventListener('webkitTransitionEnd',function(){},false);
+                firefox:
+                    obj.addEventListener('transitionEnd',function(){},false);
+        */
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #c00;
+            transition: 2s width;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+<script>
+    var oBox = document.getElementById('box');
+
+        oBox.onclick = function () {
+            this.style.width = this.offsetWidth + 500 + 'px';
+        }
+</script>
+</body>
+</html>
