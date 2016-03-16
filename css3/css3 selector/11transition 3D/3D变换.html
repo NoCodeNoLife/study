@@ -3,8 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>3D变换</title>
+    <style>
+        /*
+            transform-style:(preserve-sd)建立3D空间;
+            perspective: 景深,取值数值,单位px,意思是站在多少像素之外来看这个物体;
+            perspective-origin:景深基点,也就是视线从哪个方向看过去,默认取值X轴和Y轴都是center,取值:left,right,center,top,bottom
+            backface-visibility:隐藏背面
+            transform新增函数:
+                rotateX();
+                rotateY();
+                rotateZ();
+                translateZ();
+                scaleZ();
+
+        */
+        .box {
+            width: 100px;
+            height: 100px;
+            border: black 1px solid;
+            margin: 100px auto;
+            padding: 100px;
+            -webkit-transform-style: preserve-3d;
+            -webkit-perspective: 200px;
+        }
+
+        .div {
+            width: 100px;
+            height: 100px;
+            background: #c00;
+            transition: 1s;
+        }
+
+        .box:hover .div {
+            /*transform: rotateX(180deg);*/
+            transform: translateZ(100px);/*并不只是元素的大小改变了,位置和离我们的视线的距离也都改变了.*/
+            /*
+                transform: translateZ(100px);translateZ的取值不可以大于父级-webkit-perspective的取值,否则会造成在同一个平面内而无法看到物体的效果;
+            */
+        }
+    </style>
 </head>
 <body>
-
+<div class="box">
+    <div class="div">1234</div>
+</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

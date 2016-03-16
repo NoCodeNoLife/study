@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D变换立方体的盒子</title>
+    <style>
+        .wrap {
+            width: 100px;
+            height: 100px;
+            border: black 3px solid;
+            margin: 100px auto;
+            padding: 100px;
+            -webkit-perspective: 200px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: relative;
+            transition: 2s;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform-origin: center center -50px;/*盒子旋转的中心点为:X轴居中,Y轴居中,Z轴为盒子厚度[高度]的一半*/
+        }
+
+        .box div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            color: #fff;
+            font-size: 50px;
+        }
+
+        .box div:nth-of-type(1) {
+            left: 0;
+            top: -100px;
+            background: #3c0;
+            -webkit-transform-origin: bottom; /*设置变换基点为bottom;*/
+            -webkit-transform: rotateX(90deg); /*围绕X轴进行90度旋转*/
+        }
+
+        .box div:nth-of-type(2) {
+            left: -100px;
+            top: 0;
+            background: #0b97c4;
+            -webkit-transform-origin: right;
+            -webkit-transform: rotateY(-90deg);
+        }
+
+        .box div:nth-of-type(3) {
+            left: 0;
+            top: 0;
+            background: #000;
+        }
+
+        .box div:nth-of-type(4) {
+            left: 100px;
+            top: 0;
+            background: #2b81af;
+            -webkit-transform-origin: left;
+            -webkit-transform: rotateY(90deg);
+        }
+
+        .box div:nth-of-type(5) {
+            left: 0;
+            top: 100px;
+            background: #3c510c;
+            -webkit-transform-origin: top;
+            -webkit-transform: rotateX(-90deg);
+        }
+
+        .box div:nth-of-type(6) {
+            left: 0;
+            top: 0;
+            background: #63eff7;
+            -webkit-transform: translateZ(-100px) rotateX(180deg);
+        }
+
+        .wrap:hover .box {
+            -webkit-transform: rotateX(180deg);
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+</div>
+</body>
+</html>

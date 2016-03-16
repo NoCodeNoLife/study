@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折纸导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            width: 160px;
+            margin: 30px auto;
+            position: relative;
+            -webkit-perspective: 800px;
+               -moz-perspective: 800px;
+                -ms-perspective: 800px;
+        }
+
+        #wrap h2 {
+            height: 40px;
+            background: #c00;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            font-size: 16px;
+            position: relative;
+            z-index: 10;
+            font-family: "Microsoft YaHei";
+        }
+
+        #wrap div {
+            position: absolute;
+            top: 32px;
+            width: 100%;
+            left: 0;
+            -webkit-transform-style: preserve-3d;
+               -moz-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
+            -webkit-transform-origin: top;
+               -moz-transform-origin: top;
+                -ms-transform-origin: top;
+            -webkit-transform: rotateX(-120deg);
+               -moz-transform: rotateX(-120deg);
+                -ms-transform: rotateX(-120deg);
+        }
+
+        #wrap span {
+            display: block;
+            height: 30px;
+            background: #9f0;
+            font-size: 14px;
+            line-height: 30px;
+            color: #333;
+            text-align: center;
+            box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 1);
+            transition: all 1s;
+        }
+
+        #wrap > div {
+            top: 40px;
+        }
+
+        @-webkit-keyframes open {
+            0% {
+                -webkit-transform: rotateX(-120deg);
+                   -moz-transform: rotateX(-120deg);
+                    -ms-transform: rotateX(-120deg);
+            }
+
+            25% {
+                -webkit-transform: rotateX(30deg);
+                   -moz-transform: rotateX(30deg);
+                    -ms-transform: rotateX(30deg);
+            }
+
+            50% {
+                -webkit-transform: rotateX(-15deg);
+                   -moz-transform: rotateX(-15deg);
+                    -ms-transform: rotateX(-15deg);
+            }
+
+            75% {
+                -webkit-transform: rotateX(8deg);
+                   -moz-transform: rotateX(8deg);
+                   -ms-transform: rotateX(8deg);
+            }
+            100% {
+                -webkit-transform: rotateX(0deg);
+                   -moz-transform: rotateX(0deg);
+                    -ms-transform: rotateX(0deg);
+            }
+        }
+        @-moz-keyframes open {
+            0% {
+                -webkit-transform: rotateX(-120deg);
+                   -moz-transform: rotateX(-120deg);
+                    -ms-transform: rotateX(-120deg);
+            }
+
+            25% {
+                -webkit-transform: rotateX(30deg);
+                   -moz-transform: rotateX(30deg);
+                    -ms-transform: rotateX(30deg);
+            }
+
+            50% {
+                -webkit-transform: rotateX(-15deg);
+                   -moz-transform: rotateX(-15deg);
+                    -ms-transform: rotateX(-15deg);
+            }
+
+            75% {
+                -webkit-transform: rotateX(8deg);
+                   -moz-transform: rotateX(8deg);
+                    -ms-transform: rotateX(8deg);
+            }
+            100% {
+                -webkit-transform: rotateX(0deg);
+                   -moz-transform: rotateX(0deg);
+                    -ms-transform: rotateX(0deg);
+            }
+        }
+        @-ms-keyframes open {
+            0% {
+                -webkit-transform: rotateX(-120deg);
+                   -moz-transform: rotateX(-120deg);
+                    -ms-transform: rotateX(-120deg);
+            }
+
+            25% {
+                -webkit-transform: rotateX(30deg);
+                   -moz-transform: rotateX(30deg);
+                    -ms-transform: rotateX(30deg);
+            }
+
+            50% {
+                -webkit-transform: rotateX(-15deg);
+                   -moz-transform: rotateX(-15deg);
+                    -ms-transform: rotateX(-15deg);
+            }
+
+            75% {
+                -webkit-transform: rotateX(8deg);
+                   -moz-transform: rotateX(8deg);
+                    -ms-transform: rotateX(8deg);
+            }
+            100% {
+                -webkit-transform: rotateX(0deg);
+                   -moz-transform: rotateX(0deg);
+                    -ms-transform: rotateX(0deg);
+            }
+        }
+
+        @-webkit-keyframes close {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                   -moz-transform: rotateX(0deg);
+                    -ms-transform: rotateX(0deg);
+            }
+            100% {
+                -webkit-transform: rotateX(-120deg);
+                   -moz-transform: rotateX(-120deg);
+                    -ms-transform: rotateX(-120deg);
+            }
+        }
+        @-moz-keyframes close {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                   -moz-transform: rotateX(0deg);
+                    -ms-transform: rotateX(0deg);
+            }
+            100% {
+                -webkit-transform: rotateX(-120deg);
+                   -moz-transform: rotateX(-120deg);
+                    -ms-transform: rotateX(-120deg);
+            }
+        }
+        @-ms-keyframes close {
+            0% {
+                -webkit-transform: rotateX(0deg);
+                   -moz-transform: rotateX(0deg);
+                    -ms-transform: rotateX(0deg);
+            }
+            100% {
+                -webkit-transform: rotateX(-120deg);
+                   -moz-transform: rotateX(-120deg);
+                    -ms-transform: rotateX(-120deg);
+            }
+        }
+
+        #wrap .show {
+            -webkit-animation: open 1.2s;
+               -moz-animation: open 1.2s;
+                -ms-animation: open 1.2s;
+            -webkit-transform: rotateX(0deg);
+               -moz-transform: rotateX(0deg);
+                -ms-transform: rotateX(0deg);
+        }
+
+        #wrap .show > span {
+            box-shadow: inset 0 0 0 20px rgba(0, 0, 0, 0);
+        }
+
+        #wrap .hide {
+            -webkit-animation: .7s close;
+               -moz-animation: .7s close;
+                -ms-animation: .7s close;
+            -webkit-transform: rotateX(-120deg);
+               -moz-transform: rotateX(-120deg);
+                -ms-transform: rotateX(-120deg);
+        }
+
+        #btn {
+            position: absolute;
+            left: -100px;
+            top: 0;
+            width: 80px;
+            height: 40px;
+            background: #eaeaea;
+            border: #ccc 1px solid;
+            text-align: center;
+            line-height: 40px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <input type="button" value="展开" id="btn">
+    <h2>标题</h2>
+    <div>
+        <span>选项1</span>
+        <div>
+            <span>选项2</span>
+            <div>
+                <span>选项3</span>
+                <div>
+                    <span>选项4</span>
+                    <div>
+                        <span>选项5</span>
+                        <div>
+                            <span>选项6</span>
+                            <div>
+                                <span>选项7</span>
+                                <div>
+                                    <span>选项8</span>
+                                    <div>
+                                        <span>选项9</span>
+                                        <div>
+                                            <span>选项10</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var oBtn = document.getElementById('btn');
+    var oWrap = document.getElementById('wrap');
+    var aDiv = oWrap.getElementsByTagName('div');
+    var onoff = true;
+    var iDelay = 100;
+    /*延迟*/
+    var timer = null;
+    var j = 0;
+    oBtn.onclick = function () {
+        if( timer )return;
+        if (onoff) {
+            oBtn.value = '收起';
+            j = 0;
+            timer = setInterval(function () {
+                aDiv[j].className = 'show';
+                j++;
+                if (j == aDiv.length) {
+                    clearInterval(timer);
+                    timer = null;
+                    onoff = false;
+                }
+            }, iDelay);
+        } else {
+            oBtn.value = '展开';
+            j = aDiv.length - 1;
+            timer = setInterval(function () {
+                aDiv[j].className = 'hide';
+                j--;
+                if (j < 0) {
+                    clearInterval(timer);
+                    timer = null;
+                    onoff = true;
+                }
+            }, iDelay);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折纸导航</title>
+    <style>
+        .wrap {
+            width: 500px;
+            border: black 1px solid;
+            margin: 100px auto;
+            -webkit-perspective: 600px;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .wrap div {
+            width: 498px;
+            height: 40px;
+            background: #eaeaea;
+            border: #ccc 1px solid;
+        }
+
+        .wrap div:first-child {
+            -webkit-transform-origin: bottom;
+            -webkit-transform: rotateX(45deg);
+        }
+
+        .wrap div:last-child {
+            -webkit-transform-origin: top;
+            -webkit-transform: rotateX(-45deg);
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div>1</div>
+    <div>2</div>
+</div>
+</body>
+</html>
