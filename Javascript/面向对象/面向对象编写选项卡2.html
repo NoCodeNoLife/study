@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>面向对象思想编写的选项卡2</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#div1,#div2 {
+	width: 600px;
+	height: 400px;
+	margin: 40px auto;
+	bordeR: black 1px solid;
+}
+
+#div1 ul,#div2 ul {
+	border-bottom: black 1px solid;
+	width: 600px;
+	height: 39px;
+}
+
+#div1 li,#div2 li {
+	width: 199px;
+	height: 39px;
+	float: left;
+	text-align: center;
+	color: #333;
+	border-right: black 1px solid;
+	font: 16px/39px 'Microsoft YaHei';
+	background: #eaeaea;
+}
+
+#div1 .active,#div2 .active {
+	background: #c00;
+	color: white;
+}
+
+#div1 div,#div2 div {
+	display: none;
+	width: 600px;
+	height: 360px;
+	text-align: center;
+	font: 50px/360px 'Microsoft YaHei';
+}
+</style>
+<script>
+//改成面向对象:
+	//1.全局变量就是属性;
+	//2.函数就是方法;
+	//3.onload中创建对象;
+	//4.改变this指向问题;
+window.onload = function(){
+	var table1 = new Tab('div1');
+	table1.init();
+	table1.autoPlay(3000);
+	
+	var table2 = new Tab('div2');
+	table2.init();
+	table2.autoPlay(2000);
+}
+
+function Tab(id){
+	this.oDiv = document.getElementById(id);
+	this.oBtn = this.oDiv.getElementsByTagName('li');
+	this.aDiv = this.oDiv.getElementsByTagName('div');
+	this.iNow = 0;
+}
+
+Tab.prototype.init = function (){
+	var This = this;
+	for( var i = 0; i < this.oBtn.length; i++ ){
+			this.oBtn[i].index = i;
+			this.oBtn[i].onclick = function(){
+				This.change(this);	
+	 		};
+	 }
+}
+
+Tab.prototype.change = function (obj){
+	for( var i = 0; i < this.oBtn.length; i++ ){
+		this.aDiv[i].style.display = 'none';	
+		this.oBtn[i].className = '';
+	}	
+	this.aDiv[obj.index].style.display = 'block';
+	obj.className = 'active';
+}
+
+Tab.prototype.autoPlay = function (autoTime) {
+	var This = this;
+	
+	setInterval(function(){
+		if(This.iNow == This.oBtn.length-1){
+			This.iNow = 0;
+		}else{
+			This.iNow++;
+		}
+		for( var i = 0; i < This.oBtn.length; i++ ){
+			This.aDiv[i].style.display = 'none';	
+			This.oBtn[i].className = '';
+		}	
+		This.aDiv[This.iNow].style.display = 'block';
+		This.oBtn[This.iNow].className = 'active';
+	},autoTime);	
+}
+</script>
+</head>
+<body>
+<div id="div1">
+	<ul>
+    	<li class="active">1</li>
+    	<li>2</li>
+    	<li>3</li>
+    </ul>
+    <div style="display: block;">111</div>
+    <div>222</div>
+    <div>333</div>
+</div>
+
+
+<div id="div2">
+	<ul>
+    	<li class="active">1</li>
+    	<li>2</li>
+    	<li>3</li>
+    </ul>
+    <div style="display: block;">111</div>
+    <div>222</div>
+    <div>333</div>
+</div>
+</body>
+</html>

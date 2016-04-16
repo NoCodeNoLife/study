@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂方式</title>
+    <!--
+
+    -->
+</head>
+<body>
+<script>
+     //工厂方式:就是封装函数
+     //语法规定:当new去调用一个函数,这个时候函数中的this就是创建出来的对象;而且函数的返回值就是this[ 隐屎返回 ];
+
+    function creatPerson(name){
+        var obj = new Object()//创建一个obj对象;
+        obj.name = name;//obj对象的属性;
+        obj.showName = function () {//obj对象的方法;
+            alert( this.name );
+        }
+
+        return obj;//返回obj对象;
+    }
+     var p1 = creatPerson('AA');
+     var p2 = creatPerson('BB');
+        p1.showName();
+        p2.showName()
+</script>
+</body>
+</html>

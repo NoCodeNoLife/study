@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂方式之原型</title>
+</head>
+<body>
+<script>
+    function creatPreson(name){
+        this.name = name;
+    }
+
+    creatPreson.prototype.showName = function(){
+        alert( this.name );
+    }
+
+    var p1 = new creatPreson('AA');
+    var p2 = new creatPreson('BB');
+        p1.showName();
+        p2.showName();
+</script>
+</body>
+</html>

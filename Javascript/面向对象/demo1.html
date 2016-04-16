@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>面向对象基本写法和组成</title>
+    <!--
+
+    面向对象编程[OOP]的特点:
+        --抽象:抓住核心问题;
+        --封装:只能通过对象来访问方法;
+        --继承:从已有的对象上继承出新的对象;
+        --多态:多对象的不同形态;
+
+    对象的组成:
+        --方法[ -->
+</head>
+<body>
+<script>
+    var obj = new Object();//创建一个空对象;
+    obj.name = 'Jack';//属性
+    obj.showName = function () {//方法
+        alert(this.name);
+    }
+
+    obj.showName();
+	
+	var arr1 = [1,2,3,4,5];//构造函数一般是指new后面的那个,所以arr的构造函数就是Array,protototype就是原形,
+	var arr2 = [2,2,2,2,2];
+	Array.prototype.sum = function(){
+		var result = 0;
+		for(var i =0; i<this.length;i++){
+			result +=this[i];	
+		}	
+		return result;
+	}
+	
+	alert( arr1.sum() );
+	alert( arr2.sum() );
+</script>
+</body>
+</html>

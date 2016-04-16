@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>面向对象思想编写的选项卡</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#div {
+	width: 600px;
+	height: 400px;
+	margin: 0 auto;
+	bordeR: black 1px solid;
+}
+
+#div ul {
+	border-bottom: black 1px solid;
+	width: 600px;
+	height: 39px;
+}
+
+#div li {
+	width: 199px;
+	height: 39px;
+	float: left;
+	text-align: center;
+	color: #333;
+	border-right: black 1px solid;
+	font: 16px/39px 'Microsoft YaHei';
+	background: #eaeaea;
+}
+
+#div .active {
+	background: #c00;
+	color: white;
+}
+
+#div div {
+	display: none;
+	width: 600px;
+	height: 360px;
+	text-align: center;
+	font: 50px/360px 'Microsoft YaHei';
+}
+</style>
+<script>
+function $(id){
+	return document.getElementById(id);	
+}
+//第一步:不要出现函数嵌套函数;第二步:把变量提升为全局变量;第三步:把onload中不是赋值的语句单独放到一个函数中;
+var oDiv = null;
+var oBtn = null;
+var aDiv = null;
+
+window.onload = function(){
+	oDiv = $('div');
+	oBtn = oDiv.getElementsByTagName('li');
+	aDiv = oDiv.getElementsByTagName('div');
+	
+	init();
+}
+	function init(){
+		for( var i = 0; i < oBtn.length; i++ ){
+			oBtn[i].index = i;
+			oBtn[i].onclick = change;
+		}
+	}
+	
+	function change(){
+		for( var i = 0; i < oBtn.length; i++ ){
+				aDiv[i].style.display = 'none';	
+				oBtn[i].className = '';
+			}	
+			aDiv[this.index].style.display = 'block';
+			this.className = 'active';
+	}
+
+</script>
+</head>
+<body>
+<div id="div">
+	<ul>
+    	<li class="active">1</li>
+    	<li>2</li>
+    	<li>3</li>
+    </ul>
+    <div style="display: block;">111</div>
+    <div>222</div>
+    <div>333</div>
+</div>
+</body>
+</html>

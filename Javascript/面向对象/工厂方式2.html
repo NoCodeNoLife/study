@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //new后面的函数叫做构造函数;
+    function creatPerson(name){
+        this.name = name;
+        this.showName = function () {
+            alert(this.name);
+        }
+    }
+
+    var p1 = new creatPerson('AA');
+    var p2 = new creatPerson('BB');
+        p1.showName();
+        p2.showName();
+
+</script>
+</body>
+</html>
