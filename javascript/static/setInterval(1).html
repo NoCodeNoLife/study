@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+* {
+	margin: 0;
+	paddiing: 0;
+	list-style: none;
+}
+
+#move {
+	width: 150px;
+	padding: 10px; 
+	margin: 100px auto 0;
+}
+
+#move li {
+	width: 10px;
+	height: 10px;
+	background: #ccc;
+	border-radius: 50%;
+	float: left;
+	margin-right: 4px;
+}
+
+#move li.active {
+	background: #c00;
+}
+
+#btn {
+	position: relative;
+	width:80px;
+	height:40px;
+}
+
+#btn input {
+	position: absolute;
+	width: 80px;
+	height: 40px;
+	left: 0;
+	top: 0;
+}
+
+#btn span {
+	display: block;
+	width: 80px;
+	height: 40px;
+	position: absolute; 
+	left: 0 ;
+	top: 0;
+	background: #ccc;
+	display: none;
+}
+</style>
+<script>
+window.onload = function(){
+	var oMove = document.getElementById('move');
+	var aLi = oMove.getElementsByTagName('li');
+	var oMask = document.getElementById('mask');
+	var oBtn1 = document.getElementById('btn1');
+	var num = 0;
+	var timer = null;
+	
+	oBtn1.onclick = function(){
+		
+		timer = setInterval( fn,100 );
+		
+		if( num == aLi.length ) oBtn1.style.display = 'block';
+			
+	}
+	
+	function fn(){
+		
+		num++;
+		
+		for ( var i = 0; i < aLi.length; i++ ) {
+			
+			aLi[i].className = '';
+			
+		}
+		
+		if ( num == aLi.length ) num = 0;
+		
+		aLi[num].className = 'active';		
+	
+	};
+	
+}
+</script>
+</head>
+<body>
+<p id="btn">
+	<input type="button" value="按钮" id="btn1" />
+    <span id="mask"></span>
+</p>
+<ul id="move">
+	<li class="active"></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+</body>
+</html>
