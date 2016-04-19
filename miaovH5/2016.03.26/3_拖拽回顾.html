@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+body div:nth-child(1) {
+	width: 200px;
+	height: 200px;
+	background: red;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+</style>
+<script>
+window.onload=function(){
+	var box = document.querySelector("#box");
+	var start = {x: 0, y: 0};
+	var startOffset = {x: 0, y: 0};
+	box.onmousedown = function (e){
+		start.x = e.clientX;
+		start.y = e.clientY;
+		startOffset.x = this.offsetLeft;
+		startOffset.y = this.offsetTop;
+			box.onmousemove = function (e)
+			{
+				var now = {x: 0, y:0};
+				now.x = e.clientX;
+				now.y = e.clientY;
+				var disX= now.x -  start.x;
+				var disY= now.y -  start.y;
+				box.style.left = startOffset.x + disX + "px";
+				box.style.top = startOffset.y + disY + "px";
+			};
+			box.onmouseup = function(){
+				box.onmousemove = null;
+				box.onmouseup = null;
+			}
+	};
+	
+};
+</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

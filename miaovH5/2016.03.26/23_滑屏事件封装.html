@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+.box {
+	width: 100px;
+	height: 100px;
+	background: red;
+	border: 10px solid #000;
+	margin: 5px auto;
+}
+</style>
+<script>
+function TouchEevent(obj){
+	var _this = this;
+	this.obj = obj;
+	for(var i=0; i<this.obj.length; i++){
+		this.obj[i].touches={x:0,y:0};
+		this.obj[i].isMove = false;
+		this.obj[i].index = i;
+		this.obj[i].addEventListener("touchstart",
+			function(e){
+				_this.fnStart(e,this.index);
+			},
+			false
+		);
+		this.obj[i].addEventListener("touchmove",
+			function(e){
+				this.isMove = true;
+			},
+			false
+		);
+		this.obj[i].addEventListener("touchend",
+			function(e){
+				_this.fnEnd(e,this.index);
+			},
+			false
+		);
+	}
+}
+TouchEevent.prototype = {
+	fnStart: function(e,index){
+			this.obj[index].touches={x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+			this.obj[index].isMove = false;
+	},
+	fnEnd: function(e,index){
+			var nowTouches = {x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+			var disX = nowTouches.x -this.obj[index].touches.x;
+			var disY = nowTouches.y - this.obj[index].touches.y;
+			if(disX != 0 || disY != 0){
+				if(this.swipe){
+					this.swipe.call(this.obj[index]);
+				}
+				if(disX > 10 && this.swipeRight){
+						this.swipeRight.call(this.obj[index]);
+				}
+				if(disX < -10 && this.swipeLeft){
+					this.swipeLeft.call(this.obj[index]);
+				}
+				if(disY < -10 && this.swipeTop){
+						this.swipeTop.call(this.obj[index]);
+				}
+				if(disY > 10 && this.swipeDown){
+					this.swipeDown.call(this.obj[index]);
+				}
+			}
+			console.log(this.obj[index].isMove);
+			if(!this.obj[index].isMove && this.tap){
+				this.tap.call(this.obj[index]);
+			}
+	},
+	tap: function(fn){
+		this.tap = fn;
+	},
+	swipe: function(fn){
+		this.swipe = fn;
+	},
+	swipeLeft: function(fn){
+		this.swipeLeft = fn;
+	},
+	swipeRight: function(fn){
+		this.swipeRight = fn;
+	},
+	swipeTop: function(fn){
+		this.swipeTop = fn;
+	},
+	swipeDown: function(fn){
+		this.swipeDown = fn;
+	}
+};
+function $(obj){
+	if(typeof obj == "string"){
+		obj = document.querySelectorAll(obj);
+	}
+	if(typeof obj.length == "number")
+	{
+		return new TouchEevent(obj);
+	}
+	return new TouchEevent([obj]);
+}
+window.onload= function(){
+	$(".box").swipeLeft(
+		function(){
+			this.style.background = "blue";
+		}
+	);
+	$(".box").swipeRight(
+		function(){
+			this.style.background = "yellow";
+		}
+	);
+	$(".box").tap(
+		function(){
+			this.style.background = "#000";
+		}
+	);
+};
+</script>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<script>
+toSize();
+function toSize(){
+	var oHtml = document.querySelector("html");
+	var iW= oHtml.getBoundingClientRect().width;//oHtml.clientWidth;
+	oHtml.style.fontSize=iW/16+"px";
+}
+window.addEventListener("resize",
+	function(){
+		toSize();
+	},
+	false
+);
+window.addEventListener("orientationchange",
+	function(){
+		toSize();
+	},
+	false
+);
+</script>
+<style>
+body {
+	margin: 0;
+}
+.wrap {
+	overflow: hidden;
+	position:relative;
+}
+ul {
+	overflow: hidden;
+	margin: 0; 
+	padding: 0;
+	list-style: none;
+	width: 48rem;
+}
+li {
+	float: left;
+}
+img {
+	width: 16rem;
+	vertical-align: top;
+}
+#navBtns {
+	position: absolute;
+	height: .5rem;
+	background: rgba(0, 0, 0, .5);
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	text-align: center;
+	padding: .2rem 0;
+}
+#navBtns a {
+	width: .5rem;
+	height: .5rem;
+	background: #fff;
+	display: inline-block;
+	border-radius: .25rem;
+	vertical-align: top;
+}
+#navBtns a.active {
+	background: #f60;
+}
+</style>
+<script src="js/css.js"></script>
+<script>
+window.onload=function() {
+	var ul = document.querySelector("ul");
+	var navBtns = document.querySelectorAll("#navBtns a");
+	var start = 0;
+	var startTouch = 0;
+	var screenW =ul.children[0].offsetWidth;
+	css(ul, "translateX", 0);
+	ul.addEventListener("touchstart",
+		function(e){
+			startTouch = e.changedTouches[0].pageX;
+			start = css(ul, "translateX");
+		},
+		false
+	);
+	ul.addEventListener("touchmove",
+		function(e){
+			var nowTouch = e.changedTouches[0].pageX;
+			var disX = nowTouch - startTouch;
+			ul.style.transition = "none";
+			css(ul, "translateX",disX+start);
+		},
+		false
+	);
+	ul.addEventListener("touchend",
+		function(e){
+			var now = Math.round(-css(ul, "translateX") / screenW);
+			ul.style.transition = ".5s";
+			now = now < 0 ? 0 : now;
+			now = now >= navBtns.length ? navBtns.length-1 : now;
+			css(ul, "translateX",-now*screenW);	
+			for(var i=0; i<navBtns.length; i++){
+				navBtns[i].className = "";
+			}
+			navBtns[now].className = "active";
+		},
+		false
+	);
+};
+</script>
+</head>
+<body>
+<section class="wrap">
+	<ul>
+    	<li>
+        	<a href="#1">
+            	<img src="img/img (1).jpg" />
+            </a>
+        </li>
+        <li>
+        	<a href="#1">
+            	<img src="img/img (2).jpg" />
+            </a>
+        </li>
+        <li>
+        	<a href="#1">
+            	<img src="img/img (3).jpg" />
+            </a>
+        </li>
+    </ul>
+   	<nav id="navBtns">
+    	<a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </nav>
+</section>
+</body>
+</html>

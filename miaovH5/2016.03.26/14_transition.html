@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+#box {
+	width: 100px;
+	height: 100px;
+	background: red;
+	transition: 3s 2s width, 1s height;
+}
+/*
+	transition 给数值类型的样式 在发生改变的时候，添加一个动画;
+
+	transition-property  要运动的样式  （all || [attr] || none）
+	transition-duration 运动时间
+	transition-delay 延迟时间
+	transition-timing-function 运动形式 
+		ease：（逐渐变慢）默认值
+		linear：（匀速）
+		ease-in：(加速)
+		ease-out：（减速）
+		ease-in-out：（先加速后减速）
+		cubic-bezier 贝塞尔曲线（ x1, y1, x2, y2 ） 
+*/
+</style>
+<script>
+window.onload=function(){
+	var box = document.querySelector("#box");
+	box.addEventListener("touchend",
+		function(){
+			this.style.cssText="width:200px;height:200px;background:blue;";	
+		},
+		false
+	);
+};
+</script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

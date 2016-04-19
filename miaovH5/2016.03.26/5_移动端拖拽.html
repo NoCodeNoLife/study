@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+html, body {
+	height: 100%;
+}
+body {
+	margin: 0;
+}
+#box {
+	height: 100%;
+	font-size: 30px;
+	overflow: hidden;
+	position: relative;
+}
+#div {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+</style>
+<script>
+document.ontouchmove=function(e)
+{
+     e.preventDefault();
+};
+window.onload=function(){
+	var box = document.querySelector("#box");
+	var div = document.querySelector("#div");
+	var start = 0;
+	var startTouch = 0;
+	box.addEventListener("touchstart",
+		function(e){
+			startTouch = e.changedTouches[0].pageY;
+			start = div.offsetTop;
+		},
+		false
+	);
+	box.addEventListener("touchmove",
+		function(e){
+			var nowTouch = e.changedTouches[0].pageY;
+			var disY = nowTouch - startTouch;
+			div.style.top = start+disY+"px";
+		},
+		false
+	);
+	setLayout();
+};
+function setLayout(){
+	var div = document.querySelector("#div");
+	var str = "";
+	for(var i=0;  i<100; i++){
+		str+="文字"+i+"<br/>"
+	}
+	div.innerHTML=str;
+}
+</script>
+</head>
+<body>
+<div id="box">
+	<div id="div"></div>
+</div>		
+</body>
+</html>

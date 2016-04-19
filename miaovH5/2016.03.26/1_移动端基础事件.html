@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+body div:nth-child(1) {
+	width: 200px;
+	height: 200px;
+	background: red;
+}
+</style>
+<script>
+window.onload=function(){
+	//var box = document.querySelector("div");
+	var box = document.querySelectorAll("#box");
+	console.log(box);
+	/*
+		document.querySelector()  
+			1. 参数是一个合法的css 选择器
+			2. 只能获取一个元素，如果给的是一组,只获取第0个
+		document.querySelectorAll()
+			1. 参数是一个合法的css 选择器
+			2. 获取的是一堆元素的集合
+	*/
+};
+</script>
+</head>
+<body>
+<div id="box"></div>
+<div id="box2"></div>
+<div id="box2"></div>
+</body>
+</html>

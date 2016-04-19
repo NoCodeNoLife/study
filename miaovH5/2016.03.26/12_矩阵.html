@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+.box {
+	width: 100px;
+	padding: 100px;
+	border: 1px solid #000;
+	margin: auto;
+}
+.div {
+	width: 100px;
+	height: 100px;
+	background: red;
+	color: #fff;
+	font: 60px / 100px "宋体";
+	text-align: center; 
+	transition: 3s;
+	-webkit-transform:scale(.5);
+	transform: scale(.5);
+}
+/*
+	scale(.5); 
+	matrix(a,b,c,d,e,f) 矩阵函数
+	matrix(1,0,0,1,0,0);
+	matrix(.5,0,0,.5,50,0)
+	通过矩阵实现缩放
+		x轴缩放 a=x*a    c=x*c     e=x*e;
+		y轴缩放 b=y*b   d=y*d     f=y*f;
+	通过矩阵实现位移
+		x轴位移: e=e+x
+		y轴位移: f=f+y
+	通过矩阵实现倾斜
+		x轴倾斜: c=Math.tan(xDeg/180*Math.PI)
+		y轴倾斜: b=Math.tan(yDeg/180*Math.PI)
+	通过矩阵实现旋转
+		a=Math.cos(deg/180*Math.PI); 
+		b=Math.sin(deg/180*Math.PI);
+		c=-Math.sin(deg/180*Math.PI);
+		d=Math.cos(deg/180*Math.PI);
+
+*/
+</style>
+<script>
+window.onload =function(){
+	var div = document.querySelector(".div");
+	div.addEventListener("touchend",
+		function(){
+			console.log(getComputedStyle(div)["transform"]);
+			/*
+				通过getComputedStyle 获取 transform的时候，只能获取到矩阵;
+			*/		
+		},
+		false
+	);
+};
+</script>
+</head>
+<body>
+<div class="box">
+	<div class="div">上</div>
+</div>
+</body>
+</html>

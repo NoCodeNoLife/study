@@ -7,7 +7,7 @@
         * {
             margin: 0;
             padding: 0;
-            font-family: "Microsoft YaHei UI Light", "Microsoft YaHei UI";
+            font-family: "Microsoft YaHei";
             list-style: none;
         }
 
@@ -25,6 +25,7 @@
             line-height: 20px;
             padding: 14px 9px;
             float: left;
+			resize: none;
         }
 
         #center {
@@ -87,6 +88,7 @@
             line-height: 20px;
             padding: 14px 9px;
             float: left;
+			overflow: auto;
         }
     </style>
     <script>
@@ -113,15 +115,15 @@
             oBtn.onclick = function () {
                 oMove.style.display = 'block';
 
-                clearInterval(timer);
+                clearInterval( timer );
                 timer = setInterval(fn,100);
             }
             function fn(){
                 num++;
-                for (var i = 0; i < aLi.length; i++) {
+                for ( var i = 0; i < aLi.length; i++ ) {
                     aLi[i].className = '';
                 }
-                if (num == aLi.length) num = 0;
+                if ( num == aLi.length ) num = 0;
                 aLi[num].className = 'active';
 
                 var str = oTxt.value;
@@ -130,8 +132,8 @@
                 oTxt.value = arr.join('');
                 oRight.innerHTML = oRemove+oRight.innerHTML;
 
-                if(oTxt.value.length == 0){
-                    clearInterval(timer);
+                if( oTxt.value.length == 0 ){
+                    clearInterval( timer );
                     oMove.style.display = 'none';
                 }
                 oSpan1.innerHTML = oTxt.value.length + '/';

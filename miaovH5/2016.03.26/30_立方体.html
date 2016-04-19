@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#box {
+	width: 100px;
+	height: 100px;
+	padding: 100px;
+	border: 2px solid #000;
+	margin: 40px auto;
+	-webkit-perspective: 200px;
+	perspective: 300px;
+}
+#div {
+	width: 100px;
+	height: 100px;
+	transition: .6s cubic-bezier(.1,.76,.58,1.29);
+	transform-style: preserve-3d;
+	position: relative;
+	transform-origin: center center -50px;
+}
+span {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	color: #fff;
+	font: 60px / 100px "宋体";
+	text-align: center;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+span:nth-child(1){
+	left: 0;
+	top: 0;
+	background: #603;
+}
+span:nth-child(2){
+	left: 100px;
+	top: 0;
+	background: #6CC;
+	transform-origin: left;
+	transform:rotateY(90deg);
+}
+span:nth-child(3){
+	left: 0;
+	top: 0;
+	background: #C33;
+	transform: translateZ(-100px) rotateY(-180deg);
+}
+span:nth-child(4){
+	left: -100px;
+	top: 0;
+	background: #096;
+	transform-origin: right;
+	transform: rotateY(-90deg);
+}
+span:nth-child(5){
+	left: 0;
+	top: -100px;
+	background: #693;
+	transform-origin: bottom;
+	transform: rotateX(90deg);
+}
+span:nth-child(6){
+	left: 0;
+	top: 100px;
+	background: #F69;
+	transform-origin: top;
+	transform: rotateX(-90deg);
+}
+</style>
+<script>
+function TouchEevent(obj){
+	var _this = this;
+	this.obj = obj;
+	for(var i=0; i<this.obj.length; i++){
+		this.obj[i].touches={x:0,y:0};
+		this.obj[i].isMove = false;
+		this.obj[i].index = i;
+		this.obj[i].addEventListener("touchstart",
+			function(e){
+				_this.fnStart(e,this.index);
+			},
+			false
+		);
+		this.obj[i].addEventListener("touchmove",
+			function(e){
+				this.isMove = true;
+			},
+			false
+		);
+		this.obj[i].addEventListener("touchend",
+			function(e){
+				_this.fnEnd(e,this.index);
+			},
+			false
+		);
+	}
+}
+TouchEevent.prototype = {
+	fnStart: function(e,index){
+			this.obj[index].touches={x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+			this.obj[index].isMove = false;
+	},
+	fnEnd: function(e,index){
+			var nowTouches = {x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+			var disX = nowTouches.x -this.obj[index].touches.x;
+			var disY = nowTouches.y - this.obj[index].touches.y;
+			if(disX != 0 || disY != 0){
+				if(this.swipe){
+					this.swipe.call(this.obj[index]);
+				}
+				if(disX > 10 && this.swipeRight){
+						this.swipeRight.call(this.obj[index]);
+				}
+				if(disX < -10 && this.swipeLeft){
+					this.swipeLeft.call(this.obj[index]);
+				}
+				if(disY < -10 && this.swipeTop){
+						this.swipeTop.call(this.obj[index]);
+				}
+				if(disY > 10 && this.swipeDown){
+					this.swipeDown.call(this.obj[index]);
+				}
+			}
+			console.log(this.obj[index].isMove);
+			if(!this.obj[index].isMove && this.tap){
+				this.tap.call(this.obj[index]);
+			}
+	},
+	tap: function(fn){
+		this.tap = fn;
+	},
+	swipe: function(fn){
+		this.swipe = fn;
+	},
+	swipeLeft: function(fn){
+		this.swipeLeft = fn;
+	},
+	swipeRight: function(fn){
+		this.swipeRight = fn;
+	},
+	swipeTop: function(fn){
+		this.swipeTop = fn;
+	},
+	swipeDown: function(fn){
+		this.swipeDown = fn;
+	}
+};
+function $(obj){
+	if(typeof obj == "string"){
+		obj = document.querySelectorAll(obj);
+	}
+	if(typeof obj.length == "number")
+	{
+		return new TouchEevent(obj);
+	}
+	return new TouchEevent([obj]);
+}
+</script>
+<script>
+window.onload=function(){
+	var now = 0;
+	var box = document.getElementById("div");
+	$("#box").swipeLeft(
+		function(){
+			now++;
+			box.style.transform="rotateY("+-now*90+"deg)";
+		}
+	);
+	$("#box").swipeRight(
+		function(){
+			now--;
+			box.style.transform="rotateY("+-now*90+"deg)";
+		}
+	);
+};
+</script>
+</head>
+<body>
+<div id="box">
+	<div id="div">
+    	<span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>	
+</div>
+</body>
+</html>
+

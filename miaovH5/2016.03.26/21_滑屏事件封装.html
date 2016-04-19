@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+#box {
+	width: 200px;
+	height: 200px;
+	background: red;
+}
+</style>
+<script>
+function TouchEevent(obj){
+	var _this = this;
+	this.obj = obj;
+	this.touches={x:0,y:0};
+	this.obj.addEventListener("touchstart",
+		function(e){
+			_this.fnStart(e);
+		},
+		false
+	);
+	this.obj.addEventListener("touchend",
+		function(e){
+			_this.fnEnd(e);
+		},
+		false
+	);
+}
+TouchEevent.prototype = {
+	fnStart: function(e){
+			this.touches={x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+	},
+	fnEnd: function(e){
+			var nowTouches = {x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+			var disX = nowTouches.x - this.touches.x;
+			var disY = nowTouches.y - this.touches.y;
+			if(disX != 0 || disY != 0){
+				if(this.swipe){
+					this.swipe.call(this.obj);
+				}
+				if(disX > 10 && this.swipeRight){
+						this.swipeRight.call(this.obj);
+				}
+				if(disX < -10 && this.swipeLeft){
+					this.swipeLeft.call(this.obj);
+				}
+				if(disY < -10 && this.swipeTop){
+						this.swipeTop.call(this.obj);
+				}
+				if(disY > 10 && this.swipeDown){
+					this.swipeDown.call(this.obj);
+				}
+		}
+	},
+	swipe: function(fn){
+		this.swipe = fn;
+	}
+};
+function $(obj){
+	return new TouchEevent(obj);
+}
+window.onload= function(){
+	var box = document.getElementById("box");
+	/*var obj= $(box);
+	obj.swipeRight = function(){
+		console.log("向右滑屏");
+	};
+	obj.swipeLeft = function(){
+		console.log("向左滑屏");
+	};
+	obj.swipeTop = function(){
+		console.log("向上滑屏");
+	};
+	obj.swipeDown = function(){
+		console.log("向下滑屏");
+	};
+	$(box).swipeDown = function(){
+		console.log("向下滑屏");
+	};*/
+	$(box).swipe(
+		function(){
+			console.log("滑屏");
+		}
+	);
+};
+</script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

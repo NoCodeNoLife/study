@@ -175,9 +175,11 @@ window.onload = function(){
 	}
 	//延迟关闭事件
 	function hide(num){
-		timer = setTimeout(function(){aList[num].style.display = 'none';},500);
+		timer = setTimeout(function(){
+			aList[num].style.display = 'none';
+			
+		},500);
 	}
-	
 }
 </script>
 </head>

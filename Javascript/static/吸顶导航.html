@@ -1,57 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
-    <title>吸顶导航</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<title>吸顶导航</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-        p {
-            width: 1200px;
-            margin: 40px auto;
-        }
+    p {
+        width: 1200px;
+        margin: 40px auto;
+    }
 
-        div {
-            width: 100%;
-            height: 40px;
-            line-height: 40px;
-            color: #fff;
-            text-align: center;
-            background: #333;
-        }
+    div {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+        background: #333;
+    }
 
-        .box2 {
-            display: none;
-        }
-    </style>
-    <script src="../libs/library.js"></script>
-    <script>
-        addReady(function () {
-            var oBox1 = $('box1');
-            var oBox2 = $('box2');
-            var top = oBox1.offsetTop;
+    .box2 {
+        display: none;
+    }
+</style>
+<script src="../libs/library.js"></script>
+<script>
+addReady(function () {
+	var oBox1 = $('box1');
+	var oBox2 = $('box2');
+	var top = oBox1.offsetTop;
 
-            window.onscroll = function () {
-                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+	window.onscroll = function () {
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		
+	    console.log( 'top是:' + top + 'scrollTop是:' + scrollTop );
 
-                if (top < scrollTop) {
-                    oBox1.style.position = 'fixed';
-                    oBox1.style.top = 0;
-                    oBox2.style.display = 'block';
-                } else {
-                    oBox1.style.position = '';
-                    oBox2.style.display = 'none';
-                }
+		if (top < scrollTop) {
+			oBox1.style.position = 'fixed';
+			oBox1.style.top = 0;
+			oBox2.style.display = 'block';
+		} else {
+			oBox1.style.position = '';
+			oBox2.style.display = 'none';
+		}
 
-            }
-        });
-    </script>
+	}
+});
+</script>
 </head>
 <body>
-<p>有些时候，你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等，每次git status都会显示Untracked files ...，有强迫症的童鞋心里肯定不爽。
+<p>有些时候，你必须把某些文件放到Git工作目录中，但又不能提交它们，比如保存了数据库密码的配置文件啦，等等，每次git status都会显示Untracked files ...,有强迫症的童鞋心里肯定不爽。
 
     好在Git考虑到了大家的感受，这个问题解决起来也很简单，在Git工作区的根目录下创建一个特殊的.gitignore文件，然后把要忽略的文件名填进去，Git就会自动忽略这些文件。
 

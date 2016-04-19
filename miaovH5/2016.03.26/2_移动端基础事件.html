@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+body div:nth-child(1) {
+	width: 200px;
+	height: 200px;
+	background: red;
+}
+</style>
+<script>
+window.onload=function(){
+	var box = document.querySelector("#box");
+	box.addEventListener("touchstart",function(){
+			console.log("手指触摸");
+		},false	);
+	box.addEventListener("touchmove",function(){
+			console.log("手指移动");
+		},false	);
+	box.addEventListener("touchend",function(){
+			console.log("手指抬起");
+		},false);
+};
+</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

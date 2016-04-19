@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+#box {
+	width: 300px;
+	height: 200px;
+	background: red;
+	font-size: 30px;
+	color: #fff;
+}
+</style>
+<script>
+document.ontouchmove=function(e)
+{
+     e.preventDefault();
+};
+window.onload=function(){
+	var box = document.querySelector("#box");
+	box.addEventListener(
+		"touchmove",
+		function(ev){
+			//console.log("位于当前屏幕的手指列表:"+ev.touches)
+			//box.innerHTML = "位于当前屏幕的手指列表:"+ev.touches.length;
+			box.innerHTML = "触发当前事件的手指列表:"+ev.changedTouches.length;
+			ev.preventDefault();
+		},
+		false
+	);
+};
+</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

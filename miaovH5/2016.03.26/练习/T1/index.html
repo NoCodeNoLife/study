@@ -1,0 +1,357 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="x5-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="screen-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<script>
+setSize();
+window.addEventListener("resize",setSize,false);
+window.addEventListener("orientationchange",setSize,false);
+function setSize()
+{
+	var oHtml=document.getElementsByTagName("html")[0];
+	var iWidth=oHtml.getBoundingClientRect().width;
+	oHtml.style.fontSize=iWidth/16+"px";
+}
+</script>
+<title>无标题文档</title>
+<style>
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+ 
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+html{height:100%;}
+body{
+	margin:0;
+	height:100%; 
+	position:relative; 
+	overflow:hidden; 
+	background:#000;
+}
+header,footer{ 
+	position: absolute;
+	left: 0;
+	right: 0; 
+	top: 0; 
+	line-height: 40px; 
+	color: #fff;
+	background: rgba(0,0,0,.2); 
+	font-size: 16px; 
+	text-align: center;
+	box-shadow: 0 0 5px rgba(0, 0, 0, .8);
+	z-index:3;
+}
+footer {
+	bottom:0;
+	top:auto;
+}
+
+#wrap, #loading {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 40px;
+	bottom: 40px;
+	-webkit-perspective: 1200px;
+	perspective: 1200px;
+	z-index: 1;
+}
+#loading {
+	z-index:2;
+	background:#000;	
+}
+#imgList {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+}
+#imgList li {
+	width: 25%;
+	float: left;
+	-webkit-perspective: 300px;
+	perspective: 300px;
+}
+#imgList .img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform-origin: center center -2rem;
+	transform-origin: center center -2rem;
+	
+}
+#imgList span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: url(img/img1.jpeg) no-repeat;
+	background-size: 16rem auto !important;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+#imgList span:nth-of-type(4) {
+	left: -100%;
+	-webkit-transform-origin: right;
+	-webkit-transform: rotateY(-90deg);
+	transform-origin: right;
+	transform: rotateY(-90deg);
+	background: url(img/img4.jpeg) no-repeat;
+} 
+#imgList span:nth-of-type(3) {
+	-webkit-transform:translateZ(-4rem) rotateY(180deg);
+	transform:translateZ(-4rem) rotateY(180deg);
+	background: url(img/img3.jpeg) no-repeat;
+} 
+#imgList span:nth-of-type(2) {
+	left: 100%;
+	-webkit-transform-origin: left;
+	-webkit-transform: rotateY(90deg);
+	transform-origin: left;
+	transform: rotateY(90deg);
+	background: url(img/img2.jpeg) no-repeat;
+} 
+
+#navs {
+	width: 100%;
+	height: 12px;
+	padding: 10px 0;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, .4);
+	box-shadow: 0 0 5px rgba(255, 255, 255, .7);
+	z-index: 5;
+	text-align: center;
+}
+#navs a {
+	width: 12px;
+	height: 12px;
+	background: #fff;
+	display: inline-block;
+	margin: 0 8px;
+	vertical-align: top;
+}
+#navs .active {
+	background: #f90;
+}
+#load {
+	width: 100px;
+	height: 100px;
+	background: #fff;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -50px 0 0 -50px;
+  	-webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  	animation: rotateplane 1.2s infinite ease-in-out;
+}
+</style>
+<script src="js/startMove.js"></script>
+<script src="js/touch.js"></script>
+<script>
+var imgUrls=["img/img1.jpeg","img/img2.jpeg","img/img3.jpeg","img/img4.jpeg"];
+function loading()
+{
+	var loading=document.getElementById("loading");
+	var offLoad=[];
+	for(var i=0; i<imgUrls.length; i++)
+	{
+		offLoad[i]=false;
+		var img=new Image();
+		img.src=imgUrls[i];
+		img.index=i;
+		img.onload=function()
+		{
+			offLoad[this.index]=true;
+			offLoading();	
+		};
+	}
+	function offLoading()
+	{
+		for(var i=0; i<offLoad.length; i++)
+		{
+			if(!offLoad[i])
+			{
+				return ;
+			}
+		}
+		mTween(loading,{opacity:0},200,"easeOut",
+			function (){
+				loading.style.display="none";
+			}
+		);
+	}
+}
+window.onload=function (){
+	loading();
+	var wrap=document.getElementById("wrap");
+	var listImg=document.getElementById("imgList");
+	var imgs=listImg.getElementsByClassName("img");
+	var li2d=toLayout ();
+	var navs=document.getElementById("navs").children;
+	var now=0;
+	var offmove=false;
+	var oTimer=0;
+	var offStop= function (obj){ 
+		return obj.x==0&&obj.y==3
+	};
+	$(wrap).swipeLeft(
+		function(){
+			if(offmove)
+			{
+				return;
+			}
+			offmove=true;
+			now++;
+			offStop= function (obj){ 
+				return obj.x==0&&obj.y==0;
+			}
+			seedWalk(li2d,3,0,moveImg,70);
+		}
+	);
+	$(wrap).swipeRight(
+		function(){
+			if(offmove)
+			{
+				return;
+			}
+			offmove=true;
+			now--;
+			offStop= function (obj){ 
+				return obj.x==3&&obj.y==3;
+			}
+			seedWalk(li2d,0,0,moveImg,70);
+		}
+	);
+	function moveImg()
+	{
+		if(offStop(this))
+		{
+			mTween(this, {rotateY:-now*90}, 600, "backOut", callBack);
+		}
+		else
+		{
+			mTween(this, {rotateY:-now*90},600,"backOut");
+		}
+	}
+	function callBack()
+	{
+			var show = now>=0 ? now%navs.length :navs.length- Math.abs(now%navs.length);
+			for(var i=0; i<navs.length; i++)
+			{
+				navs[i].className="";
+			}
+			for(var i=0; i<imgs.length; i++){
+				imgs[i].off=true;
+			}
+			navs[show].className="active";
+			offmove=false;		
+	}
+};
+function toLayout (){
+	var imgLists=document.getElementById("imgList");
+	var li=imgLists.children;
+	var imgs=imgLists.getElementsByClassName("img");
+	var style=document.getElementsByTagName("style")[0];
+	var strHtml="";
+	var strCss = "";
+	var rem=parseFloat(document.getElementsByTagName("html")[0].style.fontSize);
+	var spanHeight=imgLists.clientHeight/4/rem;
+	for(var i=0; i < 16;i++){
+		strHtml+='<li><div class="img"><span></span><span></span><span></span><span></span></div></li>';
+	}
+	imgLists.innerHTML=strHtml;
+	for(var i=0; i<4; i++){
+		for(var j=0; j<4; j++){
+			strCss+="#imgList li:nth-of-type("+(i*4+j+1)+") span {background-position: -"+j*4+"rem  -"+i*spanHeight+"rem; background-size:16rem "+spanHeight*4+"rem;}";
+		}
+	}
+	strCss+="#imgList li{height:"+spanHeight+"rem;}"
+	style.innerHTML+=strCss;
+	return toArr(imgs,4,4);
+}
+function toArr(oBjs,iRows,iRowLength)
+{
+	var aObjs=[];
+	for(var i=0;i<iRows;i++)
+	{
+		var arr=[];
+		for(var j=0;j<iRowLength;j++)
+		{
+			oBjs[i*iRowLength+j].x=j;
+			oBjs[i*iRowLength+j].y=i;
+			oBjs[i*iRowLength+j].off=true;
+			arr.push(oBjs[i*iRowLength+j]);
+		}
+		aObjs.push(arr);
+	}
+	return aObjs;
+}
+function seedWalk(arr,x,y,fn,iDelay)
+{
+	if( (arr[y] && arr[y][x]) && arr[y][x].off )
+	{
+		if(fn)
+		{
+			if(fn)
+			{
+				fn.call(arr[y][x]);
+			}
+		}
+		arr[y][x].off=false;
+		
+		arr[y][x].time=setTimeout(function()
+		{
+			seedWalk(arr,x,y-1,fn,iDelay);
+			seedWalk(arr,x,y+1,fn,iDelay);
+			seedWalk(arr,x-1,y,fn,iDelay);
+			seedWalk(arr,x+1,y,fn,iDelay);
+		},iDelay);
+	}
+}
+</script>
+</head>
+<body>
+<header>妙味课堂-3D场景切换</header>
+<div id="loading">
+	<div id="load"></div>
+</div>
+<div id="wrap">
+    <ul id="imgList">
+    </ul>
+    <nav id="navs">
+    	<a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+    </nav>
+</div>
+<footer>妙味课堂-www.miaov.com</footer>
+</body>
+</html>

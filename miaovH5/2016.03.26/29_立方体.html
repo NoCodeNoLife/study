@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#box {
+	width: 100px;
+	height: 100px;
+	padding: 100px;
+	border: 2px solid #000;
+	margin: 100px auto;
+	-webkit-perspective: 200px;
+	perspective: 300px;
+	perspective-origin: left top;
+	background: url("img/img1.jpeg") no-repeat;
+	background-size: contain;
+}
+#div {
+	width: 100px;
+	height: 100px;
+	transition: 6s;
+	transform-style: preserve-3d;
+	position: relative;
+	transform-origin: center center -50px;
+}
+#box:hover #div{
+	transform: rotateY(-360deg);	
+}
+span {
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	color: #fff;
+	font: 60px / 100px "宋体";
+	text-align: center;
+	opacity: .4;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+span:nth-child(1){
+	left: 0;
+	top: 0;
+	background: #603;
+}
+span:nth-child(2){
+	left: 100px;
+	top: 0;
+	background: #6CC;
+	transform-origin: left;
+	transform:rotateY(90deg);
+}
+span:nth-child(3){
+	left: 0;
+	top: 0;
+	background: #C33;
+	transform: translateZ(-100px) rotateY(-180deg);
+}
+span:nth-child(4){
+	left: -100px;
+	top: 0;
+	background: #096;
+	transform-origin: right;
+	transform: rotateY(-90deg);
+}
+span:nth-child(5){
+	left: 0;
+	top: -100px;
+	background: #693;
+	transform-origin: bottom;
+	transform: rotateX(90deg);
+}
+span:nth-child(6){
+	left: 0;
+	top: 100px;
+	background: #F69;
+	transform-origin: top;
+	transform: rotateX(-90deg);
+}
+/*
+transform3D
+	rotateX()
+	rotateY()
+	translateZ();
+	
+perspective 景深	
+*/
+</style>
+</head>
+<body>
+<div id="box">
+	<div id="div">
+    	<span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+    </div>	
+</div>
+</body>
+</html>
+

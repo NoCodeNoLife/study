@@ -1,0 +1,109 @@
+//////////2016.03.19
+
+<meat name="viewport" content="width=device-width,user-scalable=no"/>
+	--width: 取值[ device-width || value ];
+		--物理像素:设备本身的分辨率;
+		--实际像素:文档真实的分辨率;
+		--视口和缩放比例的关系:实际像素 = device-width / 缩放比例;
+	
+	--user-scalable[ 是否允许用户缩放 ]:取值[ no ||yes ];
+	
+	--iinitial-scale[ 初始比例 ]:取值[ value ];
+	
+	--minimum-scale[ 最小缩放比例 ]:取值[ value ];
+	
+	--maximum-scale[ 最大缩放比例 ]:取值[ value ];
+
+1px问题的解决方法[ 问题产生的原因:手机端浏览器的宽度和高度会针对物理分辨率除以2,所以1px的border在手机的屏幕上就占了两个像素了; ]:
+	--window.devicePixelRatio:像素比;以2个像素的格子显示1个像素的东西;
+	<script>
+		var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale ='+iScale+',maximum-scale= '+iScale+'" />');
+			//alert(window.devicePixelRatio);
+	</script>
+
+建议设计稿宽度为640px以上;
+
+rem适配:
+	rem相对于根节点的em单位;
+	rem计算和设置:
+		--getBoundingClientRect();
+		--background-size;
+
+css相关默认样式处理:
+	input,button,a {
+		-webkit-tap-highlight-color: rgba(0,0,0,0);//把浏览器中的链接或JavaScript的可点击的元素显示的颜色设置为透明;
+	}
+	
+	body*{
+		-webkit-text-size-adjust: none;//去掉chrome浏览器最小自提12像素限制;
+	}
+	
+	input,button {
+		-webkit-appearance: none;//去掉input和button的默认边框等样式;
+	}
+	
+alert( window.orientation );//检测客户端横竖屏浏览情况;
+	--90,-90:横屏浏览;
+	--0,180:竖屏浏览;
+	
+window.orientation:手机横竖屏检测;
+orientationchange:屏幕切换事件;
+
+//////////2016.03.26
+
+querySelector('#box');//
+	参数:接收CSS选择器;只要CSS选择器合法就可以识别;移动端兼容;只能获取一个元素,如果给的是一组,只获取一组元素中的第一个;
+
+querySelectorAll();//
+	参数:接收CSS选择器;只要CSS选择器合法就可以识别;移动端兼容;
+	获取的是一个集合,是一组元素;获取一组中的某一个用循环;
+	
+transform:
+	属性值后写的先执行[ transform: translate(100px) scale(.5) ]先执行缩小后执行位移;
+	
+通过getComputedStyle获取transform的时候只能获取到矩阵;
+
+touchstart:手指触摸;
+
+touchmove:手指移动;
+
+touchend:手指离开;
+
+touches:当前位于屏幕上的所有手指的一个列表;
+
+targetTouches:位于当前DOM元素上的手指的一个列表;
+
+changedTouches:涉及当前事件的手指的一个列表;
+
+移动端拖拽原理: 1>touchEvent选取;2>位移记录; 
+			关于移动端拖拽卡顿问题的解决:document.ontouchmove = function(ev){ ev.preventDefault(); }
+				
+过渡完成事件:
+	webkti内核:
+		obj.addEventListener('webkitTransitionEnd',function(){},false);
+		obj.addEventListener('transitioned',function(){},false);
+
+
+
+//问题1.输入同样的网址,怎么检测是手机访问还是PC访问,比如58同城或者百度.
+//问题2.列举移动布局最常见或者刁钻古怪的问题以及解决方法.比如键盘遮挡输入框等.
+//问题3.QQ视频电影推荐效果;
+//问题4.QQ浏览器左右滑动加载不同页面效果,类似于选项卡,并且有当前状态;
+//问题5.QQ浏览器 趣发现 部分视频如果在可视区就可以播放,如果不在可视区内就自动停止播放效果,以及移动端图片预加载或者按需加载效果;
+//问题6.滚动页面的时候动画才开始缓慢进入效果怎么做？
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

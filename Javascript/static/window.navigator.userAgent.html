@@ -8,7 +8,7 @@
             width: 160px;
             height: 200px;
             border: #333 1px solid;
-            margin: 100px auto;
+            margin: 0 auto;
             padding: 0 20px;
             overflow: hidden;
         }
@@ -34,7 +34,7 @@
             var oBox = document.getElementById('box');
 
 //            alert(oBox.scrollHeight);
-//            alert(document.documentElement.offsetHeight);//得到的值是2018，因为body默认上下各有9个像素的填充；
+//          alert(document.documentElement.offsetHeight);//得到的值是2018，因为body默认上下各有9个像素的填充；实测是2016,
                 alert(document.body.offsetHeight);
         }
     </script>

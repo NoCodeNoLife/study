@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+.box {
+	width: 100px;
+	padding: 100px;
+	border: 1px solid #000;
+	margin: auto;
+}
+.div {
+	width: 100px;
+	height: 100px;
+	background: red;
+	color: #fff;
+	font: 60px / 100px "宋体";
+	text-align: center; 
+	transition: 3s;
+}
+.div2 {
+	background: yellow;
+}
+/*
+.box:active {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+*/
+/*
+	transform 变换
+		rotate() 旋转 单位deg（角度）
+		
+		scale() 缩放
+				scaleX()
+				scaleY()
+				
+				
+	transform在移动端使用的时候，一定记得加前缀;	
+*/
+</style>
+<script>
+window.onload =function(){
+	var div = document.querySelector(".div");
+	div.addEventListener("touchend",
+		function(){
+			//this.style.WebkitTransform = this.style.transform = "scale(.5)";
+			this.style.WebkitTransform = this.style.transform = "scaleY(.5)";
+		},
+		false
+	);
+};
+</script>
+</head>
+<body>
+<div class="box">
+	<div class="div">上</div>
+    <div class="div div2">下</div>
+</div>
+</body>
+</html>

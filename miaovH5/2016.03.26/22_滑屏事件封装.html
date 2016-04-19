@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<title>无标题文档</title>
+<style>
+.box {
+	width: 100px;
+	height: 100px;
+	background: red;
+	border: 10px solid #000;
+	margin: 5px auto;
+}
+</style>
+<script>
+function TouchEevent(obj){
+	var _this = this;
+	this.obj = obj;
+	this.touches={x:0,y:0};
+	this.obj.addEventListener("touchstart",
+		function(e){
+			_this.fnStart(e);
+		},
+		false
+	);
+	this.obj.addEventListener("touchend",
+		function(e){
+			_this.fnEnd(e);
+		},
+		false
+	);
+}
+TouchEevent.prototype = {
+	fnStart: function(e){
+			this.touches={x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+	},
+	fnEnd: function(e){
+			var nowTouches = {x:e.changedTouches[0].pageX,y:e.changedTouches[0].pageY};
+			var disX = nowTouches.x - this.touches.x;
+			var disY = nowTouches.y - this.touches.y;
+			if(disX != 0 || disY != 0){
+				if(this.swipe){
+					this.swipe.call(this.obj);
+				}
+				if(disX > 10 && this.swipeRight){
+						this.swipeRight.call(this.obj);
+				}
+				if(disX < -10 && this.swipeLeft){
+					this.swipeLeft.call(this.obj);
+				}
+				if(disY < -10 && this.swipeTop){
+						this.swipeTop.call(this.obj);
+				}
+				if(disY > 10 && this.swipeDown){
+					this.swipeDown.call(this.obj);
+				}
+		}
+	},
+	swipe: function(fn){
+		this.swipe = fn;
+	},
+	swipeLeft: function(fn){
+		this.swipeLeft = fn;
+	},
+	swipeRight: function(fn){
+		this.swipeRight = fn;
+	},
+	swipeTop: function(fn){
+		this.swipeTop = fn;
+	},
+	swipeDown: function(fn){
+		this.swipeDown = fn;
+	}
+};
+function $(obj){
+	if(typeof obj == "string"){
+		obj = document.querySelector(obj);
+	}
+	return new TouchEevent(obj);
+}
+window.onload= function(){
+	$(".box").swipeLeft(
+		function(){
+			this.style.background = "blue";
+		}
+	);
+	$(".box").swipeRight(
+		function(){
+			this.style.background = "yellow";
+		}
+	);
+};
+</script>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+</html>
