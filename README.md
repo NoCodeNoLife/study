@@ -4,3 +4,4 @@ readystatechange事件的属性readystate的五种取值：
 	3.loaded：下载完成；
 	4.interactive：下载完成但是还不可以使用；
 	5.complete：所有数据都已经准备好可以使用；
+	https://x1yy.com/?m=vod-play-id-61055-src-1-num-1.html
